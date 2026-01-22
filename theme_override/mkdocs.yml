@@ -312,7 +312,6 @@ nav:
       - 'Support SLA': 'https://support.stakater.com/responsetimes.html'
       - legal-documents/dpa.md
       - legal-documents/nda.md
-      - legal-documents/pp.md
   - Help:
       - help/support/support.md
       - Kubernetes Concepts:
