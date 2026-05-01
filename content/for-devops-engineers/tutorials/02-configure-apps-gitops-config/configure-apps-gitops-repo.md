@@ -268,6 +268,7 @@ Lets proceed by adding a tenant to the `apps-gitops-config` repository.
 1. Add an external secret custom resource in `cluster/gitops-repositories/apps-gitops-creds.yaml` folder. We have already stored the secret value in Vault. Use the following template :
 
 <!-- vale off -->
+{% raw %}
      ```yaml
        apiVersion: external-secrets.io/v1beta1
        kind: ExternalSecret
@@ -302,6 +303,7 @@ Lets proceed by adding a tenant to the `apps-gitops-config` repository.
                type: git
                url: "https://github.com/DESTINATION_ORG/apps-gitops-config.git"
      ```
+{% endraw %}
 <!-- vale on -->
 
 1. Add an ArgoCD application pointing to this directory `dev/gitops-repositories/` inside `dev/argocd-apps/gitops-repositories.yaml`.

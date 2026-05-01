@@ -62,6 +62,7 @@ type: Opaque
 Step 2: Add a AlertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1, you need to replace `<workload-alertmanager-url>` with the link of Workload Alertmanager that you can get from Forecastle.
 
 <!-- vale off -->
+{% raw %}
 ```yaml
 alertmanagerConfig:
   enabled: true
@@ -84,13 +85,14 @@ alertmanagerConfig:
             {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
             {{ end }}
           {{ end }}
-        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ product_name }} Alertmanager Event Notification'
+        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] KubeStack+ Alertmanager Event Notification'
         titleLink: |2
           <workload-alertmanager-url>/#/alerts?receiver={{ .Receiver | urlquery }}
         httpConfig:
           tlsConfig:
             insecureSkipVerify: true
 ```
+{% endraw %}
 <!-- vale on -->
 
 With this configuration all predefined rules and any new rule which you define should land in the configured Slack channel.

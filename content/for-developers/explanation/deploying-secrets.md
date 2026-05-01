@@ -89,6 +89,7 @@ The following secrets are needed for running a fully functional pipeline using p
         1. Now add an external secret that has the following structure. Remember to replace the placeholder:
 
 <!-- vale off -->
+{% raw %}
             ```yaml
               apiVersion: external-secrets.io/v1beta1
               kind: ExternalSecret
@@ -149,6 +150,7 @@ The following secrets are needed for running a fully functional pipeline using p
                     prune: true
                     selfHeal: true
             ```
+{% endraw %}
 <!-- vale on -->
 
         1. Wait for ArgoCD to sync your changes
@@ -228,6 +230,7 @@ The following secrets are needed for running a fully functional pipeline using p
         1. Add an external secret named [app-name]-ssh-creds:
 
 <!-- vale off -->
+{% raw %}
             ```yaml
               apiVersion: external-secrets.io/v1beta1
               kind: ExternalSecret
@@ -250,6 +253,7 @@ The following secrets are needed for running a fully functional pipeline using p
                       key: [app-name]-ssh-creds
                       property: api_private_key
             ```
+{% endraw %}
 <!-- vale on -->
 
         1. Now open up the tenant path in Vault and add a secret named `[app-name]-ssh-creds`. Add a key `api_private_key`. The value should have a private ssh key that has access to your application repository as well as you `apps-gitops-config` repository.
@@ -267,6 +271,7 @@ The following secrets are needed for running a fully functional pipeline using p
         1. Add an external secret named [app-name]-git-webhook-creds
 
 <!-- vale off -->
+{% raw %}
             ```yaml
               apiVersion: external-secrets.io/v1beta1
               kind: ExternalSecret
@@ -294,4 +299,5 @@ The following secrets are needed for running a fully functional pipeline using p
                       key: github-webhook-config
                       property: webhook.secret
             ```
+{% endraw %}
 <!-- vale on -->

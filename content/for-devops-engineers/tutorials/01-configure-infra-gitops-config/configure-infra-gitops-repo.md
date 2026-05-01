@@ -36,6 +36,7 @@ This AppProject will be used to sync all the Applications in `Infra Gitops Confi
 1. Create an external secret on the cluster with read permissions over this repository.
 
 <!-- vale off -->
+{% raw %}
     ```yaml
     apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
@@ -70,6 +71,7 @@ This AppProject will be used to sync all the Applications in `Infra Gitops Confi
             type: git
             url: 'INFRA_GITOPS_REPO_URL'
     ```
+{% endraw %}
 <!-- vale on -->
 
     !!! note

@@ -25,6 +25,7 @@ Now let's add a PrometheusRule for the application. In the previous section, we 
 1. You need to add the following lines to your `deploy/values.yaml` file:
 
 <!-- vale off -->
+{% raw %}
     ```yaml
     prometheusRule:
       enabled: true
@@ -42,6 +43,7 @@ Now let's add a PrometheusRule for the application. In the previous section, we 
               labels:
                 severity: critical
     ```
+{% endraw %}
 <!-- vale on -->
 
     !!! note
@@ -71,6 +73,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
 1. Let's add the AlertManagerConfig, add this YAML to `deploy/values.yaml`, and remember to replace `channel-name` with your channel name.
 
 <!-- vale off -->
+{% raw %}
     ```yaml
     alertmanagerConfig:
       enabled: true
@@ -92,7 +95,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
                   *Details:* {{ range $k, $v := .Labels }} - *{{ $k }}:* {{ $v }}
                   {{ end }}
                   {{ end }}
-                title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ product_name }} Alertmanager Event Notification'
+                title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] KubeStack+ Alertmanager Event Notification'
                 httpConfig:
                   tlsConfig:
                     insecureSkipVerify: true
@@ -108,6 +111,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
               value: NordmartReviewLowRatingsCritical
           receiver: nordmart-review-receiver
     ```
+{% endraw %}
 <!-- vale on -->
 
     !!! note

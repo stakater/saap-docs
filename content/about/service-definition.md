@@ -196,7 +196,9 @@ Public outbound traffic from the control plane and infrastructure nodes is requi
 
 ### Kubernetes Router
 
-<!-- vale off -->{{ product_name }} includes the OpenShift Router as the ingress controller, supporting HTTP, HTTPS, TLS pass-through, and WebSocket routing.<!-- vale on -->
+<!-- vale off -->
+{{ product_name }} includes the OpenShift Router as the ingress controller, supporting HTTP, HTTPS, TLS pass-through, and WebSocket routing.
+<!-- vale on -->
 
 ### ExternalDNS
 

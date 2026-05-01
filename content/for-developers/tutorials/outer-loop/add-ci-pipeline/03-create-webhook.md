@@ -101,6 +101,7 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
 1. Create a file named `github-webhook-config.yaml` and add in the below content. Replace the URL with your application repository's URL.
 
 <!-- vale off -->
+{% raw %}
     ```yaml
     apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
@@ -128,6 +129,7 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
          key: github-webhook-config
          property: webhook.secret
     ```
+{% endraw %}
 <!-- vale on -->
 
     ![GitHub-webhook-config-es](images/github-webhook-config-es.png)
