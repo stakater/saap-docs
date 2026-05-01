@@ -61,6 +61,7 @@ type: Opaque
 
 Step 2: Add a AlertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1, you need to replace `<workload-alertmanager-url>` with the link of Workload Alertmanager that you can get from Forecastle.
 
+<!-- vale off -->
 ```yaml
 alertmanagerConfig:
   enabled: true
@@ -90,6 +91,7 @@ alertmanagerConfig:
           tlsConfig:
             insecureSkipVerify: true
 ```
+<!-- vale on -->
 
 With this configuration all predefined rules and any new rule which you define should land in the configured Slack channel.
 

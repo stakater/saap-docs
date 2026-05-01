@@ -79,6 +79,7 @@ Since we want the `git-ssh-creds` secret to be deployed in all of the tenant nam
 
 1. Now create a file named `git-ssh-creds-template.yaml` and add the following content:
 
+<!-- vale off -->
     ```yaml
     apiVersion: tenantoperator.stakater.com/v1alpha1
     kind: Template
@@ -107,6 +108,7 @@ Since we want the `git-ssh-creds` secret to be deployed in all of the tenant nam
                 key: git-ssh-creds
                 property: api_private_key
     ```
+<!-- vale on -->
 
 1. Create another file named `git-ssh-creds-tgi.yaml` and add the following content:
 

@@ -2,6 +2,7 @@
 
 ## Customer nexus endpoints and their purpose
 
+<!-- vale off -->
 | URL | Name | Purpose |
 |---|---|---|
 | `https://nexus-openshift-stakater-nexus.{{ route_subdomain }}` | Nexus base URL for web view. | A dashboard where you can view all the repositories and settings. |
@@ -9,6 +10,7 @@
 | `https://nexus-docker-proxy-openshift-stakater-nexus.{{ route_subdomain }}` | Nexus docker repository proxy. | This is a proxy URL that points towards Docker Hub, used to pull images from Docker Hub. |
 | `https://nexus-helm-openshift-stakater-nexus.{{ route_subdomain }}/repository/helm-charts/` | Nexus Helm repository. | This is the nexus Helm repository endpoint, used to pull and push Helm charts. |
 | `https://nexus-repository-openshift-stakater-nexus.{{ route_subdomain }}/repository/` | Nexus Maven repository. | This is the nexus Maven repository endpoint, used for Maven apps. |
+<!-- vale on -->
 
 We also support whitelisting for these endpoints. Please contact support if you want to enable whitelisting for specific IPs.
 

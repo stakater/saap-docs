@@ -24,6 +24,7 @@ Now let's add a PrometheusRule for the application. In the previous section, we 
 
 1. You need to add the following lines to your `deploy/values.yaml` file:
 
+<!-- vale off -->
     ```yaml
     prometheusRule:
       enabled: true
@@ -41,6 +42,7 @@ Now let's add a PrometheusRule for the application. In the previous section, we 
               labels:
                 severity: critical
     ```
+<!-- vale on -->
 
     !!! note
         The indentation follows by `application.prometheusRule`.
@@ -68,6 +70,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
 
 1. Let's add the AlertManagerConfig, add this YAML to `deploy/values.yaml`, and remember to replace `channel-name` with your channel name.
 
+<!-- vale off -->
     ```yaml
     alertmanagerConfig:
       enabled: true
@@ -105,6 +108,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
               value: NordmartReviewLowRatingsCritical
           receiver: nordmart-review-receiver
     ```
+<!-- vale on -->
 
     !!! note
         The indentation follows by `application.alertmanagerConfig`.

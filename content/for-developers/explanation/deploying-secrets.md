@@ -88,6 +88,7 @@ The following secrets are needed for running a fully functional pipeline using p
         1. Inside it, create a folder named `gitops-repositories`
         1. Now add an external secret that has the following structure. Remember to replace the placeholder:
 
+<!-- vale off -->
             ```yaml
               apiVersion: external-secrets.io/v1beta1
               kind: ExternalSecret
@@ -148,6 +149,7 @@ The following secrets are needed for running a fully functional pipeline using p
                     prune: true
                     selfHeal: true
             ```
+<!-- vale on -->
 
         1. Wait for ArgoCD to sync your changes
 
@@ -225,6 +227,7 @@ The following secrets are needed for running a fully functional pipeline using p
         1. Open the build folder.
         1. Add an external secret named [app-name]-ssh-creds:
 
+<!-- vale off -->
             ```yaml
               apiVersion: external-secrets.io/v1beta1
               kind: ExternalSecret
@@ -247,6 +250,7 @@ The following secrets are needed for running a fully functional pipeline using p
                       key: [app-name]-ssh-creds
                       property: api_private_key
             ```
+<!-- vale on -->
 
         1. Now open up the tenant path in Vault and add a secret named `[app-name]-ssh-creds`. Add a key `api_private_key`. The value should have a private ssh key that has access to your application repository as well as you `apps-gitops-config` repository.
         1. Assuming you have already set up the `apps-gitops-config` repository, you should be able to see the secret deployed to your tenant's build namespace
@@ -262,6 +266,7 @@ The following secrets are needed for running a fully functional pipeline using p
         1. Open the build folder.
         1. Add an external secret named [app-name]-git-webhook-creds
 
+<!-- vale off -->
             ```yaml
               apiVersion: external-secrets.io/v1beta1
               kind: ExternalSecret
@@ -289,3 +294,4 @@ The following secrets are needed for running a fully functional pipeline using p
                       key: github-webhook-config
                       property: webhook.secret
             ```
+<!-- vale on -->
