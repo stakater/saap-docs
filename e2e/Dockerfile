@@ -1,11 +1,4 @@
-# Stage 1: Install Playwright browsers and dependencies
-FROM node:22-bookworm AS playwright-setup
-
-# Install only Chromium and system dependencies
-RUN npx playwright install --with-deps chromium
-
-# Stage 2: Build and run tests
-FROM playwright-setup AS test-runner
+FROM node:22-bookworm
 
 # Set the working directory inside the container
 WORKDIR /e2e
@@ -18,6 +11,9 @@ COPY package.json yarn.lock* ./
 
 # Install dependencies
 RUN yarn install --frozen-lockfile || yarn install
+
+# Install Playwright browsers using the installed Playwright version
+RUN yarn playwright install --with-deps chromium
 
 # Copy source files
 COPY src ./src
