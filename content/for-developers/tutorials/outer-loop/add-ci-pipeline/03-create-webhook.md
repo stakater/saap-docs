@@ -4,7 +4,7 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
 
 ## Objectives
 
-- Obtain Interceptor URL from SAAP admin.
+- Obtain Interceptor URL from {{ product_name }} admin.
 - Create Webhook Secret for your webhook security.
 - Add webhook in your source code repository.
 
@@ -29,9 +29,9 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
 
     ![Webhook](images/add-webhook.png)
 
-1. To set up the webhook, you'll need the `URL of the pipeline-as-code interceptor`. This URL is used to connect GitHub with your SAAP's pipeline system.
+1. To set up the webhook, you'll need the `URL of the pipeline-as-code interceptor`. This URL is used to connect GitHub with your {{ product_name }}'s pipeline system.
 
-1. Ask the SAAP admin to provide you with the `Interceptor URL` "route" from the project or namespace where the pipeline-as-code is installed.
+1. Ask the {{ product_name }} admin to provide you with the `Interceptor URL` "route" from the project or namespace where the pipeline-as-code is installed.
 
 1. Back in the GitHub repository's webhook settings, enter the `pipeline-as-code interceptor URL` you obtained in the previous step in the `Payload URL`.
 
@@ -59,7 +59,7 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
 
     ![Webhook details](images/webhook-details.png)
 
-    Once you've entered the interceptor URL and chosen the triggering events, proceed to add the webhook. This will establish the connection between your GitHub repository and SAAP pipeline.
+    Once you've entered the interceptor URL and chosen the triggering events, proceed to add the webhook. This will establish the connection between your GitHub repository and {{ product_name }} pipeline.
 
     !!! note
         For GitLab Webhook configuration follow [this](https://pipelinesascode.com/docs/install/gitlab/), for Bitbucket webhook configuration follow [this](https://pipelinesascode.com/docs/install/bitbucket_cloud/).

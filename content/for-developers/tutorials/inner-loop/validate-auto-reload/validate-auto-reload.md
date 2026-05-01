@@ -2,7 +2,7 @@
 
 Managing application deployments and keeping configurations up-to-date can be challenging. Changes to secrets or ConfigMaps for instance, often require manual intervention to update the application and trigger a redeployment. This can lead to operational inefficiencies and potential downtime.
 
-To address this challenge, Stakater has Reloader—a powerful tool that automates the process of reloading deployments when related resources, such as secrets or ConfigMaps, change. In this tutorial, we will explore how to set up Reloader in your SAAP and configure it to automatically trigger the reload of a deployment whenever a secret changes.
+To address this challenge, Stakater has Reloader—a powerful tool that automates the process of reloading deployments when related resources, such as secrets or ConfigMaps, change. In this tutorial, we will explore how to set up Reloader in your {{ product_name }} and configure it to automatically trigger the reload of a deployment whenever a secret changes.
 
 ## Objectives
 
@@ -51,7 +51,7 @@ The secret we created for our deployment earlier, notice the details and the val
 
     ![edit-secret](images/edit-secret.png)
 
-1. Let's go to SAAP to see if the new version of the external secret has been deployed. Go to `review-mongodb-creds`, and scroll down to see `Data`. On the right corner you will see `Reveal values`, hit on it and see the value for `mongodb-password`.
+1. Let's go to {{ product_name }} to see if the new version of the external secret has been deployed. Go to `review-mongodb-creds`, and scroll down to see `Data`. On the right corner you will see `Reveal values`, hit on it and see the value for `mongodb-password`.
 
     ![updated secret](images/updated-secret.png)
 

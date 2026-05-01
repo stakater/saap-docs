@@ -1,10 +1,10 @@
 # Overview
 
-[Red Hat OpenShift Data Foundation (ODF)](https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation) is a powerful data management solution integrated into SAAP, designed to simplify and enhance data management for containerized applications. ODF ensures customers can efficiently and securely access and store their data.
+[Red Hat OpenShift Data Foundation (ODF)](https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation) is a powerful data management solution integrated into {{ product_name }}, designed to simplify and enhance data management for containerized applications. ODF ensures customers can efficiently and securely access and store their data.
 
 ## Key Features and Benefits
 
-- **Container-Native Storage Integration**: ODF seamlessly integrates container-native storage solutions into SAAP environment, making it an ideal choice for containerized applications.
+- **Container-Native Storage Integration**: ODF integrates container-native storage solutions into {{ product_name }} environment, making it an ideal choice for containerized applications.
 
 - **Multi-Cloud Data Management**: ODF supports data management across hybrid and multi-cloud environments, ensuring data consistency and mobility across different infrastructure platforms.
 

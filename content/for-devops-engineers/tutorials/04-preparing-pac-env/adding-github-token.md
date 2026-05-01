@@ -18,7 +18,7 @@ You can check secrets documentation to read more on these secrets.
 * Infra GitOps Repository is configured.
 * Delivery Engineer added as the owner of root-tenant.
 * Delivery Engineer added as a member of customer admin group. The customer admin group provides permission to deploy ArgoCD application in ArgoCD namespace.
-* A GitHub user with access over all the repositories on GitHub. You can name this user `saap-bot`.
+* A GitHub user with access over all the repositories on GitHub. You can name this user `kubestackplus-bot`.
 
 ## Tutorial
 
@@ -68,7 +68,7 @@ Now that we have created the GitHub Token, we will store it in Vault.
 
 !!! note
     The delivery engineer should be part of the root-tenant. The root tenant makes sure that the delivery engineer is able to login to Vault with OIDC and is able to view the ArgoCD application created for bootstrapping Infra repository.
-    Please contact SAAP team if you are unable to access Vault using OIDC method
+    Please contact {{ product_name }} team if you are unable to access Vault using OIDC method
 
 Login to Vault to view <your-tenant> path.
 

@@ -1,6 +1,6 @@
 # Expose your Application
 
-Once you have successfully deployed your application on the SAAP (Stakater App Agility Platform), the next step is to make it accessible to users and resources over the network. In this tutorial, you will learn how to expose your application and enable external traffic to reach it, whether for internal use within the cluster or external access from outside the cluster. By following these steps, you will ensure that your application is reachable and can serve its intended purpose.
+Once you have successfully deployed your application on the {{ product_name }} ({{ product_name }}), the next step is to make it accessible to users and resources over the network. In this tutorial, you will learn how to expose your application and enable external traffic to reach it, whether for internal use within the cluster or external access from outside the cluster. By following these steps, you will ensure that your application is reachable and can serve its intended purpose.
 
 ## Objective
 
@@ -22,7 +22,7 @@ Create a service:
     ```yaml
     ## Service
     service:
-      enabled: true  # Enables the creation of a Service resource on SAAP
+      enabled: true  # Enables the creation of a Service resource on {{ product_name }}
       ports:
         - name: http  # Specifies the name of the service
           port: 8080  # Specifies the port on which the service will listen
@@ -46,7 +46,7 @@ Create a service:
 
 ### Exposing Your Application to External Traffic via Route
 
-SAAP provides a "routes" routing mechanism that allows you to expose applications using hostnames and paths. Routes are created using the Route resource and can provide additional features such as SSL termination and path-based routing.
+{{ product_name }} provides a "routes" routing mechanism that allows you to expose applications using hostnames and paths. Routes are created using the Route resource and can provide additional features such as SSL termination and path-based routing.
 
 To create a route:
 
@@ -55,7 +55,7 @@ To create a route:
     ```yaml
     ## Route
     route:
-      enabled: true # Enables the creation of a Route resource on SAAP
+      enabled: true # Enables the creation of a Route resource on {{ product_name }}
       port:
         targetPort: http  # Specifies the target service port name
     ```
@@ -93,7 +93,7 @@ To create a route:
     ```yaml
     ## Ingress
     ingress:
-      enabled: true  # Enables the creation of an Ingress resource on SAAP
+      enabled: true  # Enables the creation of an Ingress resource on {{ product_name }}
       servicePort: http  # Specifies the service port to use for routing traffic
       hosts:    # Defines the list of hosts to route traffic to
         - host:  review.<CLUSTER-NAME>.kubeapp.cloud  # define a list of hosts
@@ -114,7 +114,7 @@ To create a route:
 1. Make sure the **route** field is `enabled: false`. It's because Ingress will create its own route.
 
     !!! note
-        In order to use a different host, you must have a DNS record pointing to the cluster's external IP or load balancer. You can change or add any configuration for the ingress. To see more configurations [click](https://docs.openshift.com/container-platform/4.11/networking/routes/route-configuration.html#nw-ingress-creating-a-route-via-an-ingress_route-configuration).
+        To use a different host, you must have a DNS record pointing to the cluster's external IP or load balancer. You can change or add any configuration for the ingress. To see more configurations [click](https://docs.openshift.com/container-platform/4.11/networking/routes/route-configuration.html#nw-ingress-creating-a-route-via-an-ingress_route-configuration).
 
 1. Run `tilt up` at the root of your directory. Hit the space bar and the browser with `TILT` logs will be shown. If everything is green then the changes will be deployed on the cluster.
 
@@ -134,7 +134,7 @@ To create a route:
 
     ![output ingress](images/output.png)
 
-By following the tutorials above, you can successfully expose your application deployed on SAAP, using the example application "`stakater-nordmart-review-api`".
+By following the tutorials above, you can successfully expose your application deployed on {{ product_name }}, using the example application "`stakater-nordmart-review-api`".
 
 > Please note that any modifications and configurations specific to your cluster should be made in the `deploy/values.yaml` file, while changes and configurations related to your local environment should be made in the `tilt/values-local.yaml` file.
 

@@ -2,7 +2,7 @@
 
 ## Objectives
 
-- Push artifacts to Nexus Registry hosted on Stakater App Agility Platform (SAAP).
+- Push artifacts to Nexus Registry hosted on {{ product_name }}.
 
 ## Key Results
 

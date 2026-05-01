@@ -3,7 +3,7 @@
 To expose applications in an OpenShift cluster over the internet `routes` are used. Routes expose a service at a
 hostname, for example app.example.com, so that external clients can reach the service.
 
-SAAP provides a unique domain with every cluster with the format: `*.apps.<CLUSTER_NAME>.<CLUSTER_ID>.kubeapp.cloud` that is pre-configured with TLS to provide a secure connection.
+{{ product_name }} provides a unique domain with every cluster with the format: `*.apps.<CLUSTER_NAME>.<CLUSTER_ID>.kubeapp.cloud` that is pre-configured with TLS to provide a secure connection.
 
 ## Sample route for a service
 

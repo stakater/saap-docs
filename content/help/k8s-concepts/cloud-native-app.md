@@ -110,7 +110,7 @@ API first frees organizations from the waterfall, deliberately engineered system
 
 Live, eat, and breathe the API-first lifestyle, and your investment will pay off exponentially.
 
-Stakater App Agility Platform offers a fully managed 3Scale API Gateway add-on to manage the entire lifecycle of your APIs from design, to build, to publish.
+{{ product_name }} offers a fully managed 3Scale API Gateway add-on to manage the entire lifecycle of your APIs from design, to build, to publish.
 
 ## 4. Design, build, release, and run
 
@@ -172,7 +172,7 @@ The key to Design, Build, Release, and Run is that the process is completely eph
 - Docker composition (docker-compose.yml) can bring up the environment for automated testing
 - Cut releases on merge to main (preferred, not required); use semver
 
-Stakater App Agility Platform includes managed Tekton and ArgoCD to support all sorts of CI&CD workflows.
+{{ product_name }} includes managed Tekton and ArgoCD to support all sorts of CI&CD workflows.
 
 ## 5. Configuration, credentials, and code
 
@@ -182,7 +182,7 @@ Treat configuration, credentials, and code as volatile substances that explode w
 
 That may sound a bit harsh, but failing to follow this rule will likely cause you untold frustration that will only escalate the closer you get to production with your application.
 
-In order to be able to keep configuration separate from code and credentials, we need a very clear definition of configuration. Configuration refers to any value that can vary across deployments (e.g., developer workstation, QA, and production). This could include:
+To be able to keep configuration separate from code and credentials, we need a very clear definition of configuration. Configuration refers to any value that can vary across deployments (e.g., developer workstation, QA, and production). This could include:
 
 - URLs and other information about backing services, such as web services, and SMTP servers
 - Information necessary to locate and connect to databases
@@ -211,7 +211,7 @@ Secrets are a similar Kubernetes object type used to securely store sensitive da
 
 ConfigMaps and Secrets help you avoid putting configuration directly in Kubernetes object definitions. You can map the configuration key instead of the value, allowing you to update configuration on the fly by modifying the ConfigMap or Secret. This gives you the opportunity to alter the active runtime behavior of pods and other Kubernetes objects without modifying the Kubernetes definitions of the resources.
 
-Stakater App Agility Platform includes fully managed Vault for secrets management.
+{{ product_name }} includes fully managed Vault for secrets management.
 
 ## 6. Liveness and readiness probes
 
@@ -269,7 +269,7 @@ It is recommended application logs as JSON.
 - Events are structured event streams (e.g. JSON)
 - Do not write logs to disk (to mitigate the need for log rotation)
 
-Stakater App Agility Platform includes fully managed logging stack based on ElasticSearch, Fluentd and Kibana.
+{{ product_name }} includes fully managed logging stack based on ElasticSearch, Fluentd and Kibana.
 
 ## 8. Backing services
 
@@ -348,7 +348,7 @@ Allows measuring operation of application and enables many more advanced use cas
 
 Use code and libraries your code to expose metrics.
 
-Stakater App Agility Platform includes fully managed Istio for tracing and instrumentation.
+{{ product_name }} includes fully managed Istio for tracing and instrumentation.
 
 ## 10. Graceful Shutdown
 
@@ -573,7 +573,7 @@ Considerations for helping to protect access to your app include the following:
 
 The security landscape constantly evolves within an enterprise, making it harder for you to code security constructs in your apps
 
-Stakater App Agility Platform offers Keycloak as fully managed IAM solution to support SSO login for managed addons.
+{{ product_name }} offers Keycloak as fully managed IAM solution to support SSO login for managed addons.
 
 ## 16. Dependencies initialization
 
@@ -656,7 +656,7 @@ Vanilla Kubernetes secrets are only base64 encoded so, they can't be put to SCM 
 
 **How?**
 
-Stakater App Agility Platform has secrets handling support with Sealed Secrets and Vault.
+{{ product_name }} has secrets handling support with Sealed Secrets and Vault.
 
 ## 20. Tracing instrumentation
 
@@ -672,7 +672,7 @@ Sometimes the only way of figuring out where latency is coming from
 
 **How?**
 
-Stakater App Agility Platform has built in managed Istio to support instrumentation.
+{{ product_name }} has built in managed Istio to support instrumentation.
 
 ## 21. Administrative processes
 
@@ -725,8 +725,8 @@ You need to know when your service degrades.
 
 **How?**
 
-- Stakater App Agility Platform includes a managed Prometheus; just define a PrometheusRule.
-- Stakater App Agility Platform also includes [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which can send downtime alerts when application degrades.
+- {{ product_name }} includes a managed Prometheus; just define a PrometheusRule.
+- {{ product_name }} also includes [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which can send downtime alerts when application degrades.
 
 ## 24. Backup & restore (optional)
 
@@ -740,7 +740,7 @@ To restore operations in case on disaster.
 
 **How?**
 
-Stakater App Agility Platform has built in backup and restore available with Velero; which can be configured on stateful applications.
+{{ product_name }} has built in backup and restore available with Velero; which can be configured on stateful applications.
 
 ## 25. Certificates (optional)
 
@@ -754,7 +754,7 @@ Ease of management for certificates handling for mTLS communication between serv
 
 **How?**
 
-Stakater App Agility Platform includes managed cert-manager for certificates management and also it includes managed Istio which can be used as well.
+{{ product_name }} includes managed cert-manager for certificates management and also it includes managed Istio which can be used as well.
 
 ## 26. Easily discoverable URLs (optional)
 
@@ -768,7 +768,7 @@ It should be simple and ease to find the endpoints of the deployed applications.
 
 **How?**
 
-Stakater App Agility Platform includes managed [Forecastle](https://github.com/stakater/Forecastle) which can dynamically discover and list endpoints.
+{{ product_name }} includes managed [Forecastle](https://github.com/stakater/Forecastle) which can dynamically discover and list endpoints.
 
 ## 27. Grafana Dashboard (optional)
 
@@ -784,7 +784,7 @@ You need to make sense out of the data.
 
 Add Grafana dashboard as code.
 
-Stakater App Agility Platform includes fully managed customer workload monitoring stack with Prometheus and Grafana.
+{{ product_name }} includes fully managed customer workload monitoring stack with Prometheus and Grafana.
 
 ## 28. Multiple replicas
 

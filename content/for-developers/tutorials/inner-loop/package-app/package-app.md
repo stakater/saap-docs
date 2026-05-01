@@ -6,7 +6,7 @@ We need to decide what Kubernetes resources are required for our application. A 
 
 ## Objectives
 
-- Package your application for deployment on Stakater App Agility Platform (SAAP) into Helm Chart.
+- Package your application for deployment on {{ product_name }} into Helm Chart.
 
 ## Key Results
 

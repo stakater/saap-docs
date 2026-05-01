@@ -1,8 +1,8 @@
 # Add Grafana Dashboard to your Application
 
-Welcome to the world of data visualization and real-time monitoring with Grafana on SAAP! If you want to enhance your application's capabilities, you're in the right place. In this tutorial, we'll explore how to add a customized Grafana dashboard to your application in SAAP, allowing you to display live data for various operational use cases, efficiency analysis, and A/B test results.
+Welcome to the world of data visualization and real-time monitoring with Grafana on {{ product_name }}! If you want to enhance your application's capabilities, you're in the right place. In this tutorial, we'll explore how to add a customized Grafana dashboard to your application in {{ product_name }}, allowing you to display live data for various operational use cases, efficiency analysis, and A/B test results.
 
-The good news is that Grafana is already a part of the SAAP (Stakater's App Agility Platform) monitoring stack, so you don't need to install it separately. Everything is set up for you!
+The good news is that Grafana is already a part of the {{ product_name }} (Stakater's App Agility Platform) monitoring stack, so you don't need to install it separately. Everything is set up for you!
 
 ## Objectives
 
@@ -37,7 +37,7 @@ To get started, head to the `stakater-nordmart-review-api/deploy/templates/grafa
 
     If you use `Login with OpenShift` to login and display dashboards - your user will only have the `view` role which is read-only. This is alright in most cases, but we want to be able to edit and admin the boards.
 
-    > In order to complete the next steps you will need the OpenShift CLI installed locally, credentials can be retrieved from the OpenShift UI
+    > To complete the next steps you will need the OpenShift CLI installed locally, credentials can be retrieved from the OpenShift UI
 
 1. The Dashboards should be showing some basic information and we can generate more data by firing some requests to the `stakater-nordmart-review-api`. In your IDE, run on your terminal:
 

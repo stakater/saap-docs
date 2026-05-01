@@ -1,8 +1,8 @@
 # Creating a Pipeline
 
-We will embark on a comprehensive journey through a complete pipeline, with each individual task covered in its tutorial. This approach aims to provide a detailed understanding of each task and how they collectively contribute to the functionality of pipeline-as-code.
+This guide walks through a complete pipeline, covering each task individually. Together, the tasks form a functioning pipeline-as-code workflow.
 
-In modern software development practices, pipelines play a crucial role in automating and streamlining the process of building, testing, and deploying applications. This tutorial will guide you through creating a pipeline using pipeline-as-code concepts. We'll focus on GitHub as the provider and assume you have a SAAP set up with pipeline-as-code capabilities.
+In modern software development practices, pipelines play a crucial role in automating and streamlining the process of building, testing, and deploying applications. This tutorial will guide you through creating a pipeline using pipeline-as-code concepts. We'll focus on GitHub as the provider and assume you have a {{ product_name }} set up with pipeline-as-code capabilities.
 
 Now that we have completed all the prerequisites to run this `pipelineRun`, we can continue by adding a pipeline to our application using `pipeline-as-code` approach.
 

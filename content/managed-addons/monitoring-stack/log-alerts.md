@@ -1,6 +1,6 @@
 # Log alerting
 
-Stakater App Agility Platform provides alerting for applications logs via [Konfigurator](https://github.com/stakater/Konfigurator) which out of the box integrates with Fluentd. These alerts land on Slack channel(s) so that any Errors/Warnings can be responded immediately.
+{{ product_name }} provides alerting for applications logs via [Konfigurator](https://github.com/stakater/Konfigurator) which out of the box integrates with Fluentd. These alerts land on Slack channel(s) so that any Errors/Warnings can be responded immediately.
 
 To configure log alerting do following:
 

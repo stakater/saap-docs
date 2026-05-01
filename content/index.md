@@ -19,7 +19,7 @@ Organizations adopting Kubernetes often face three recurring challenges:
 1. Compliance and governance are treated as an afterthought — reactive, manual, and painful.
 
 **KubeStack+** solves these by unifying the Dev, Ops, and Compliance experience into a single, automated platform.
-It provides golden paths for developers, scalable automation for operators, and built-in governance for compliance teams — all working seamlessly together.
+It provides golden paths for developers, scalable automation for operators, and built-in governance for compliance teams — working together.
 
 ## Core Pillar
 

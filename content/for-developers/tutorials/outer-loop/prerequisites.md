@@ -16,6 +16,6 @@ External Secrets Custom Resources (CRs) play a pivotal role in securely referenc
 
 ## Access to ArgoCD Applications
 
-To deploy and manage your applications effectively with ArgoCD, it's essential to have the required access to ArgoCD applications within your SAAP (Stakater App Agility Platform). Ensure that you possess the necessary permissions and access rights that empower you to not only create but also update and synchronize ArgoCD applications. This access ensures that you can confidently orchestrate the deployment and continuous synchronization of your applications while maintaining security and compliance standards within SAAP.
+To deploy and manage your applications effectively with ArgoCD, it's essential to have the required access to ArgoCD applications within your {{ product_name }} ({{ product_name }}). Ensure that you possess the necessary permissions and access rights that empower you to not only create but also update and synchronize ArgoCD applications. This access ensures that you can confidently orchestrate the deployment and continuous synchronization of your applications while maintaining security and compliance standards within {{ product_name }}.
 
 With these prerequisites in place, you'll be well-prepared to set up your pipeline as code and run it securely and efficiently.

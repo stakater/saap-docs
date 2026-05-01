@@ -1,6 +1,6 @@
 # Custom Domains
 
-Consider have a domain `custom.domain.com`; and you want to host your application on your own domain instead of the default route provided by SAAP i.e. `<MYAPP_NAME>-<MYAPP_NAMESPACE>.apps.<CLUSTER_NAME>.<CLUSTER_ID>.kubeapp.cloud`. You can follow these steps in order to use your own domain:
+Consider have a domain `custom.domain.com`; and you want to host your application on your own domain instead of the default route provided by {{ product_name }} i.e. `<MYAPP_NAME>-<MYAPP_NAMESPACE>.apps.<CLUSTER_NAME>.<CLUSTER_ID>.kubeapp.cloud`. You can follow these steps To use your own domain:
 
 1. Configure DNS
 1. Configure TLS Certificates
@@ -9,7 +9,7 @@ Consider have a domain `custom.domain.com`; and you want to host your applicatio
 
 ## 1. Configure DNS
 
-In order to host your application on `custom.domain.com`. You need to point your DNS address to the ingress endpoint of the cluster's default router. This can either be a public IP or a private IP depending on if the cluster is public or private.
+To host your application on `custom.domain.com`. You need to point your DNS address to the ingress endpoint of the cluster's default router. This can either be a public IP or a private IP depending on if the cluster is public or private.
 
 See [External DNS](./external-dns.md) section to automatically configure DNS for your applications
 

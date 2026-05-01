@@ -1,10 +1,10 @@
 # Monitor your Application
 
-In this tutorial, you will learn how to leverage SAAP's built-in monitoring capabilities to observe and enhance the performance of your applications. SAAP uses powerful tools like Prometheus stack integration and Grafana, allowing you to efficiently query and visualize metrics, as well as troubleshooting and monitoring. Whether it's examining basic health indicators or diving into application-specific metrics, SAAP makes application monitoring seamless and effective. Let's dive in and explore how to supercharge your monitoring efforts with SAAP!
+In this tutorial, you will learn how to leverage {{ product_name }}'s built-in monitoring capabilities to observe and enhance the performance of your applications. {{ product_name }} uses powerful tools like Prometheus stack integration and Grafana, allowing you to efficiently query and visualize metrics, as well as troubleshooting and monitoring. Whether it's examining basic health indicators or diving into application-specific metrics, {{ product_name }} makes application monitoring seamless and effective. Let's dive in and explore how to supercharge your monitoring efforts with {{ product_name }}!
 
 ## Objectives
 
-- Enable and utilize SAAP's built-in User Workload Monitoring to observe basic health indicators of applications.
+- Enable and utilize {{ product_name }}'s built-in User Workload Monitoring to observe basic health indicators of applications.
 
 ## Key Results
 
@@ -13,11 +13,11 @@ In this tutorial, you will learn how to leverage SAAP's built-in monitoring capa
 
 ## Tutorial
 
-### SAAP Monitoring (pods etc.)
+### {{ product_name }} Monitoring (pods etc.)
 
-1. User Workload Monitoring is enabled by default in SAAP.
+1. User Workload Monitoring is enabled by default in {{ product_name }}.
 
-    Go to `SAAP` in `Developer` view, go to `Observe`, it should show basic health indicators under `<your-namespace>` Project
+    Go to `{{ product_name }}` in `Developer` view, go to `Observe`, it should show basic health indicators under `<your-namespace>` Project
 
     ![product-review-default-metrics](images/product-review-default-metrics.png)
 

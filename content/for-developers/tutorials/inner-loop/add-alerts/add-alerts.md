@@ -1,6 +1,6 @@
 # Enable Alerts for your Application
 
-In the modern landscape of software development, monitoring and managing the health and performance of your applications is crucial. To ensure seamless operations and timely responses to issues, setting up alerts and notifications is essential. In this tutorial, we will guide you through the process of enabling alerts and notifications for your application using Prometheus and Alertmanager within your SAAP (Stakater App Agility Platform) cluster.
+In the modern landscape of software development, monitoring and managing the health and performance of your applications is crucial. To ensure seamless operations and timely responses to issues, setting up alerts and notifications is essential. In this tutorial, we will guide you through the process of enabling alerts and notifications for your application using Prometheus and Alertmanager within your {{ product_name }} ({{ product_name }}) cluster.
 
 ## Objectives
 
@@ -10,9 +10,9 @@ In the modern landscape of software development, monitoring and managing the hea
 
 ## Key Results
 
-- Confirm that alerts are firing correctly by observing the alerts in the SAAP and notifying Slack.
+- Confirm that alerts are firing correctly by observing the alerts in the {{ product_name }} and notifying Slack.
 
-Now that we have enabled Service Monitor for our application in the previous section, let's create alerts for it. Metrics endpoints are scraped via ServiceMonitor by Prometheus and Prometheus is already installed on your SAAP cluster.
+Now that we have enabled Service Monitor for our application in the previous section, let's create alerts for it. Metrics endpoints are scraped via ServiceMonitor by Prometheus and Prometheus is already installed on your {{ product_name }} cluster.
 
 ## Tutorial
 
@@ -52,7 +52,7 @@ Now we need to tell Alert Manager where to send the alert. For this, we will nee
 1. If you need to send an alert to a Slack channel. You will first need to [add a webhook for that channel in Slack](https://docs.stakater.com/saap/managed-addons/monitoring-stack/log-alerts.html)
 Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmanager uses a secret to pick up details of the endpoint to send the alerts to.
 
-1. Let's create the secret first. Log in to SAAP > Administrator > Workloads > Secrets in your namespace. Create a secret from YAML. Replace "namespace" with the namespace in which your application is deployed and `api_url` with base64 encoded webhook URL:
+1. Let's create the secret first. Log in to {{ product_name }} > Administrator > Workloads > Secrets in your namespace. Create a secret from YAML. Replace "namespace" with the namespace in which your application is deployed and `api_url` with base64 encoded webhook URL:
 
     ```yaml
     kind: Secret
@@ -89,7 +89,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
                   *Details:* {{ range $k, $v := .Labels }} - *{{ $k }}:* {{ $v }}
                   {{ end }}
                   {{ end }}
-                title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] SAAP Alertmanager Event Notification'
+                title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ product_name }} Alertmanager Event Notification'
                 httpConfig:
                   tlsConfig:
                     insecureSkipVerify: true
@@ -111,7 +111,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
 
 1. Save and run `tilt up` at the root of your directory. Hit the space bar and the browser with `TILT` logs will be shown. If everything is green then the changes will be deployed on the cluster.
 
-    Now that we have created everything we need, let's see the alerts firing. Log in to SAAP, and change the view to "Developer". You will see the 'Observe' tab in the left panel.
+    Now that we have created everything we need, let's see the alerts firing. Log in to {{ product_name }}, and change the view to "Developer". You will see the 'Observe' tab in the left panel.
 
     ![Alerts firing](images/alerts.png)
 

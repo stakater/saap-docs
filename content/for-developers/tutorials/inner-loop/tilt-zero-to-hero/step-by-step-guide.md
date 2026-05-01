@@ -18,7 +18,7 @@ In this guide we will deploy an application with tilt and namespace in remote Op
     * `Java` 11
     * `Maven` 3
 
-1. You should have a namespace in remote/local cluster; If you are in SAAP then enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.stakater.com/mto/main/customresources.html)
+1. You should have a namespace in remote/local cluster; If you are in {{ product_name }} then enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.stakater.com/mto/main/customresources.html)
 
 1. Login to cluster
 

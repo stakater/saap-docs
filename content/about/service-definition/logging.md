@@ -1,6 +1,6 @@
 # Logging
 
-SAAP provides an optional integrated log forwarding to log store.
+{{ product_name }} provides an optional integrated log forwarding to log store.
 
 ## Cluster Audit Logging
 

@@ -1,18 +1,18 @@
 # Hibernate your cluster
 
-For clusters running non-critical workloads, e.g. test, development or those only utilized during business hours, it is possible to schedule Cluster Hibernation to save on cloud costs, where Pay-as-you-go cloud computing (PAYG cloud computing) model is implemented.
+For clusters running non-critical workloads — such as test or development environments, or clusters only used during business hours — you can schedule cluster hibernation to reduce cloud costs under a pay-as-you-go model.
 
 Cluster Hibernation automatically powers your cluster nodes (including control plane nodes) up or down according to your defined cron schedule.
 
 It takes around 1-3 minutes to take your cluster offline and about 3-5 minutes to power back up depending on your cloud provider.
 
-## Schedule Hibernation for your cluster
+## Schedule hibernation for your cluster
 
 You can schedule a hibernation window for non-critical workload clusters using cron jobs from your web console.
 
 To configure a Hibernation Schedule, go to your Cluster Management page where you can view all your managed clusters.
 
-![clusters](./images/Saap-clusters.png)
+![clusters](./images/{{ product_name }}-clusters.png)
 
 Click on the menu button beside the cluster for which you wish to set a hibernation window and select Manage `Power State`.
 
@@ -30,4 +30,3 @@ Setting your Power State to Hibernation will immediately power your cluster down
 
 ![manage_poerstate2](./images/manage-powerstate2.png)
 
-Now that you have implemented your hibernation schedule, your cluster will be offline during cluster hibernation, helping you save on cloud costs for your cluster nodes.

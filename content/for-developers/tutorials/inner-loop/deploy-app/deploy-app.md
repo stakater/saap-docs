@@ -25,7 +25,7 @@ In this guide, we will deploy an application with tilt and namespace in the remo
 
 1. Clone this sample repo [Nordmart-review](https://github.com/stakater-lab/stakater-nordmart-review)
 
-1. You should have a namespace in remote/local cluster; If you are in SAAP then enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.stakater.com/mto/main/customresources.html)
+1. You should have a namespace in remote/local cluster; If you are in {{ product_name }} then enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.stakater.com/mto/main/customresources.html)
 
 1. Log in to the cluster via `OpenShift CLI`, and copy the login command from your `username` tab as discussed in the previous tutorial.
 
@@ -143,7 +143,7 @@ In this guide, we will deploy an application with tilt and namespace in the remo
           tag: null
     ```
 
-    In our application setup, we have a dependency on MongoDB for storing and managing data. As part of our deployment process, we will ensure that both the application `API` named `review` and `MongoDB` named `review-mongodb` are deployed together to confirm proper functioning. This dependency ensures that the application can seamlessly interact with the database and access the necessary data. To understand more about application architecture, visit [here](../about-application/about-application.md).
+    In our application setup, we have a dependency on MongoDB for storing and managing data. As part of our deployment process, we will ensure that both the application `API` named `review` and `MongoDB` named `review-mongodb` are deployed together to confirm proper functioning. This dependency ensures that the application can interact with the database and access the necessary data. To understand more about application architecture, visit [here](../about-application/about-application.md).
 
 1. To add `mongodb` dependency, add this YAML to your `deploy/values.yaml` file.
 

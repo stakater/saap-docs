@@ -25,7 +25,7 @@ Main goals:
 
 ## Tekton Concepts
 
-Tekton defines a number of Kubernetes custom resources as building blocks in order to standardize pipeline concepts and
+Tekton defines a number of Kubernetes custom resources as building blocks To standardize pipeline concepts and
 provide a terminology that is consistent across CI/CD solutions:
 
 - Step: Smallest unit of execution that defines Kubernetes container spec

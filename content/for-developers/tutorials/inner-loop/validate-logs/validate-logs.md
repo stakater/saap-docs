@@ -1,6 +1,6 @@
 # Enable logging for your Application
 
-Logging is an essential aspect of any application deployment, providing valuable insights into its behavior and performance. In SAAP, logging is enabled by default for all applications, ensuring that you have access to vital log data right from the start.
+Logging is an essential aspect of any application deployment, providing valuable insights into its behavior and performance. In {{ product_name }}, logging is enabled by default for all applications, ensuring that you have access to vital log data right from the start.
 
 ## Objectives
 
@@ -12,7 +12,7 @@ Logging is an essential aspect of any application deployment, providing valuable
 
 ## Key Results
 
-- Improve log storage and retrieval capabilities, while centralizing log collection and aggregation, to enhance troubleshooting and monitoring within SAAP.
+- Improve log storage and retrieval capabilities, while centralizing log collection and aggregation, to enhance troubleshooting and monitoring within {{ product_name }}.
 
 ## Tutorial
 
@@ -27,7 +27,7 @@ Logging is an essential aspect of any application deployment, providing valuable
 
     By default, these logs are not stored in a database, but there are a number of reasons to store them (i.e. troubleshooting, legal obligations..)
 
-    SAAP comes equipped with a powerful logging mechanism that seamlessly collects logs from various services. Any data written to `STDOUT` or `STDERR` is automatically collected by Fluentd and indexed in Elastic Search. This efficient setup makes indexing and querying logs a breeze. Kibana is added on top for easy visualization of the data.
+    {{ product_name }} comes equipped with a powerful logging mechanism that collects logs from various services. Any data written to `STDOUT` or `STDERR` is automatically collected by Fluentd and indexed in Elastic Search. This efficient setup makes indexing and querying logs a breeze. Kibana is added on top for easy visualization of the data.
 
 1. Let's take a look at Kibana now. Back to Forecastle:
 

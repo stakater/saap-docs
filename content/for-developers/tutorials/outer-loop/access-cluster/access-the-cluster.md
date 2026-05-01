@@ -2,11 +2,11 @@
 
 ## Objectives
 
-Access the Stakater App Agility Platform (SAAP) cluster on UI and CLI.
+Access the {{ product_name }} cluster on UI and CLI.
 
 ## Key Results
 
-- Access Stakater App Agility Platform (SAAP) Console
+- Access {{ product_name }} Console
 - View Forecastle Page and view different tools/services.
 
 ## PreRequisites
@@ -19,29 +19,29 @@ Access the Stakater App Agility Platform (SAAP) cluster on UI and CLI.
 
 Lets see how will you access your cluster.
 
-1. Access your cluster by going to [Stakater App Agility Platform](https://cloud.stakater.com/). Enter your enterprise domain provide by Stakater Cloud administrator.
+1. Access your cluster by going to [{{ product_name }}](https://cloud.stakater.com/). Enter your enterprise domain provide by Stakater Cloud administrator.
 
-    ![Stakater App Agility Platform Home](images/cloud-stakater-com.png)
+    ![{{ product_name }} Home](images/cloud-stakater-com.png)
 
 1. Log In with the method configured for your Organization.
 
-    ![Stakater App Agility Platform Login](images/cloud-stakater-com-login.png)
+    ![{{ product_name }} Login](images/cloud-stakater-com-login.png)
 
 1. Once you've logged in, you ll be directed to similar cluster overview page.
 
-    ![Stakater App Agility Platform Home](images/cluster-management-page.png)
+    ![{{ product_name }} Home](images/cluster-management-page.png)
 
 1. Click on drop down toggle for the relevant cluster:
 
     1. Select `OpenShift Web Console` to open the OpenShift Web Console.
 
-        ![OpenShift Console](images/saap-admin-view.png)
+        ![OpenShift Console](images/admin-view.png)
 
         > You should belong to a Tenant
 
     1. Select Forecastle for view services available on the cluster.
 
-        ![Stakater App Agility Platform Home](images/forecastle-homepage.png)
+        ![{{ product_name }} Home](images/forecastle-homepage.png)
 
 ### Login with CLI
 

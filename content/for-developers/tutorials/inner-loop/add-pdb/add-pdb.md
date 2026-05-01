@@ -1,18 +1,18 @@
-# Using Pod Disruption Budgets (PDB) in SAAP
+# Using Pod Disruption Budgets (PDB) in {{ product_name }}
 
-Pod Disruption Budget (PDB) is a crucial tool for maintaining the availability and stability of your applications in SAAP during updates and disruptions. By setting the minimum and maximum pod availability, you can ensure that your application remains operational even in the face of cluster changes.
+Pod Disruption Budget (PDB) is a crucial tool for maintaining the availability and stability of your applications in {{ product_name }} during updates and disruptions. By setting the minimum and maximum pod availability, you can ensure that your application remains operational even in the face of cluster changes.
 
-In this tutorial, you will learn how to use Pod Disruption Budget (PDB) to manage the availability and stability of your applications in SAAP during updates and maintenance activities. PDB help ensure that a minimum number of pods are available and operational at all times, reducing the risk of service disruptions.
+In this tutorial, you will learn how to use Pod Disruption Budget (PDB) to manage the availability and stability of your applications in {{ product_name }} during updates and maintenance activities. PDB help ensure that a minimum number of pods are available and operational at all times, reducing the risk of service disruptions.
 
 ## Objectives
 
 - Enable replicas.
-- Configure a Pod Disruption Budget for an application deployed on SAAP.
+- Configure a Pod Disruption Budget for an application deployed on {{ product_name }}.
 - Observe the behavior of the PDB by deleting a pod and analyzing the changes in PDB status.
 
 ## Key Results
 
-- Successfully enable and monitor a Pod Disruption Budget for the application's deployment on SAAP.
+- Successfully enable and monitor a Pod Disruption Budget for the application's deployment on {{ product_name }}.
 
 ## Tutorial
 
@@ -60,7 +60,7 @@ Let's scale up the number of `replicas` to see how `pdb` works.
 
     Let's see the number of replicas.
 
-1. Log in to SAAP. In your namespace check if the `replicaSet` has created the number of `replicaCounts` which is `3`.
+1. Log in to {{ product_name }}. In your namespace check if the `replicaSet` has created the number of `replicaCounts` which is `3`.
 
     ![number of pods](images/number-of-pods.png)
 

@@ -8,7 +8,7 @@ Key Results:
 - Push artifacts to nexus
 - Deploy app using helm charts via ArgoCD
 
-This guide covers the step-by-step guide to onboard a new project/application/microservice on SAAP.
+This guide covers the step-by-step guide to onboard a new project/application/microservice on {{ product_name }}.
 
 Changes required in application repository:
 

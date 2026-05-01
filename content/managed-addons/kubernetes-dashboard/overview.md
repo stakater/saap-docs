@@ -1,6 +1,6 @@
 # Overview
 
-As part of SAAP (Stakater App Agility Platform), we offer the OpenShift Console as a managed addon. The OpenShift Console is a versatile web-based interface that simplifies the management, monitoring, and deployment of applications and resources within your OpenShift environment. By providing the OpenShift Console as a managed service, we aim to enhance the efficiency and user experience of our platform users, enabling them to seamlessly interact with their OpenShift clusters.
+{{ product_name }} includes the OpenShift Console as a managed addon — a web-based interface for managing and monitoring applications and resources within your OpenShift environment.
 
 ## Key Features and Benefits
 

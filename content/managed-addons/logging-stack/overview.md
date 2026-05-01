@@ -1,6 +1,6 @@
 # Logging
 
-Stakater App Agility Platform (SAAP) uses Loki and Vector to provide logging for applications.
+{{ product_name }} uses Loki and Vector to provide logging for applications.
 
 ## Components
 

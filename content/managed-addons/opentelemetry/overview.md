@@ -1,6 +1,6 @@
 # Overview
 
-[OpenTelemetry](https://opentelemetry.io/) is a powerful observability framework that enables the collection, processing, and export of telemetry data (logs, metrics, and traces) from distributed applications. In SAAP, OpenTelemetry is integrated to help teams gain deep insights into their applications' performance and behavior across Kubernetes clusters.
+[OpenTelemetry](https://opentelemetry.io/) is a powerful observability framework that enables the collection, processing, and export of telemetry data (logs, metrics, and traces) from distributed applications. In {{ product_name }}, OpenTelemetry is integrated to help teams gain deep insights into their applications' performance and behavior across Kubernetes clusters.
 
 ## Use Cases
 

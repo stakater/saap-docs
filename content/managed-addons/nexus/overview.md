@@ -15,5 +15,5 @@
 
 ## Explanation
 
-- [Nexus Routes in SAAP](./explanation/routes.md)
+- [Nexus Routes in {{ product_name }}](./explanation/routes.md)
 - [Nexus Users & Permissions](./explanation/permissions.md)

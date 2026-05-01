@@ -18,7 +18,7 @@ At the heart of the Nordmart Review is the Review API, a RESTful web service dev
 
 ### MongoDB
 
-Serving as the NoSQL database for storing reviews, MongoDB is a powerful and flexible choice for handling unstructured or semi-structured data. It seamlessly stores and manages the reviews submitted by customers, ensuring that the Nordmart Review can efficiently retrieve and display reviews to potential buyers.
+Serving as the NoSQL database for storing reviews, MongoDB is a powerful and flexible choice for handling unstructured or semi-structured data. It stores and manages the reviews submitted by customers, ensuring that the Nordmart Review can efficiently retrieve and display reviews to potential buyers.
 
 ## How It Works
 

@@ -48,7 +48,7 @@ nav:
           - for-administrators/secure-your-cluster/azure-gso.md
           - for-administrators/secure-your-cluster/keycloak-idp.md
           - for-administrators/secure-your-cluster/saml-idp.md
-          - for-administrators/secure-your-cluster/saap-authorization-roles.md
+          - for-administrators/secure-your-cluster/authorization-roles.md
           - for-administrators/secure-your-cluster/curated-list-operators.md
       - Manage Network:
           - for-administrators/networking/custom-domains.md
@@ -321,6 +321,10 @@ nav:
           - help/k8s-concepts/helm.md
           - help/k8s-concepts/high-availability.md
 
+extra:
+  product_name: KubeStack+
+
 plugins:
+  - macros
   - include-markdown
   - mkdocs-video

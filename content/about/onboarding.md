@@ -1,10 +1,10 @@
 # Onboarding
 
-Stakater provisions the Stakater App Agility Platform (SAAP) and takes first application to production in less than four weeks on the cloud of your choice!
+Stakater provisions the {{ product_name }} and takes first application to production in less than four weeks on the cloud of your choice!
 
-## Customer Data Collected
+## Customer data collected
 
-This is a complete list of the customer data and permissions needed for getting started with SAAP:
+This is a complete list of the customer data and permissions needed for getting started with {{ product_name }}:
 
 * Stakater asks customer if they want logging enabled - logging is optional
 * Stakater needs to know which cloud provider the customer is using
@@ -15,10 +15,10 @@ This is a complete list of the customer data and permissions needed for getting 
 
 ## Week 1 - Provisioning - Free
 
-* Provision SAAP on the cloud of your choice
+* Provision {{ product_name }} on the cloud of your choice
     * Stakater can arrange exclusive offers with cloud providers
 * Configure access to systems
-* On-boarding session and knowledge sharing
+* Onboarding session and knowledge sharing
 * Configure SSO
     * Configure [Keycloak](../for-administrators/secure-your-cluster/keycloak-idp.md)
 
@@ -40,12 +40,12 @@ This is a complete list of the customer data and permissions needed for getting 
 * Reach out to Stakater for migrating next application, or
 * Self-serviced migration of next application
 
-## Customer Responsibilities
+## Customer responsibilities
 
 * Provide timely access to necessary people, systems, and information from relevant departments and teams
 * Thorough engagement from management and teams
 
-## Stakater Team
+## Stakater team
 
 * Dedicated team
     * Project management: 20-40%
@@ -57,9 +57,9 @@ This is a complete list of the customer data and permissions needed for getting 
 * First application live as container with cloud native CI/CD workflow
 * Up-skilled team with key concepts of cloud native containerized workflow
 
-## Customer Data Processing
+## Customer data processing
 
-This is a complete list of how customer data is processed in SAAP:
+This is a complete list of how customer data is processed in {{ product_name }}:
 
 * Logs and events for Kubernetes resources are stored in ElasticSearch which is deployed in the customer's cluster
 * Customer's cluster is deployed in the account of the customer's cloud provider

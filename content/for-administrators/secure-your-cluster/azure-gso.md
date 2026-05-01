@@ -16,7 +16,7 @@ For Azure AD, two applications are needed, one for group synchronization, and on
 
     ![Azure App API Permissions](images/azure-permissions-group-sync.png)
 
-1. Click on the newly created app `group-sync`. Click `Certificates & secrets` from the left tab. Click `New client secret`. Under `Expires` pick any option. Under `Description` enter `saap-group-sync`, and click `Add`:
+1. Click on the newly created app `group-sync`. Click `Certificates & secrets` from the left tab. Click `New client secret`. Under `Expires` pick any option. Under `Description` enter `kubestackplus-group-sync`, and click `Add`:
 
     ![Certificates and Secrets](images/azure-ad-certificates-secrets.png)
 

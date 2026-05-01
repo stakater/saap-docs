@@ -20,7 +20,7 @@ To read from and write to your storage instance, you must mount the persistent v
 
 ### Persistent volume claim (PVC)
 
-A PVC is the request to provision persistent storage with a specific type and configuration. To specify the persistent storage flavor that you want, you use Kubernetes storage classes. The cluster admin can define storage classes, or you can choose from one of the predefined storage classes in SAAP. When you create a PVC, the request is sent to the storage provider. Depending on the configuration that is defined in the storage class, the physical storage device is ordered and provisioned into your cloud infrastructure account. If the requested configuration does not exist, the storage is not created.
+A PVC is the request to provision persistent storage with a specific type and configuration. To specify the persistent storage flavor that you want, you use Kubernetes storage classes. The cluster admin can define storage classes, or you can choose from one of the predefined storage classes in {{ product_name }}. When you create a PVC, the request is sent to the storage provider. Depending on the configuration that is defined in the storage class, the physical storage device is ordered and provisioned into your cloud infrastructure account. If the requested configuration does not exist, the storage is not created.
 
 ### Persistent volume (PV)
 

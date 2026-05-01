@@ -1,6 +1,6 @@
 # Configuring your Application with Secrets and ConfigMaps
 
-This comprehensive tutorial will walk you through the process of effectively utilizing `secrets` and `configmaps` within your application deployment. By the end of this tutorial, you will be equipped with the knowledge and skills to securely store sensitive information, set `environment variables` using `secrets`, and manage application configuration data using `configmaps`. Let's get started on enhancing the security and configuration aspects of your applications in SAAP!
+This comprehensive tutorial will walk you through the process of effectively utilizing `secrets` and `configmaps` within your application deployment. By the end of this tutorial, you will be equipped with the knowledge and skills to securely store sensitive information, set `environment variables` using `secrets`, and manage application configuration data using `configmaps`. Let's get started on enhancing the security and configuration aspects of your applications in {{ product_name }}!
 
 ## Objective
 
@@ -98,7 +98,7 @@ This comprehensive tutorial will walk you through the process of effectively uti
 
 1. Save the file and run `tilt up` at the root of your directory. Hit the space bar and the browser with `TILT` logs will be shown. If everything is green then the changes will be deployed on the cluster.
 
-1. Login to SAAP, there should be a ConfigMap created in your project/namespace:
+1. Login to {{ product_name }}, there should be a ConfigMap created in your project/namespace:
 
     ![ConfigMap show](images/configmap-show.png)
 

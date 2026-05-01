@@ -1,6 +1,6 @@
 # Overview
 
-In the ever-evolving landscape of cloud-native applications, achieving dynamic scalability while maintaining cost-efficiency is paramount. Our Managed Horizontal Pod Autoscaler (HPA) addon, integrated within the Stakater App Agility Platform (SAAP), empowers your organization to seamlessly handle the growth and contraction of your Kubernetes workloads, ensuring optimal performance and resource utilization.
+The Horizontal Pod Autoscaler (HPA) addon automatically scales your Kubernetes workloads up or down based on CPU or memory usage, keeping performance stable without over-provisioning resources.
 
 ## What is Horizontal Pod Autoscaler (HPA)?
 

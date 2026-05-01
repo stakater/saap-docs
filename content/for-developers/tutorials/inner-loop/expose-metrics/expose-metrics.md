@@ -1,6 +1,6 @@
 # Add Service Monitor
 
-SAAP gathers the base metrics to see how our pods are doing. In order to get application-specific metrics (like response time or the number of reviews or active users etc) alongside the base ones, we need another object `ServiceMonitor`. It will let Prometheus know which endpoint the metrics are exposed to so that Prometheus can scrape them. And once Prometheus has the metrics, we can run queries on them (just like we did before!) and create shiny dashboards!
+{{ product_name }} gathers the base metrics to see how our pods are doing. To get application-specific metrics (like response time or the number of reviews or active users etc) alongside the base ones, we need another object `ServiceMonitor`. It will let Prometheus know which endpoint the metrics are exposed to so that Prometheus can scrape them. And once Prometheus has the metrics, we can run queries on them (just like we did before!) and create shiny dashboards!
 
 ## Objectives
 
@@ -8,7 +8,7 @@ SAAP gathers the base metrics to see how our pods are doing. In order to get app
 
 ## Key Results
 
-- Enhance observability by implementing robust monitoring and metrics collection for applications within SAAP.
+- Enhance observability by implementing robust monitoring and metrics collection for applications within {{ product_name }}.
 - Enable developers to analyze and interpret the performance and behavior of their applications through metrics visualization.
 
 ## Tutorial
@@ -36,7 +36,7 @@ Now, let's add the `ServiceMonitor` for our `stakater-nordmart-review-api` appli
 
 1. Save and run `tilt up` at the root of your directory. Hit the space bar and the browser with `TILT` logs will be shown. If everything is green then the changes will be deployed on the cluster.
 
-1. To find `serviceMonitor` in SAAP, first login with your credentials, go to `API Explorer`, filter by service, and find `ServiceMonitor`:
+1. To find `serviceMonitor` in {{ product_name }}, first login with your credentials, go to `API Explorer`, filter by service, and find `ServiceMonitor`:
 
     ![search service monitor](images/search-service-monitor.png)
 

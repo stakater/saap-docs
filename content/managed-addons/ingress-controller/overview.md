@@ -1,6 +1,6 @@
 # Overview
 
-In the world of container orchestration and cloud-native applications, efficient traffic routing and ingress management are critical. OpenShift Router, an essential component within the Stakater App Agility Platform (SAAP), plays a pivotal role in ensuring that your applications are seamlessly accessible, secure, and scalable.
+In the world of container orchestration and cloud-native applications, efficient traffic routing and ingress management are critical. OpenShift Router, an essential component within the {{ product_name }}, plays a pivotal role in ensuring that your applications are accessible, secure, and scalable.
 
 ## Key Features and Benefits
 

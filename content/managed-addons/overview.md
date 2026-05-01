@@ -1,12 +1,8 @@
-# Addons
+# Managed addons
 
-Here is the list of fully managed addons available on SAAP (Stakater App Agility Platform):
+{{ product_name }} ships with the following fully managed addons. All addons are optional — you can replace any of them with a tool you already use, and none lock you into a proprietary interface.
 
-* No addons lock you in
-* All addons work well together, and we have long experience running them, but they can still be considered optional
-* You can replace addons if you already use a similar tool
-* You can suggest adding new addons to the list
-* Addons are independent of your source code
+To suggest a new addon, contact [Stakater Support](https://support.stakater.com).
 
 | Managed Addon | Description | License |
 | --- | --- | --- |

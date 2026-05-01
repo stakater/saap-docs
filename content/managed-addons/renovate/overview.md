@@ -1,6 +1,6 @@
 # Overview
 
-We understand the critical need for keeping the Docker images and Helm charts up-to-date to ensure the performance, security, and stability of your containerized applications. Renovate, is available as a managed addon in our SAAP platform, simplifies and automates this process.
+We understand the critical need for keeping the Docker images and Helm charts up-to-date to ensure the performance, security, and stability of your containerized applications. Renovate, is available as a managed addon in our {{ product_name }} platform, simplifies and automates this process.
 
 ## Key Features and Benefits
 

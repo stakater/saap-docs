@@ -1,6 +1,6 @@
 # Backup and Restore
 
-Back up and restore applications on Stakater App Agility Platform (AAP)
+Back up and restore applications on {{ product_name }}
 
 ## Prerequisite
 
@@ -10,7 +10,7 @@ You need Velero CLI setup, follow the `velero-cli` [doc](cli.md)
 
 ### Backup
 
-Stakater App Agility Platforms divides backups into two:
+{{ product_name }} divides backups into two:
 
 1. Customer backups
 1. Platform Tools backups
@@ -58,7 +58,7 @@ Resources can be restored on demand. Please contact support and specify the foll
 
 ## Technical viewpoint
 
-Stakater App Agility Platform uses managed Velero operator to provision the Velero server. This backup and restore process can be used for both disaster recovery and cluster migration.
+{{ product_name }} uses managed Velero operator to provision the Velero server. This backup and restore process can be used for both disaster recovery and cluster migration.
 
 ### Backup
 

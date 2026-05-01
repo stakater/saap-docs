@@ -16,7 +16,7 @@ Enable developers to start developing and testing applications on test clusters.
 
 ### Setting up CLI
 
-The following CLI tools are required for working with the Stakater App Agility Platform.
+The following CLI tools are required for working with the {{ product_name }}.
 
 - [OpenShift CLI (oc)](https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/getting-started-cli.html#cli-installing-cli-web-console_cli-developer-commands) With the OpenShift command-line interface (CLI), the oc command, you can create applications and manage OpenShift Container Platform projects from a terminal.
 

@@ -1,13 +1,13 @@
 
-# Deploy Application with ArgoCD and Helm
+# Deploy application with ArgoCD and Helm
 
-We will cover application deployment with Helm and ArgoCD in this section.
+This guide covers application deployment with Helm and ArgoCD.
 
-## Deploy your Application with Helm
+## Deploy your application with Helm
 
-Let's deploy a simple application using Helm. Helm charts are packaged and stored in repositories. They can be added as dependencies of other charts or used directly. Let's add a chart repository now. The chart repository stores the version history of our charts as well as the packaged tar file.
+Deploy a simple application using Helm. Helm charts are packaged and stored in repositories. They can be added as dependencies of other charts or used directly. Add a chart repository first. The chart repository stores the version history of your charts as well as the packaged tar file.
 
-We created and packaged a Helm chart to the Nexus Helm Repository available in Stakater App Agility Platform (SAAP)
+A Helm chart has been packaged and published to the Nexus Helm Repository available in {{ product_name }}
 
 1. From your Terminal, add the Nexus Helm Repository using the following command. Consider the
 
@@ -48,7 +48,7 @@ We created and packaged a Helm chart to the Nexus Helm Repository available in S
      oc get pods -n ${TENANT_NAME}-dev
      ```
 
-    By default, there is one replica of your application. Let's use Helm to set this to 5.
+    By default, there is one replica of your application. Use Helm to set this to 5.
 
     ```bash#test
     helm upgrade RELEASE_NAME NEXUS_HELM_REPO_NAME/APP_NAME --set APP_NAME.deployment.replicas=5 --namespace ${TENANT_NAME}-dev
@@ -72,11 +72,11 @@ We created and packaged a Helm chart to the Nexus Helm Repository available in S
     oc get pods -n ${TENANT_NAME}-dev
     ```
 
-## Deploy your Application with ArgoCD
+## Deploy your application with ArgoCD
 
-1. Log into ArgoCD UI.
+1. Log into the ArgoCD UI.
 
-1. Lets deploy a sample application through the UI. In fact, let's get ArgoCD to deploy the `stakater-nordmart-review` app you manually deployed previously using Helm. On ArgoCD - click `+ NEW APP`. You should see an empty form. Let's fill it out by setting the following:
+1. Deploy a sample application through the UI. Get ArgoCD to deploy the `stakater-nordmart-review` app you manually deployed previously using Helm. On ArgoCD, click `+ NEW APP`. Fill out the form with the following:
 
       - On the **GENERAL** box
 

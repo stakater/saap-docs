@@ -29,7 +29,7 @@ Let's see how you can create this namespace.
 
     ![tenant system namespace](images/tenant-system.png)
 
-1. After a few, the system namespace should start showing in SAAP. You will also see some pods running in the namespace
+1. After a few, the system namespace should start showing in {{ product_name }}. You will also see some pods running in the namespace
 
     ![system namespace pods](images/tenant-system-pods.png)
 
@@ -89,7 +89,7 @@ Let us deploy a Backup Schedule for our application
 
     ![schedule](images/schedule.png)
 
-1. When the scheduled time arrives, a backup will be automatically created and stored in the designated storage location configured by the SAAP Admin. For the purpose of this tutorial, we are using AWS S3 buckets to store the backups.
+1. When the scheduled time arrives, a backup will be automatically created and stored in the designated storage location configured by the {{ product_name }} Admin. For the purpose of this tutorial, we are using AWS S3 buckets to store the backups.
 
 ### Restore Application from Backup
 

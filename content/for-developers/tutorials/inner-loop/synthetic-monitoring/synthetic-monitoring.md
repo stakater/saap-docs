@@ -1,11 +1,11 @@
 # Add Synthetic Monitoring using UptimeRobot
 
-In this tutorial, we'll guide you through the process of configuring UptimeRobot's Endpoint Monitoring to generate alerts for your application on SAAP based on its availability. Additionally, we'll cover the setup of TLS for secure communication with your application, enhancing data integrity and privacy.
+In this tutorial, we'll guide you through the process of configuring UptimeRobot's Endpoint Monitoring to generate alerts for your application on {{ product_name }} based on its availability. Additionally, we'll cover the setup of TLS for secure communication with your application, enhancing data integrity and privacy.
 
 ## Objectives
 
-- Enable and configure UptimeRobot's Endpoint Monitoring for your application on SAAP.
-- Generate a self-signed TLS certificate and create a TLS secret in SAAP.
+- Enable and configure UptimeRobot's Endpoint Monitoring for your application on {{ product_name }}.
+- Generate a self-signed TLS certificate and create a TLS secret in {{ product_name }}.
 - Update the Ingress configuration to include TLS settings for secure communication.
 
 ## Key Results
@@ -67,7 +67,7 @@ In this tutorial, we'll guide you through the process of configuring UptimeRobot
 
 1. Save and run `tilt up` at the root of your directory. Hit the space bar and the browser with `TILT` logs will be shown. If everything is green then the changes will be deployed on the cluster.
 
-1. Navigate to SAAP to see our configurations. Let's first check ingress, go to your namespace and then switch to Networking > Ingresses.
+1. Navigate to {{ product_name }} to see our configurations. Let's first check ingress, go to your namespace and then switch to Networking > Ingresses.
 
     ![ingress](images/ingress.png)
 
@@ -89,4 +89,4 @@ In this tutorial, we'll guide you through the process of configuring UptimeRobot
 
     ![endpoint monitor YAML](images/endpoint-monitor-yaml.png)
 
-Great job! You've successfully configured UptimeRobot Endpoint Monitoring to generate alerts for your SAAP application based on its availability. Now, whenever your application experiences downtime, an alert will be triggered on your UptimeRobot alert contact.
+Great job! You've successfully configured UptimeRobot Endpoint Monitoring to generate alerts for your {{ product_name }} application based on its availability. Now, whenever your application experiences downtime, an alert will be triggered on your UptimeRobot alert contact.

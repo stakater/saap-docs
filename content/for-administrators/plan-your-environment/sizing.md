@@ -4,11 +4,11 @@
 >
 > **User workloads:** User applications (e-commerce frontend, backend APIs, etc.)
 >
-> **SAAP workloads:** Supporting applications for software lifecycle
+> **{{ product_name }} workloads:** Supporting applications for software lifecycle
 
 ## Summary
 
-Resource requirements for a single SAAP cluster is as follows:
+Resource requirements for a single {{ product_name }} cluster is as follows:
 
 | Resource | Minimum | Recommended |
 |:---|---:|---:|
@@ -52,20 +52,20 @@ The recommended resource requirements are:
 
 ### 3 x Control plane
 
-The control plane manages the SAAP cluster. The control plane nodes run the control plane.
+The control plane manages the {{ product_name }} cluster. The control plane nodes run the control plane.
 
 !!! note
     * No user workloads run on control plane nodes.
 
 ### 2 x Infra
 
-At least two infrastructure nodes are required for the SAAP infrastructure workloads:
+At least two infrastructure nodes are required for the {{ product_name }} infrastructure workloads:
 
-| SAAP component | vCPU requirement (m) | Memory requirement (GiB) |
+| {{ product_name }} component | vCPU requirement (m) | Memory requirement (GiB) |
 |---|---:|---:|
 | [Stakater Forecastle](https://github.com/stakater/Forecastle)  | 50 | 0.20 |
 | [Stakater Ingress Monitor Controller](https://github.com/stakater/IngressMonitorController)  | 150 | 0.60 |
-| Stakater KubeHealth (SAAP components monitoring) | 150 | 0.40 |
+| Stakater KubeHealth ({{ product_name }} components monitoring) | 150 | 0.40 |
 | [Stakater Multi Tenant Operator](https://docs.stakater.com/mto/index.html)  | 600 | 1.20 |
 | [Stakater Konfigurator](https://github.com/stakater/Konfigurator) | 20 | 0.30 |
 | [Stakater Reloader](https://github.com/stakater/Reloader) | 20 | 0.50 |
@@ -90,11 +90,11 @@ At least two infrastructure nodes are required for the SAAP infrastructure workl
 
 ### 1 x Monitoring
 
-Monitoring components to monitor `SAAP workloads` and user workloads are deployed on monitoring nodes. The monitoring stack includes the Prometheus stack (Prometheus, Grafana and Alertmanager).
+Monitoring components to monitor `{{ product_name }} workloads` and user workloads are deployed on monitoring nodes. The monitoring stack includes the Prometheus stack (Prometheus, Grafana and Alertmanager).
 
 Minimum one monitoring node must be used for all production deployments. For high availability consider using two monitoring nodes.
 
-| Type of monitoring | SAAP component | vCPU requirement (m) | Memory requirement (GiB) |
+| Type of monitoring | {{ product_name }} component | vCPU requirement (m) | Memory requirement (GiB) |
 |---|:---|---:|---:|
 | **Infrastructure** |   |  | |
 | | [Alertmanager](https://github.com/prometheus/alertmanager)   | 500 | 1.00 |
@@ -121,7 +121,7 @@ The logging pool is optional, if there is no need for it, it will not be deploye
 
 Minimum one logging node is required. For high availability consider using three logging nodes.
 
-| SAAP component | vCPU requirement (m) | Memory requirement (GiB) |
+| {{ product_name }} component | vCPU requirement (m) | Memory requirement (GiB) |
 |---|---:|---:|
 | Collector | 200 | 2.0 |
 | [Elasticsearch](https://github.com/elastic/elasticsearch) | 500 | 4.0 |
@@ -140,7 +140,7 @@ The pipeline pool is optional, if there is no need for it, it will not be deploy
 
 Minimum requirements for pipeline infrastructure is:
 
-| SAAP component | vCPU requirement (m) | Memory requirement (GiB) |
+| {{ product_name }} component | vCPU requirement (m) | Memory requirement (GiB) |
 |---|---:|---:|
 | OpenShift pipelines | 100 | 0.2 |
 
@@ -149,20 +149,20 @@ Minimum requirements for pipeline infrastructure is:
 
 ### 3 x Worker
 
-In a SAAP cluster, users run their applications on worker nodes. By default, a SAAP subscription comes with three worker nodes.
+In a {{ product_name }} cluster, users run their applications on worker nodes. By default, a {{ product_name }} subscription comes with three worker nodes.
 
 ## Storage
 
 ### Block Storage
 
-SAAP uses high performance disks i.e. `SSDs` for storage requirements which includes:
+{{ product_name }} uses high performance disks i.e. `SSDs` for storage requirements which includes:
 
 - Boot Volumes (attached to nodes for OS)
 - Persistent Volumes (Additionally attached volumes for application consumption)
 
-Following are the storage requirements used as Persistent Volumes consumed by `SAAP workloads`:
+Following are the storage requirements used as Persistent Volumes consumed by `{{ product_name }} workloads`:
 
-| SAAP component | Volume Size (GiB) |
+| {{ product_name }} component | Volume Size (GiB) |
 |---|---:|
 | Elasticsearch Logging | 300  |
 | Nexus | 100 |
@@ -178,11 +178,11 @@ Following are the storage requirements used as Persistent Volumes consumed by `S
 
 ### Volume Snapshot Requirements
 
-Volume Snapshots are backups of volumes for critical `SAAP workloads` that only include `Nexus` and `Vault`
+Volume Snapshots are backups of volumes for critical `{{ product_name }} workloads` that only include `Nexus` and `Vault`
 
-By default backups are taken daily and are retained for 3 days. So at a given instance 3 day old backups for `SAAP workloads` are kept.
+By default backups are taken daily and are retained for 3 days. So at a given instance 3 day old backups for `{{ product_name }} workloads` are kept.
 
-| SAAP component | PV size | backup frequency | Backup size (GiB) |
+| {{ product_name }} component | PV size | backup frequency | Backup size (GiB) |
 |---|---:|---:|---:|
 | Nexus | 100 | 3 | 300 |
 | Vault | 10 | 3 | 30 |
@@ -194,7 +194,7 @@ By default backups are taken daily and are retained for 3 days. So at a given in
 
 #### For AWS, Azure, GCP
 
-Each SAAP cluster deploys `3 x Loadbalancers`:
+Each {{ product_name }} cluster deploys `3 x Loadbalancers`:
 
 - 2 x Public (for cluster API and cluster dashboard)
 

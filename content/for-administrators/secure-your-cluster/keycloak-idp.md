@@ -1,6 +1,6 @@
 # Configuring a Keycloak identity provider
 
-The Keycloak instance provided by Stakater is only for managing access to the managed addons of SAAP. To configure a Keycloak identity provider for your own applications:
+The Keycloak instance provided by Stakater is only for managing access to the managed addons of {{ product_name }}. To configure a Keycloak identity provider for your own applications:
 
 1. In the realm you want to provide access, create a new Client:
 

@@ -1,6 +1,6 @@
 # Overview
 
-Stakater App Agility Platform (SAAP) comes pre-configured with a dedicated Backstage instance for each customer. This integration is designed to streamline your development workflows, enhance collaboration, and provide a single source of truth for your entire software ecosystem.
+{{ product_name }} comes pre-configured with a dedicated Backstage instance for each customer. This integration is designed to streamline your development workflows, enhance collaboration, and provide a single source of truth for your entire software ecosystem.
 
 ## Benefits
 

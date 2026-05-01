@@ -23,7 +23,7 @@ An AWS account is needed to create and manage cluster on AWS. The following crit
 
 ## Instance Types
 
-SAAP offers the following worker node types and sizes on AWS:
+{{ product_name }} offers the following worker node types and sizes on AWS:
 
 ### General Purpose
 

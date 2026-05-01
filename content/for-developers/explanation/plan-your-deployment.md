@@ -1,8 +1,8 @@
-# Plan your Deployment
+# Plan your deployment
 
-In this section, we are going to briefly discuss considerations for migrating your application workloads to `Stakater App Agility Platform (SAAP)`.
+This page covers key considerations for migrating your application workloads to `{{ product_name }}`.
 
-## Evaluating the Application
+## Evaluating the application
 
 You need to gather knowledge about the application. Following questions can be considered for evaluating your application requirements:
 
@@ -85,7 +85,7 @@ There are various methods to increase the availability of your application.
 
 ### How can I update my app ?
 
-Manage your Kubernetes YAML inside source code repository. We recommend packaging applications as Helm Chart along with source code. You can Kustomize for reusing your configuration. You can update Kubernetes YAML files and update them with `oc apply` for raw Kubernetes Manifests and `helm template chart_dir | oc apply` or `helm install chart_dir` for Helm Charts.
+Manage your Kubernetes YAML inside a source code repository. Package applications as Helm Charts alongside the source code. You can Kustomize for reusing your configuration. You can update Kubernetes YAML files and update them with `oc apply` for raw Kubernetes Manifests and `helm template chart_dir | oc apply` or `helm install chart_dir` for Helm Charts.
 
 You can use different strategies for update your Application. You might start with a rolling deployment or instantaneous switch before you progress to a more complicated canary deployment.
 
@@ -112,7 +112,7 @@ There can be multiple ways to scale your application.
 
 ### How can I automate my app deployment?
 
-Setup a CI/CD pipeline to for Continuous Integration and Continuous Deployments. We will be using Tekton Pipelines for building, testing and packaging your applications and ArgoCD for deploying of your application.
+Set up a CI/CD pipeline for Continuous Integration and Continuous Deployment. Use Tekton Pipelines for building, testing, and packaging your applications, and ArgoCD for deploying your application.
 
 ### How can I expose my application ?
 

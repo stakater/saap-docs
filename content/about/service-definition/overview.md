@@ -1,6 +1,6 @@
 # Overview
 
-This section outlines the service definition for Stakater App Agility Platform (SAAP):
+This section outlines the service definition for {{ product_name }}:
 
 1. [Managed Kubernetes (Red Hat OpenShift)](./platform.md)
 1. [Account Management](./account-management.md)

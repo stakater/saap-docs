@@ -1,6 +1,6 @@
 # Configuring a SAML identity provider
 
-SAML v2.0 based solutions can also be integrated with SAAP.
+SAML v2.0 based solutions can also be integrated with {{ product_name }}.
 
 Configurations for SAML are specific to tools and organizations.
 

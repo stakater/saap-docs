@@ -1,13 +1,13 @@
-# Privileged Roles in SAAP
+# Privileged roles in {{ product_name }}
 
-Depending on responsibilities of a role, specific roles can be assigned to user groups, which enable them to achieve there daily tasks. Below is a list of roles provided by SAAP for different user groups.
+{{ product_name }} assigns roles to user groups based on their responsibilities, giving members the access they need for their daily tasks. Below is a list of roles provided by {{ product_name }} for different user groups.
 
 Namespaces are divided into two sub-categories:
 
 - **Stakater owned** : created by the Stakater team which consists of projects/namespaces with format `openshift*`, `stakater*`, `kube*`, `redhat*`, `default`
 - **Customer owned** : created by the customer
 
-Following are the roles available in SAAP:
+Following are the roles available in {{ product_name }}:
 
 ## Cluster Admin
 
@@ -27,11 +27,9 @@ Cluster Admin is an OpenShift role which give the user assigned this role full C
 1. Authorization granted by Engineering Manager.
 1. Stakater Admin is promoted to Cluster-Admin which then intervenes to resolve the incident.
 
-This role ensures swift response and resolution in critical situations, with approval granted by the Engineering Manager for emergency access.
-
 ## Customer Admin
 
-The permissions for the Customer Admin role includes:
+The Customer Admin role has the following permissions:
 
 ### Permissions
 
@@ -111,20 +109,20 @@ Only the mentioned permissions above are present for the role, for any other per
 
 #### How to request this role from Stakater Support
 
-If any user needs to be given `customer-admin` role , they can raise a request with Stakater team to assign the desired role to that user.
+Open a [support ticket](https://support.stakater.com) to assign the `customer-admin` role to a user.
 
-#### Items to be provided to Stakater Support
+#### Required information
 
 - User Email that needs to be assigned this group
 
 ## Stakater Admin
 
-This role empowers administrators with the necessary permissions to maintain, debug and upgrade Stakater tools on the SAAP Managed platform while respecting security measures by excluding access to kubeconfig secrets and customer owned namespaces.
+The Stakater Admin role gives Stakater engineers access to maintain, debug, and upgrade Stakater tools on the platform, without access to kubeconfig secrets or customer-owned namespaces.
 
 ### Permissions
 
 - This role has access to **Stakater owned** namespaces.
-- Allows Stakater Admin Manage and troubleshoot Stakater tools on OpenShift Cluster.
+- Allows a Stakater Admin to manage and troubleshoot Stakater tools on the OpenShift cluster.
 - No access to kubeconfig secrets.
 - Access to node metrics
 - Does not have permission on **Customer owned** namespaces.

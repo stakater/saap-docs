@@ -6,7 +6,7 @@ Node autoscaling is available on few clouds; you can find details in the relevan
 
 ## Daemonsets
 
-Customers can create and run daemonsets on SAAP. To restrict daemonsets to only run on worker nodes, use the following `nodeSelector`:
+Customers can create and run daemonsets on {{ product_name }}. To restrict daemonsets to only run on worker nodes, use the following `nodeSelector`:
 
 ```yaml
 ...
@@ -22,25 +22,25 @@ In a multiple availability zone cluster, control plane nodes are distributed acr
 
 ## Node Labels
 
-Custom node labels are created by Stakater during node creation and cannot be changed on SAAP at this time. However, custom labels are supported when creating new machine pools.
+Custom node labels are created by Stakater during node creation and cannot be changed on {{ product_name }} at this time. However, custom labels are supported when creating new machine pools.
 
 ## OpenShift Version
 
-SAAP is run as a managed service and is kept up to date with the latest OpenShift Container Platform version, see [change management in responsibilities](../responsibilities.md#change-management). Upgrade scheduling to the latest version is available.
+{{ product_name }} is run as a managed service and is kept up to date with the latest OpenShift Container Platform version, see [change management in responsibilities](../responsibilities.md#change-management). Upgrade scheduling to the latest version is available.
 
 ## Container Engine
 
-SAAP runs on OpenShift 4 and uses [CRI-O](https://www.redhat.com/en/blog/red-hat-openshift-container-platform-4-now-defaults-cri-o-underlying-container-engine) as the only available container engine.
+{{ product_name }} runs on OpenShift 4 and uses [CRI-O](https://www.redhat.com/en/blog/red-hat-openshift-container-platform-4-now-defaults-cri-o-underlying-container-engine) as the only available container engine.
 
 ## Operating System
 
-SAAP runs on OpenShift 4 and uses Red Hat CoreOS as the operating system for all control plane and worker nodes.
+{{ product_name }} runs on OpenShift 4 and uses Red Hat CoreOS as the operating system for all control plane and worker nodes.
 
 ## Upgrades
 
 Upgrades can be done either immediately or be scheduled at a specific date by opening a [support ticket](https://support.stakater.com/index.html).
 
-See the [SAAP Update Life Cycle](../update-lifecycle.md) for more information on the upgrade policy and procedures.
+See the [{{ product_name }} Update Life Cycle](../update-lifecycle.md) for more information on the upgrade policy and procedures.
 
 ## Kubernetes Operator Support
 

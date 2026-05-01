@@ -4,7 +4,7 @@
 
 Velero's versatility extends to:
 
-- **Migration:** Seamlessly move workloads across clusters and environments.
+- **Migration:** Move workloads across clusters and environments.
 - **Upgrades:** Safeguard your data during Kubernetes version upgrades.
 - **Retention Policies:** Define how long backups are retained to meet compliance requirements.
 - **Plugin Support:** Integrate with various cloud providers and storage backends.

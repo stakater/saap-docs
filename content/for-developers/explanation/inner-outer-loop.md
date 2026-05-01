@@ -1,6 +1,6 @@
 # Inner Loop and Outer Loop
 
-## What is Inner Loop?
+## What is inner loop?
 
 The inner dev loop is the single developer workflow. A single developer should be able to set up and use an inner dev loop to code and test changes quickly.
 
@@ -25,7 +25,7 @@ Each new step within the container inner dev loop adds to overall development ti
 
 ![After Microservices](./images/local-development-4.png)
 
-## Deploying from the Inner Loop
+## Deploying from the inner loop
 
 You might think that your job stops at local testing and a Git pull request (or a `git push`)—but that's not usually the case. You will still need to ensure that your code functions correctly in containers, runs in the cluster, and plays nicely with other containerized components. Therefore, you will want some iterations of your inner loop to deploy and debug directly into the Kubernetes cluster.
 
@@ -45,13 +45,13 @@ Here's a list of steps you might typically follow to deploy from the inner loop:
 
 That's a lot of steps!
 
-## Inner vs Outer Loop
+## Inner vs outer loop
 
 ![Inner vs Outer Loop](./images/local-development-6.png)
 
 The inner loop consists of local coding, building, running, and testing the application—all activities that you, as a developer, can control. The outer loop consists of the larger team processes that your code flows through on its way to the cluster: code reviews, integration tests, security and compliance, and so on. The inner loop could happen mostly on your laptop. The outer loop happens on shared servers and runs in containers, and is often automated with continuous integration/continuous delivery (CI/CD) pipelines. Usually, a code commit to source control is the transition point between the inner and outer loops.
 
-First, let's consider a typical workflow for a developer whose team has adopted Kubernetes. The workflow starts with local development activities and finishes with containers deployed and code running in one or more Kubernetes clusters. To help visualize this flow, you can think of it in terms of an inner loop and an outer loop. Following figure illustrates the interplay of these loops in a Kubernetes development process.
+The following figure illustrates the interplay of the inner and outer loops in a Kubernetes development process, starting with local development and finishing with containers deployed in one or more clusters.
 
 ![A flow diagram of the inner and outer loops in a Kubernetes development process](./images/inner-vs-outer-v4.png)
 

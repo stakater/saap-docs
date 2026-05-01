@@ -1,15 +1,15 @@
 # Persist your Application
 
-In stateful applications deployed on the SAAP (Stakater App Agility Platform), ensuring data persistence is crucial. To achieve this, SAAP provides Persistent Volumes `(PVs)` and Persistent Volume Claims `(PVCs)` as powerful abstractions for managing and allocating storage resources. This tutorial to help you understand and implement data persistence in your SAAP applications using `PVs` and `PVCs` effectively.
+In stateful applications deployed on the {{ product_name }} ({{ product_name }}), ensuring data persistence is crucial. To achieve this, {{ product_name }} provides Persistent Volumes `(PVs)` and Persistent Volume Claims `(PVCs)` as powerful abstractions for managing and allocating storage resources. This tutorial to help you understand and implement data persistence in your {{ product_name }} applications using `PVs` and `PVCs` effectively.
 
 ## Objective
 
-- Configure PVs and PVCs in SAAP applications for efficient storage allocation.
-- Integrate PVs and PVCs with your SAAP application for data persistence.
+- Configure PVs and PVCs in {{ product_name }} applications for efficient storage allocation.
+- Integrate PVs and PVCs with your {{ product_name }} application for data persistence.
 
 ## Key Results
 
-- Ensure data durability in stateful applications deployed on SAAP.
+- Ensure data durability in stateful applications deployed on {{ product_name }}.
 
 ## Tutorial
 
@@ -63,7 +63,7 @@ In stateful applications deployed on the SAAP (Stakater App Agility Platform), e
 
 1. Run `tilt up` at the root of your directory. Hit the space bar and the browser with `TILT` logs will be shown. If everything is green then the changes will be deployed on the cluster.
 
-1. login to SAAP, there should be a Persistent Volume Claim created when you get an overview of your project/namespace.
+1. login to {{ product_name }}, there should be a Persistent Volume Claim created when you get an overview of your project/namespace.
 
     ![`show-PVC`](images/show-pvc.png)
 

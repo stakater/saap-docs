@@ -2,7 +2,7 @@
 
 ## User Story # 1
 
-As a developer, I want a robust and full-featured remote development environment, so I can iterate quickly and confidently commit functional, tested, and high-quality code
+As a developer, I want a full-featured remote development environment, so I can iterate quickly and confidently commit functional, tested, and high-quality code
 
 ![type:video](https://www.youtube.com/embed/qokw8tuFLt8)
 
@@ -50,7 +50,7 @@ Tags: helm, outer loop, leader chart, GitOps, ArgoCD
 
 ## User Story # 7
 
-As a developer, I want to define secrets using Vault and have them securely injected into the cluster, so I can manage sensitive information easily and ensure my application’s security within the SAAP environment.
+As a developer, I want to define secrets using Vault and have them securely injected into the cluster, so I can manage sensitive information easily and ensure my application’s security within the {{ product_name }} environment.
 
 ![type:video](https://www.youtube.com/embed/I17DU8sHQN8)
 

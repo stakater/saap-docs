@@ -1,6 +1,6 @@
 # Internal alerting
 
-Stakater App Agility Platform also provides fully managed dedicated workload monitoring stack based on Prometheus, Alertmanager and Grafana.
+{{ product_name }} also provides fully managed dedicated workload monitoring stack based on Prometheus, Alertmanager and Grafana.
 
 To configure alerting for your application do following:
 
@@ -83,7 +83,7 @@ alertmanagerConfig:
             {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
             {{ end }}
           {{ end }}
-        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] SAAP Alertmanager Event Notification'
+        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ product_name }} Alertmanager Event Notification'
         titleLink: |2
           <workload-alertmanager-url>/#/alerts?receiver={{ .Receiver | urlquery }}
         httpConfig:
@@ -105,7 +105,7 @@ AlertmanagerConfig will add a match with your namespace name by default, which w
 
 ## 3. [Optional] Create PrometheusRule for the application
 
-Stakater App Agility Platforms comes with lots of [Predefined PrometheusRules](./predefined-prometheusrules.md) which covers most of the common use cases.
+{{ product_name }} comes with lots of [Predefined PrometheusRules](./predefined-prometheusrules.md) which covers most of the common use cases.
 
 If required you can definitely create a new PrometheusRule to define for defining alerting rule.
 

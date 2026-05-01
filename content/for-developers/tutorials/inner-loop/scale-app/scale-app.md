@@ -1,6 +1,6 @@
 # Autoscaling your Application
 
-Welcome to this tutorial on utilizing Horizontal Pod Autoscaler (HPA) in SAAP to automatically manage the scaling of your application pods. Horizontal pod autoscaler (HPA) helps us to specify how SAAP should automatically increase or decrease the number of pod replicas of an application, based on metrics collected from the pods. When we define an HPA (based on CPU and/or memory usage metrics), the platform calculates the current usage and compares it with the utilization threshold and scales pods up or down accordingly.
+Welcome to this tutorial on utilizing Horizontal Pod Autoscaler (HPA) in {{ product_name }} to automatically manage the scaling of your application pods. Horizontal pod autoscaler (HPA) helps us to specify how {{ product_name }} should automatically increase or decrease the number of pod replicas of an application, based on metrics collected from the pods. When we define an HPA (based on CPU and/or memory usage metrics), the platform calculates the current usage and compares it with the utilization threshold and scales pods up or down accordingly.
 
 ## Objectives
 
@@ -56,7 +56,7 @@ Welcome to this tutorial on utilizing Horizontal Pod Autoscaler (HPA) in SAAP to
       - -n: Number of requests to run (10,000)
       - -t: Timeout for each request in seconds (30)
 
-1. While this is running, we should see in SAAP, the autoscaler is kicking in and spinning up additional pods.  Open the `Workloads` tab. At the very bottom, you will see HorizontalPodAutoScalar. Open the review HPA. You will see the below screen
+1. While this is running, we should see in {{ product_name }}, the autoscaler is kicking in and spinning up additional pods.  Open the `Workloads` tab. At the very bottom, you will see HorizontalPodAutoScalar. Open the review HPA. You will see the below screen
     Notice the CPU utilization and desired replica count. It has jumped!
 
     ![scale-up](./images/scale-up.png)

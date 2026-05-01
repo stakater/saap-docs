@@ -69,7 +69,7 @@ and
 
 1. **Confidentiality and Compensation**
 
-    The Contracting Parties shall exercise the utmost care in handling the Confidential Information received from the other Party. The Contracting Parties agree to handle the Confidential Information with due care, commensurate with their own affairs and the standard of care prevalent in similar matters, in order to prevent any unauthorized disclosure or use. The receiving Contracting Party acknowledges that monetary compensation may not be adequate to remedy a breach of confidentiality and that the disclosing party may seek injunctive relief available under the law, without forfeiting any other rights or remedies.
+    The Contracting Parties shall exercise the utmost care in handling the Confidential Information received from the other Party. The Contracting Parties agree to handle the Confidential Information with due care, commensurate with their own affairs and the standard of care prevalent in similar matters, To prevent any unauthorized disclosure or use. The receiving Contracting Party acknowledges that monetary compensation may not be adequate to remedy a breach of confidentiality and that the disclosing party may seek injunctive relief available under the law, without forfeiting any other rights or remedies.
 
 1. **Changes in the NDA**
 

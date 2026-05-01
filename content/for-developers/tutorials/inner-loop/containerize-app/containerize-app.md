@@ -4,7 +4,7 @@ Running workloads in Kubernetes/OpenShift requires the application to be contain
 
 ## Objectives
 
-- Containerize your application for deployment on Stakater App Agility Platform (SAAP).
+- Containerize your application for deployment on {{ product_name }}.
 
 ## Key Results
 

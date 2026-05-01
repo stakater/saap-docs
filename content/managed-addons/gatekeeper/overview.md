@@ -1,6 +1,6 @@
 # Overview
 
-In the dynamic landscape of cloud-native applications, ensuring security and compliance is paramount. Stakater App Agility Platform (SAAP) includes Gatekeeper as a managed addon to fortify your Kubernetes clusters, bringing policy enforcement to the forefront of your operational strategy.
+In the dynamic landscape of cloud-native applications, ensuring security and compliance is paramount. {{ product_name }} includes Gatekeeper as a managed addon to fortify your Kubernetes clusters, bringing policy enforcement to the forefront of your operational strategy.
 
 ## Key Features and Benefits
 

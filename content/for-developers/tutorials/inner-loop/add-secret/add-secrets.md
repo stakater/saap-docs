@@ -48,9 +48,9 @@ Login to Vault to view your tenant path.
 
     ![secret created](images/secret-created.png)
 
-### Access and Create a Secret on SAAP from Vault
+### Access and Create a Secret on {{ product_name }} from Vault
 
-- External Secrets Operator is used to fetch secret data from Vault and create Kubernetes secret in the SAAP.
+- External Secrets Operator is used to fetch secret data from Vault and create Kubernetes secret in the {{ product_name }}.
 - External Secrets Operator uses SecretStore to make a connection to the Vault.
 - SecretStore uses ServiceAccount with Vault label to access Vault.
 - SecretStore and ServiceAccount are created in each tenant namespace.
@@ -83,7 +83,7 @@ Login to Vault to view your tenant path.
 
 1. Save the `values.yaml` and run `tilt up` at the root of your directory. Press the space key to view the progress in Tilt web UI. The application should be running in the namespace used in `tilt_options.json` file.
 
-1. Log in to SAAP and find `secrets` in your namespace.
+1. Log in to {{ product_name }} and find `secrets` in your namespace.
 
     ![MongoDB secret](images/mongodb-secrets.png)
 

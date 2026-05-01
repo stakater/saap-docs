@@ -1,27 +1,97 @@
 # Overview
 
-Welcome to the administration section, your comprehensive guide to mastering administration of the SAAP ecosystem. This section equips you with the knowledge, tools, and techniques needed to excel in monitoring and maintaining your OpenShift cluster with SAAP . Whether you're just getting started or seeking to refine your environment , we've organized our content into following categories to cater to Administrators at every level:
+This section covers the administration of {{ product_name }} on OpenShift. It is intended for cluster administrators who need to plan, secure, and maintain their environment.
 
-## User Stories
+## User stories
 
-To gain a deeper understanding of the user journeys with SAAP, refer to the detailed [User Stories](user-stories.md)
+Read the [User Stories](user-stories.md) to understand common administrator journeys with {{ product_name }}.
 
 ## Explanation
 
-- [Privileged Roles Available in SAAP](./secure-your-cluster/saap-authorization-roles.md)
+- [Privileged roles available in {{ product_name }}](./secure-your-cluster/authorization-roles.md)
 
-    As your organization embraces our SAAP Managed Platform, it's important to understand how privileged roles play a key role. Here we explain how these roles give certain individuals special access to make sure everything runs smoothly and is well-managed.
+    Learn what privileged roles exist in {{ product_name }} and what access each role grants.
 
-## How-To Guides
+- [Number of clusters](./explanation/number-of-clusters.md)
 
-- [Plan your Environment](./plan-your-environment/sizing.md)
+    Understand how to decide how many clusters your organization needs.
 
-    Sizing and planning your environment for our managed platform is easy with a thoughtful approach. Assess your needs, consider available resources, and use this overview to guide you in creating a well-organized plan. This ensures a smooth and scalable experience tailored to your requirements.
+## How-to guides
 
-- [Secure your Cluster](./secure-your-cluster/user-access.md)
+### Plan your environment
 
-    This how-to guide provides a comprehensive overview on securing your clusters through various identity providers. Learn step-by-step instructions to enhance the security of your environment, exploring different authentication methods to safeguard your clusters effectively.
+- [Size your environment](./plan-your-environment/sizing.md)
 
-- [Whitelisting IPs on Routes](./secure-your-cluster/secure-routes.md)
+    Assess your workload requirements and choose the right node sizes and counts for your cluster.
 
-    Follow step-by-step instructions to discover an easy guide on securing your OpenShift routes using IP Whitelisting. Learn how to limit access to specific IP addresses, boosting your cluster's security. This guide ensures a straightforward way to strengthen and control your OpenShift environment.
+### Secure your cluster
+
+- [Configure user access](./secure-your-cluster/user-access.md)
+
+    Set up identity providers to control who can authenticate to your cluster.
+
+- [Whitelist IPs on routes](./secure-your-cluster/secure-routes.md)
+
+    Restrict access to specific OpenShift routes by allowing only defined IP addresses.
+
+- [Configure Google identity provider](./secure-your-cluster/google-idp.md)
+
+    Integrate Google as an identity provider so users can sign in with their Google accounts.
+
+- [Configure Azure identity provider](./secure-your-cluster/azure-idp.md)
+
+    Integrate Azure Active Directory as an identity provider for cluster authentication.
+
+- [Configure Azure group sync operator](./secure-your-cluster/azure-gso.md)
+
+    Sync Azure AD groups to your cluster so group-based access control stays up to date.
+
+- [Configure Keycloak identity provider](./secure-your-cluster/keycloak-idp.md)
+
+    Integrate Keycloak as an identity provider for cluster authentication.
+
+- [Configure SAML identity provider](./secure-your-cluster/saml-idp.md)
+
+    Integrate a SAML-based identity provider for cluster authentication.
+
+- [Review curated list of operators](./secure-your-cluster/curated-list-operators.md)
+
+    See which operators are available and approved for installation on your cluster.
+
+### Manage TLS certificates
+
+- [Provision TLS certificates](./how-to-guides/certificate-management/tls-certs.md)
+
+    Request and configure TLS certificates for your cluster using cert-manager.
+
+- [Provision HTTP-01 challenge certificates](./how-to-guides/certificate-management/http01-certs.md)
+
+    Use HTTP-01 ACME challenges to issue certificates for publicly accessible routes.
+
+### Manage network
+
+- [Configure custom domains](./networking/custom-domains.md)
+
+    Set up custom domains for your cluster's applications and routes.
+
+- [Configure external DNS](./networking/external-dns.md)
+
+    Automatically manage DNS records for your cluster's services and routes.
+
+### Manage storage
+
+- [Expand persistent volumes](./storage/volume-expansion.md)
+
+    Increase the size of existing persistent volume claims without downtime.
+
+### Cluster lifecycle
+
+- [Hibernate your cluster](./cluster-lifecycle/hibernate-your-cluster.md)
+
+    Pause a cluster to reduce costs when it is not in use, then resume it when needed.
+
+## Help
+
+- [FAQ](./help/faq.md)
+
+    Find answers to common questions about administering {{ product_name }}.
