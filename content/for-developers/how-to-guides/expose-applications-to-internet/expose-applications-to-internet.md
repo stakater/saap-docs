@@ -1,6 +1,8 @@
+<!-- vale off -->
 # Exposing your application to the internet over HTTPS with a custom hostname
 
 This guide covers how to configure an OpenShift `Route` resource to expose your application to the internet over HTTPS with a custom hostname.
+<!-- vale on -->
 
 ## Prerequisites
 

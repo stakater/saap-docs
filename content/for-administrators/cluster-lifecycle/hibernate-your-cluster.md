@@ -29,4 +29,3 @@ Click on the menu button beside the cluster for which you wish to set a hibernat
 Setting your Power State to Hibernation will immediately power your cluster down, while Running will bring back your cluster online.
 
 ![manage_poerstate2](./images/manage-powerstate2.png)
-

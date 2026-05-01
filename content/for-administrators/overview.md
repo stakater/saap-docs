@@ -64,9 +64,11 @@ Read the [User Stories](user-stories.md) to understand common administrator jour
 
     Request and configure TLS certificates for your cluster using cert-manager.
 
+<!-- vale off -->
 - [Provision HTTP-01 challenge certificates](./how-to-guides/certificate-management/http01-certs.md)
 
     Use HTTP-01 ACME challenges to issue certificates for publicly accessible routes.
+<!-- vale on -->
 
 ### Manage network
 

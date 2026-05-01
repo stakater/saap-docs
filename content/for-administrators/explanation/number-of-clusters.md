@@ -7,8 +7,8 @@ The right number of clusters depends on your organization's workload criticality
 Most organizations separate workloads across at least three clusters:
 
 1. **Development** — a sandbox for experimentation. Multiple small, short-lived clusters work better than a single shared one, but a single sandbox cluster is acceptable.
-2. **Testing** — validates patches, configuration changes, and upgrades before they reach production. Some organizations call this pre-production.
-3. **Production** — runs live workloads.
+1. **Testing** — validates patches, configuration changes, and upgrades before they reach production. Some organizations call this pre-production.
+1. **Production** — runs live workloads.
 
 For non-critical applications, you can reduce this to two clusters (combining development and testing) or even one. A single cluster can use separate namespaces for each stage, but carries more risk:
 
