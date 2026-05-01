@@ -18,9 +18,15 @@ You have already created a PipelineRun in the previous tutorial. Let's now add a
 1. Open up the PipelineRun file you created in the previous tutorial.
 1. Now edit the file, so the YAML becomes like the one given below.
 
+<!-- vale off -->
+{% raw %}
+
     ```yaml
       {% include "https://raw.githubusercontent.com/NordMart/review-api/main/.tekton/git_clone.yaml" %}
     ```
+
+{% endraw %}
+<!-- vale on -->
 
     **Notice** that we added another value to the **`pipelinesascode.tekton.dev/task`** annotation. The annotation is used by pipeline as code resolver to fetch tasks defined remotely. To explore Stakater's Tekton
     catalog, please visit [`stakater-tekton-catalog`](https://github.com/stakater-tekton-catalog).
