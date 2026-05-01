@@ -42,6 +42,7 @@ To get started, head to the `stakater-nordmart-review-api/deploy/templates/grafa
 1. The Dashboards should be showing some basic information and we can generate more data by firing some requests to the `stakater-nordmart-review-api`. In your IDE, run on your terminal:
 
 <!-- vale off -->
+{% raw %}
     ```bash
     # Get the reviews for a specific Product (i.e. 329199)
     curl -L $(oc get route/review -n <your-namespace> --template='{{.spec.host}}')/api/review/329199
@@ -50,6 +51,7 @@ To get started, head to the `stakater-nordmart-review-api/deploy/templates/grafa
     # Delete a review for a specific review (First get the review id from Get request)
     curl -L -X DELETE $(oc get route/review -n <your-namespace> --template='{{.spec.host}}')/api/review/6323904100aeb66032db19dc
     ```
+{% endraw %}
 <!-- vale on -->
 
 1. Back in Grafana, we should see some data populated into the boards... Go to `Manage` and then click on your `<your-namespace>`.

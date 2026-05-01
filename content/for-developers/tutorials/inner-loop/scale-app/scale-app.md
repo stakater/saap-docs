@@ -47,9 +47,11 @@ Welcome to this tutorial on utilizing Horizontal Pod Autoscaler (HPA) in {{ prod
 1. Run the following command in your terminal.
 
 <!-- vale off -->
+{% raw %}
     ```bash
     hey -t 30 -c 10 -n 10000 -H "Content-Type: application/json" -m GET https://$(oc get route/review -n <your-namespace> --template='{{.spec.host}}')/api/review/329199
     ```
+{% endraw %}
 <!-- vale on -->
 
     Where:

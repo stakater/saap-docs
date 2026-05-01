@@ -63,6 +63,7 @@ Step 2: Add a AlertmanagerConfig spec to use `slack-webhook-config` secret creat
 
 <!-- vale off -->
 {% raw %}
+
 ```yaml
 alertmanagerConfig:
   enabled: true
@@ -92,6 +93,7 @@ alertmanagerConfig:
           tlsConfig:
             insecureSkipVerify: true
 ```
+
 {% endraw %}
 <!-- vale on -->
 

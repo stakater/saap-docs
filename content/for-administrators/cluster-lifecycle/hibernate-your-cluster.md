@@ -12,7 +12,7 @@ You can schedule a hibernation window for non-critical workload clusters using c
 
 To configure a Hibernation Schedule, go to your Cluster Management page where you can view all your managed clusters.
 
-![clusters](./images/{{ product_name }}-clusters.png)
+![clusters](./images/clusters.png)
 
 Click on the menu button beside the cluster for which you wish to set a hibernation window and select Manage `Power State`.
 
