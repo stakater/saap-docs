@@ -314,6 +314,7 @@ nav:
 
 extra:
   product_name: KubeStack+
+  product_name_lower: kubestackplus
 
 plugins:
   - macros

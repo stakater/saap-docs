@@ -86,7 +86,7 @@ alertmanagerConfig:
             {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
             {{ end }}
           {{ end }}
-        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] KubeStack+ Alertmanager Event Notification'
+        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {% endraw %}{{ product_name }}{% raw %} Alertmanager Event Notification'
         titleLink: |2
           <workload-alertmanager-url>/#/alerts?receiver={{ .Receiver | urlquery }}
         httpConfig:

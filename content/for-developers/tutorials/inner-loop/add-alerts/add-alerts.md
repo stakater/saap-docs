@@ -95,7 +95,7 @@ Once you have the webhook URL, you can add the AlertManagerConfig. The Alertmana
                   *Details:* {{ range $k, $v := .Labels }} - *{{ $k }}:* {{ $v }}
                   {{ end }}
                   {{ end }}
-                title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] KubeStack+ Alertmanager Event Notification'
+                title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {% endraw %}{{ product_name }}{% raw %} Alertmanager Event Notification'
                 httpConfig:
                   tlsConfig:
                     insecureSkipVerify: true
