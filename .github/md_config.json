@@ -12,6 +12,9 @@
     },
     {
       "pattern": "^(https://docs.github.com).+"
+    },
+    {
+      "pattern": "^(https://access.redhat.com).+"
     }
   ]
 }
