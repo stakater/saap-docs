@@ -77,7 +77,7 @@ In this guide we will deploy an application with tilt and namespace in remote Op
     ```bash
     cd deploy
 
-    # Helm credentials can be found in Vault or in a secret in build namespace
+    # Helm credentials can be found in OpenBao or in a secret in build namespace
     helm repo add stakater-nexus <private repo URL> --username helm-user-name --password ********;
 
     cd ..

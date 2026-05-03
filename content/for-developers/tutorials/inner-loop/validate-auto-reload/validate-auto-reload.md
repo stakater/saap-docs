@@ -43,9 +43,9 @@ The secret we created for our deployment earlier, notice the details and the val
 
     Let's change one of the values of `review-mongodb-creds` secret.
 
-1. Log in to `Vault` and got to `your-tenant/kv`, click on the secret `review-mongodb-creds`, then click on `create new version`.
+1. Log in to `OpenBao` and got to `your-tenant/kv`, click on the secret `review-mongodb-creds`, then click on `create new version`.
 
-    ![Vault secret new version](images/vault-secret-new-version.png)
+    ![OpenBao secret new version](images/vault-secret-new-version.png)
 
 1. You can now edit the values of your secret which will be considered a new version of your external secret. Edit `mongodb-password` and set the value to `123456780`. Hit `Save`.
 

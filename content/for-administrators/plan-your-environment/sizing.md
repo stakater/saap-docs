@@ -44,9 +44,8 @@ The recommended resource requirements are:
 | Infra | 8 x 32 x 300 | 2 | 16 | 64 | 600 (General Purpose SSD) |
 | Monitoring | 8 x 32 x 300 | 1 | 8 | 32 | 300 (General Purpose SSD) |
 | Logging | 8 x 32 x 300 | 1 | 8 | 32 | 300 (General Purpose SSD) |
-| Pipeline | 8 x 32 x 300 | 1 | 8 | 32 | 300 (General Purpose SSD) |
 | Worker | 4 x 16 x 300 | 3 | 12 | 48 | 900 (General Purpose SSD) |
-| **Grand Total** | | **11** | **76** | **304** | **3450** |
+| **Grand Total** | | **10** | **68** | **272** | **3150** |
 
 ## Compute
 
@@ -75,12 +74,11 @@ At least two infrastructure nodes are required for the {{ product_name }} infras
 | [Kubernetes replicator](https://github.com/mittwald/kubernetes-replicator) | 50 | 0.30 |
 | [group-sync-operator](https://github.com/redhat-cop/group-sync-operator)  | 50 | 0.10 |
 | [Helm operator](https://github.com/fluxcd/helm-operator) | 500 | 0.80 |
-| [Nexus](https://github.com/sonatype/nexus-public)  | 200 | 1.60 |
+| [Harbor](https://github.com/goharbor/harbor) | 200 | 1.60 |
 | [OpenShift GitOps](https://docs.openshift.com/container-platform/4.7/cicd/gitops/understanding-openshift-gitops.html)  | 530 | 0.50 |
 | [OpenShift Image Registry](https://docs.openshift.com/container-platform/4.11/registry/index.html) | 50 | 0.40 |
 | [OpenShift Router](https://docs.openshift.com/container-platform/4.11/networking/ingress-operator.html)  | 300 |  0.30 |
-| [SonarQube](https://www.sonarqube.org/)  | 350 | 1.50 |
-| [Vault](https://github.com/hashicorp/vault)  | 255 | 0.36 |
+| [OpenBao](https://github.com/openbao/openbao)  | 255 | 0.36 |
 | [Velero](https://github.com/vmware-tanzu/velero)  | 500 | 0.15 |
 | [Volume Expander Operator](https://github.com/redhat-cop/volume-expander-operator)  | 50 | 0.10 |
 | **Total** | **4275** | **11.61** |
@@ -90,7 +88,7 @@ At least two infrastructure nodes are required for the {{ product_name }} infras
 
 ### 1 x Monitoring
 
-Monitoring components to monitor `{{ product_name }} workloads` and user workloads are deployed on monitoring nodes. The monitoring stack includes the Prometheus stack (Prometheus, Grafana and Alertmanager).
+Monitoring components to monitor `{{ product_name }} workloads` and user workloads are deployed on monitoring nodes. The monitoring stack is the LGTM stack (Grafana, Mimir, Loki, and Alertmanager).
 
 Minimum one monitoring node must be used for all production deployments. For high availability consider using two monitoring nodes.
 
@@ -101,7 +99,7 @@ Minimum one monitoring node must be used for all production deployments. For hig
 | | [Grafana](https://github.com/grafana/grafana)   | 50 | 0.10 |
 | | [Node exporter](https://github.com/prometheus/node_exporter)  | 50 | 0.50 |
 | | [Prometheus](https://github.com/prometheus/prometheus)   | 2500 | 7.50 |
-| | [Thanos](https://github.com/thanos-io/thanos)   | 50 | 0.20 |
+| | [Mimir](https://github.com/grafana/mimir)   | 50 | 0.20 |
 | **User Workloads** |   |  | |
 | | [Alertmanager](https://github.com/prometheus/alertmanager) | 20 | 0.25 |
 | | [Grafana](https://github.com/grafana/grafana) | 20 | 0.10 |
@@ -123,26 +121,9 @@ Minimum one logging node is required. For high availability consider using three
 
 | {{ product_name }} component | vCPU requirement (m) | Memory requirement (GiB) |
 |---|---:|---:|
-| Collector | 200 | 2.0 |
-| [Elasticsearch](https://github.com/elastic/elasticsearch) | 500 | 4.0 |
-| [Fluentd](https://github.com/fluent/fluentd) | 20 | 0.6 |
-| [Kibana](https://github.com/elastic/kibana)| 300 | 0.5 |
-| **Total** | **1020** | **7.1** |
-
-!!! note
-    * No user workloads run on control plane nodes.
-
-### 1 x Pipeline (optional)
-
-Pipeline nodes hold pods running for Tekton based CI/CD pipelines.
-
-The pipeline pool is optional, if there is no need for it, it will not be deployed.
-
-Minimum requirements for pipeline infrastructure is:
-
-| {{ product_name }} component | vCPU requirement (m) | Memory requirement (GiB) |
-|---|---:|---:|
-| OpenShift pipelines | 100 | 0.2 |
+| [Vector](https://github.com/vectordotdev/vector) (collector) | 200 | 2.0 |
+| [Loki](https://github.com/grafana/loki) | 500 | 4.0 |
+| **Total** | **700** | **6.0** |
 
 !!! note
     * No user workloads run on control plane nodes.
@@ -164,13 +145,12 @@ Following are the storage requirements used as Persistent Volumes consumed by `{
 
 | {{ product_name }} component | Volume Size (GiB) |
 |---|---:|
-| Elasticsearch Logging | 300  |
-| Nexus | 100 |
-| Prometheus - Infrastructure Monitoring | 100  |
-| Prometheus - workload Monitoring| 100 |
-| SonarQube | 15 |
-| Vault | 10 |
-| **Total** | **625** |
+| Loki (logging) | 300  |
+| Harbor | 100 |
+| Mimir - Infrastructure Monitoring | 100  |
+| Mimir - Workload Monitoring | 100 |
+| OpenBao | 10 |
+| **Total** | **610** |
 
 ### Object Storage
 
@@ -178,14 +158,14 @@ Following are the storage requirements used as Persistent Volumes consumed by `{
 
 ### Volume Snapshot Requirements
 
-Volume Snapshots are backups of volumes for critical `{{ product_name }} workloads` that only include `Nexus` and `Vault`
+Volume Snapshots are backups of volumes for critical `{{ product_name }} workloads` that include `Harbor` and `OpenBao`.
 
 By default backups are taken daily and are retained for 3 days. So at a given instance 3 day old backups for `{{ product_name }} workloads` are kept.
 
 | {{ product_name }} component | PV size | backup frequency | Backup size (GiB) |
 |---|---:|---:|---:|
-| Nexus | 100 | 3 | 300 |
-| Vault | 10 | 3 | 30 |
+| Harbor | 100 | 3 | 300 |
+| OpenBao | 10 | 3 | 30 |
 | **Total** | | | **330** |
 
 ## Network

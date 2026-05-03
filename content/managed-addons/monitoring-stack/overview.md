@@ -24,9 +24,10 @@ Level 3: Custom instrumentation of service (logged in users, unprocessed orders,
 
 ## Components
 
-Here are the monitoring stack components:
+{{ product_name }} uses the LGTM stack for a unified observability experience:
 
-- Prometheus
-- Grafana
-- Alert Manager
-- Thanos
+- Grafana — unified dashboards for metrics, logs, and traces
+- Mimir — scalable, long-term metrics storage
+- Loki — log aggregation and querying
+- Tempo — distributed tracing
+- Alertmanager — alert routing and notifications

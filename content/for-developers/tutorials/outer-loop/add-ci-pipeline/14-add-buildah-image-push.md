@@ -8,7 +8,7 @@
 ## Key Results
 
 - Successfully create and execute the Tekton PipelineRun using the defined `.tekton/pullrequest.yaml` file, enabling automated CI/CD processes for your application.
-- Image is pushed to the Nexus repository.
+- Image is pushed to the Harbor repository.
 
 ## Tutorial
 

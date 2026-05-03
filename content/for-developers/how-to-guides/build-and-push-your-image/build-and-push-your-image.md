@@ -1,8 +1,8 @@
-# Build and Push your Image to Nexus
+# Build and Push your Image to Harbor
 
 ## Objectives
 
-- Push artifacts to Nexus Registry hosted on {{ product_name }}.
+- Push artifacts to Harbor Registry hosted on {{ product_name }}.
 
 ## Key Results
 
@@ -38,7 +38,7 @@
     buildah login <nexus-docker-reg-url>
     ```
 
-### Push Docker Image to Nexus
+### Push Docker Image to Harbor
 
 1. Replace the placeholders and Run the following command inside application folder.
 
@@ -56,7 +56,7 @@
 
 ### Verify Image Available
 
-1. Open Nexus UI from Forecastle. Upon opening the link, you'll be redirected to Nexus home page.
+1. Open Harbor UI from Forecastle. Upon opening the link, you'll be redirected to Harbor home page.
 
     ![`nexus-Forecastle`](../images/nexus-forecastle.png)
     ![`nexus-homepage`](../images/nexus-homepage.png)

@@ -211,7 +211,7 @@ Secrets are a similar Kubernetes object type used to securely store sensitive da
 
 ConfigMaps and Secrets help you avoid putting configuration directly in Kubernetes object definitions. You can map the configuration key instead of the value, allowing you to update configuration on the fly by modifying the ConfigMap or Secret. This gives you the opportunity to alter the active runtime behavior of pods and other Kubernetes objects without modifying the Kubernetes definitions of the resources.
 
-{{ product_name }} includes fully managed Vault for secrets management.
+{{ product_name }} includes fully managed OpenBao for secrets management.
 
 ## 6. Liveness and readiness probes
 
@@ -656,7 +656,7 @@ Vanilla Kubernetes secrets are only base64 encoded so, they can't be put to SCM 
 
 **How?**
 
-{{ product_name }} has secrets handling support with Sealed Secrets and Vault.
+{{ product_name }} has secrets handling support with Sealed Secrets and OpenBao.
 
 ## 20. Tracing instrumentation
 

@@ -66,7 +66,7 @@ In this guide, we will deploy an application with tilt and namespace in the remo
     ```sh
     cd deploy
 
-    # Helm credentials can be found in Vault or in secret in the build namespace
+    # Helm credentials can be found in OpenBao or in secret in the build namespace
     helm repo add stakater-nexus <private repo URL> --username helm-user-name --password ********
 
     cd ..
@@ -161,7 +161,7 @@ In this guide, we will deploy an application with tilt and namespace in the remo
           cpu: 0.1
       auth:  # Enable authentication for MongoDB
         enabled: true
-        existingSecret: review-mongodb-creds  # Reference an external secret for MongoDB credentials (created via Vault)
+        existingSecret: review-mongodb-creds  # Reference an external secret for MongoDB credentials (created via OpenBao)
       podSecurityContext:  # Disable or enable if you require pod-level security context settings for MongoDB
         enabled: false
       containerSecurityContext:  # Disable or enable if you require container-level security context settings for MongoDB

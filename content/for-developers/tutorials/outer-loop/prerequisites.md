@@ -6,13 +6,13 @@ SSH keys play a crucial role in ensuring secure access to your code repositories
 Steps to Generate SSH Keys:
 Open a terminal or command prompt on your local machine.
 
-## Vault for Secure Credential Storage
+## OpenBao for Secure Credential Storage
 
-Vault serves as an indispensable component for securely safeguarding and managing the key credentials that your pipeline relies upon. Access to a Vault instance is imperative, as it is the secure repository for your sensitive data. Furthermore, a strong command of creating and effectively managing secrets within Vault is paramount to ensure the security and integrity of your pipeline, enabling you to confidently manage and utilize credentials while upholding best practices in secret management.
+OpenBao serves as an indispensable component for securely safeguarding and managing the key credentials that your pipeline relies upon. Access to a OpenBao instance is imperative, as it is the secure repository for your sensitive data. Furthermore, a strong command of creating and effectively managing secrets within OpenBao is paramount to ensure the security and integrity of your pipeline, enabling you to confidently manage and utilize credentials while upholding best practices in secret management.
 
 ## External Secrets Custom Resources (CRs)
 
-External Secrets Custom Resources (CRs) play a pivotal role in securely referencing and efficiently managing secrets stored within Vault. The creation of these CRs within your Kubernetes cluster is a necessary step in empowering your pipeline to access the essential secrets securely. These CRs serve as the bridge between your Kubernetes environment and Vault, ensuring a seamless and secure flow of sensitive data to fulfill the requirements of your pipeline. By creating and configuring External Secrets CRs, you establish a robust foundation for secret management, enhancing the overall security and reliability of your pipeline operations.
+External Secrets Custom Resources (CRs) play a pivotal role in securely referencing and efficiently managing secrets stored within OpenBao. The creation of these CRs within your Kubernetes cluster is a necessary step in empowering your pipeline to access the essential secrets securely. These CRs serve as the bridge between your Kubernetes environment and OpenBao, ensuring a seamless and secure flow of sensitive data to fulfill the requirements of your pipeline. By creating and configuring External Secrets CRs, you establish a robust foundation for secret management, enhancing the overall security and reliability of your pipeline operations.
 
 ## Access to ArgoCD Applications
 

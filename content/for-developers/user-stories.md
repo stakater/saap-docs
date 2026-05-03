@@ -50,11 +50,11 @@ Tags: helm, outer loop, leader chart, GitOps, ArgoCD
 
 ## User Story # 7
 
-As a developer, I want to define secrets using Vault and have them securely injected into the cluster, so I can manage sensitive information easily and ensure my application’s security within the {{ product_name }} environment.
+As a developer, I want to define secrets using OpenBao and have them securely injected into the cluster, so I can manage sensitive information easily and ensure my application’s security within the {{ product_name }} environment.
 
 ![type:video](https://www.youtube.com/embed/I17DU8sHQN8)
 
-Tags: secrets management, Vault, OpenBao, Reloader
+Tags: secrets management, OpenBao, OpenBao, Reloader
 
 ## User Story # 8
 
@@ -102,7 +102,7 @@ As a developer, I want to inspect code quality and perform a security analysis, 
 
 ![type:video](https://www.youtube.com/embed/fhGHZDctlgU)
 
-Tags: SonarQube, outer loop
+Tags: outer loop
 
 ## User Story # 14
 

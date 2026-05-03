@@ -7,9 +7,9 @@ This guide covers application deployment with Helm and ArgoCD.
 
 Deploy a simple application using Helm. Helm charts are packaged and stored in repositories. They can be added as dependencies of other charts or used directly. Add a chart repository first. The chart repository stores the version history of your charts as well as the packaged tar file.
 
-A Helm chart has been packaged and published to the Nexus Helm Repository available in {{ product_name }}
+A Helm chart has been packaged and published to the Harbor Helm Repository available in {{ product_name }}
 
-1. From your Terminal, add the Nexus Helm Repository using the following command. Consider the
+1. From your Terminal, add the Harbor Helm Repository using the following command. Consider the
 
     ```bash
     helm repo add NEXUS_HELM_REPO_NAME NEXUS_HELM_REPO_URL

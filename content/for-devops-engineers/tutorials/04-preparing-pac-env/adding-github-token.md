@@ -6,12 +6,12 @@ You can check secrets documentation to read more on these secrets.
 ## Objectives
 
 * Generate a organization level PAT with the necessary permissions for pipeline integration.
-* Securely store the GitHub PAT in Vault for added protection.
+* Securely store the GitHub PAT in OpenBao for added protection.
 
 ## Key Results
 
 * Personal Access Token (PAT) with the specified permissions is generated successfully in the GitHub account.
-* The GitHub PAT is securely stored in Vault and can be accessed only by authorized entities, enhancing security.
+* The GitHub PAT is securely stored in OpenBao and can be accessed only by authorized entities, enhancing security.
 
 ## Prerequisites
 
@@ -60,19 +60,19 @@ You can check secrets documentation to read more on these secrets.
     ![repo-perm](images/repository-permissions.png)
 
 !!! note
-    Save the token cautiously, you'll need to save it in `Vault`.
+    Save the token cautiously, you'll need to save it in `OpenBao`.
 
-### Adding Token to Vault
+### Adding Token to OpenBao
 
-Now that we have created the GitHub Token, we will store it in Vault.
+Now that we have created the GitHub Token, we will store it in OpenBao.
 
 !!! note
-    The delivery engineer should be part of the root-tenant. The root tenant makes sure that the delivery engineer is able to login to Vault with OIDC and is able to view the ArgoCD application created for bootstrapping Infra repository.
-    Please contact {{ product_name }} team if you are unable to access Vault using OIDC method
+    The delivery engineer should be part of the root-tenant. The root tenant makes sure that the delivery engineer is able to login to OpenBao with OIDC and is able to view the ArgoCD application created for bootstrapping Infra repository.
+    Please contact {{ product_name }} team if you are unable to access OpenBao using OIDC method
 
-Login to Vault to view <your-tenant> path.
+Login to OpenBao to view <your-tenant> path.
 
-1. Access Vault from `Forecastle` console, search `Vault` and open the `Vault` tile.
+1. Access OpenBao from `Forecastle` console, search `OpenBao` and open the `OpenBao` tile.
 
     ![Forecastle](images/forecastle.png)
 
@@ -80,7 +80,7 @@ Login to Vault to view <your-tenant> path.
 
     ![login-oidc](images/login-oidc.png)
 
-1. You will be brought to the `Vault` console. You should see `common-shared-secrets` folder.
+1. You will be brought to the `OpenBao` console. You should see `common-shared-secrets` folder.
 
     ![common-shared-secrets](images/common-shared-secrets.png)
 

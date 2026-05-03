@@ -30,7 +30,7 @@ SOC 2 Type 2, a critical standard for service organizations, evaluates the effec
         - **Network Security**: Ensures inter-service communication is protected through service meshes like Istio.
     - **Privacy (TSC 5)**:
         - **Access Restrictions**: Supports namespace-based multi-tenancy and granular RBAC policies for workload isolation.
-        - **Policy Enforcement**: Aligns Kubernetes policies with privacy frameworks via tools like OPA/Gatekeeper.
+        - **Policy Enforcement**: Aligns Kubernetes policies with privacy frameworks via Kyverno policy enforcement.
 - **Partially Applicable Controls**
 {{ product_name }} offers flexibility to address additional controls through configuration and integration, supporting broader compliance efforts. Examples include:
     - **Information Governance**: Aligns technical policies with overarching organizational governance frameworks, ensuring consistency across the environment.

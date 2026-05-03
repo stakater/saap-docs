@@ -46,7 +46,7 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
     Now copy it and paste it under `Secret` section in Webhook.
 
     !!! note
-        Save the secret because we will need it later when we add it in to Vault.
+        Save the secret because we will need it later when we add it in to OpenBao.
 
 1. Choose the specific events that should trigger the webhook. Click “Let me select individual events” and select the following events to trigger the webhook:
 
@@ -64,9 +64,9 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
     !!! note
         For GitLab Webhook configuration follow [this](https://pipelinesascode.com/docs/install/gitlab/), for Bitbucket webhook configuration follow [this](https://pipelinesascode.com/docs/install/bitbucket_cloud/).
 
-### Adding Webhook Secret to Vault
+### Adding Webhook Secret to OpenBao
 
-1. Access Vault from `Forecastle` console, search `Vault` and open the `Vault` tile.
+1. Access OpenBao from `Forecastle` console, search `OpenBao` and open the `OpenBao` tile.
 
     ![Forecastle](images/forecastle.png)
 
@@ -74,13 +74,13 @@ The webhook setup acts as a bridge between your code repository and the CI/CD pi
 
     ![login-oidcs](images/login-oidc.png)
 
-1. You will be brought to the `Vault` console. You should see the key/value path for <your-tenant>.
+1. You will be brought to the `OpenBao` console. You should see the key/value path for <your-tenant>.
 
-    ![Vault tenant](images/vault-tenant.png)
+    ![OpenBao tenant](images/vault-tenant.png)
 
 1. Click on `<your-tenant>/kv/`.
 
-1. You will now be brought to the `secrets` and the `configurations` in Vault for <your-tenant>. Click on `create secret`.
+1. You will now be brought to the `secrets` and the `configurations` in OpenBao for <your-tenant>. Click on `create secret`.
 
     ![create-secret](images/create-secret.png)
 

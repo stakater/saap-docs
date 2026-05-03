@@ -33,12 +33,11 @@ Stakater only takes backups of the managed applications:
 
 | Tool                       | Backup Frequency |   Backup Retention   |
 | ------------------------- | --------------- | ------------------- |
-| Nexus                      |    Every 24 hrs   |   Last 3 Backup(s)   |
+| Harbor                      |    Every 24 hrs   |   Last 3 Backup(s)   |
 | Prometheus (Cluster)       |    Every 24 hrs   |   Last 3 Backup(s)   |
 | Prometheus (Applications)  |    Every 24 hrs   |   Last 3 Backup(s)   |
 | Elasticsearch              |    Every 24 hrs   |   Last 3 Backup(s)   |
-| Vault                      |    Every 24 hrs   |   Last 3 Backup(s)   |
-| SonarQube                  |    Every 24 hrs   |   Last 3 Backup(s)   |
+| OpenBao                      |    Every 24 hrs   |   Last 3 Backup(s)   |
 | CodeReadyWorkspaces        |    Every 24 hrs   |   Last 3 Backup(s)   |
 | RHSSO (Keycloak)           |    Every 24 hrs   |   Last 3 Backup(s)   |
 | ArgoCD                     |    Every 24 hrs   |   Last 3 Backup(s)   |

@@ -51,6 +51,6 @@ Before running `redis-cli` command we need to port forward to Redis service runn
   redis-cli -h 127.0.0.1 -p <port> -a <password>
   ```
   
-    - Here `<password>` should be replaced by password used to connect to Redis. This password can easily be retrieved from Vault.
+    - Here `<password>` should be replaced by password used to connect to Redis. This password can easily be retrieved from OpenBao.
 - At this moment, you should have access to `redis-cli`. As shown below by doing a simple operation on Redis.
 ![`Redis CLI`](../images/redis-cli.png)

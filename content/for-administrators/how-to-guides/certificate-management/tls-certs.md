@@ -2,9 +2,9 @@
 
 This document provides a step-by-step guide to configure Cert Manager Certificate and External DNS for different tenants.
 
-## Step 1: Setup DNS creds in Vault
+## Step 1: Setup DNS creds in OpenBao
 
-Go to `common-shared-secret` path in Vault and create a secret `external-dns-creds`. This secret mainly have credentials for authenticating with DNS provider and should contain following fields:
+Go to `common-shared-secret` path in OpenBao and create a secret `external-dns-creds`. This secret mainly have credentials for authenticating with DNS provider and should contain following fields:
 
 ### Cloudflare
 

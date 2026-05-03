@@ -5,7 +5,7 @@ Deploy your first app using GitOps
 
 Key Results:
 
-- Push artifacts to nexus
+- Push artifacts to Harbor
 - Deploy app using helm charts via ArgoCD
 
 This guide covers the step-by-step guide to onboard a new project/application/microservice on {{ product_name }}.
@@ -13,9 +13,9 @@ This guide covers the step-by-step guide to onboard a new project/application/mi
 Changes required in application repository:
 
 1. Add Dockerfile to application repository.
-1. Push Docker Image to Nexus Docker Repository.
+1. Push Docker Image to Harbor.
 1. Add Helm Chart to application repository.
-1. Push Helm Chart to Nexus Helm Repository.
+1. Push Helm Chart to Harbor.
 
 In this section, we will use [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web) application as an example and add it to our GitOps structure we made in the previous section.
 
@@ -23,25 +23,20 @@ In this section, we will use [`stakater-nordmart-review-web`](https://github.com
 
 - [`tenant` for application must be defined via `infra-gitops-config`](../01-configure-infra-gitops-config/configure-infra-gitops-repo.md).
 - [`tenant` for application should be onboarded onto `apps-gitops-config`](../02-configure-apps-gitops-config/configure-apps-gitops-repo.md).
-- Docker Image and Helm Chart Repository hosted by Nexus must be available.
+- Harbor registry must be available (contact your administrator for credentials).
 - [helm](https://helm.sh/docs/intro/install/)
 - [git](https://git-scm.com/downloads)
 - [oc](https://docs.openshift.com/container-platform/4.11/cli_reference/openshift_cli/getting-started-cli.html)
 - [buildah](https://github.com/containers/buildah/blob/main/install.md)
 
-## Docker Image and Helm Chart Repository hosted by Nexus
+## Harbor Registry
 
-> Ask admin for Docker and Helm Registry Credentials for pushing container images and helm chart respectively.
+> Ask your administrator for Harbor registry credentials before proceeding.
 
-Find Nexus Docker registry URL and Helm Registry URL [here](../../../managed-addons/nexus/explanation/routes.md).
+Navigate to the cluster Forecastle and search `harbor` to find your Harbor instance URL.
 
-Alternatively, Navigate to the cluster Forecastle, search `nexus` using the search bar on top menu and copy the nexus URL.
-
-- `nexus-docker-reg-url`: Remove `https://` from the start and add `-docker` in URL after `nexus`. This URL points to Docker Registry referred as `nexus-docker-reg-url` in this tutorial for example `nexus-docker-stakater-nexus.apps.clustername.random123string.kubeapp.cloud` (Note: Remove '/' at the end of the URL to avoid errors while login).
-
-- `nexus-helm-reg-url` : Add `-helm` in URL after `nexus` and append `/repository/helm-charts/`. This URL points to Helm Registry referred as `nexus-helm-reg-url` in this tutorial for example `https://nexus-helm-stakater-nexus.apps.clustername.random123string.kubeapp.cloud/repository/helm-charts/`
-
-    ![nexus-Forecastle](../images/nexus-forecastle.png)
+- `harbor-docker-reg-url`: The Harbor registry hostname (without `https://`). Used for container image push/pull.
+- `harbor-helm-reg-url`: The Harbor OCI registry URL for Helm charts.
 
 ### Login to Docker Registry
 
@@ -92,7 +87,7 @@ Look into the following Docker guides for a start.
 | Django             | <https://blog.logrocket.com/dockerizing-django-app/>          |
 | General            | <https://www.redhat.com/sysadmin/containerizing-applications> |
 
-## 2. Push Docker Image to Nexus
+## 2. Push Docker Image to Harbor
 
 Lets clone the [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web) application.
 
@@ -118,7 +113,7 @@ buildah push <nexus-docker-reg-url>/stakater-nordmart-review-web:1.0.0 docker://
 ```
 
 !!! note
-    Nexus docker registry URL is the one we extract in the above section. Make sure you are logged in to the Nexus docker registry before building and pushing the application image.**
+    Harbor registry URL is the one we extract in the above section. Make sure you are logged in to the Harbor registry before building and pushing the application image.**
 
 ## 3. Add Helm Chart to application repository
 
@@ -181,7 +176,7 @@ In application repo add Helm Chart in ***deploy*** folder at the root of your re
     helm repo add stakater-charts https://stakater.github.io/stakater-charts
 
     # Add nexus helm repo
-    # Helm credentials can be found in Vault or in a secret in build namespace
+    # Helm credentials can be found in OpenBao or in a secret in build namespace
     helm repo add stakater-nexus <private repo URL> --username helm-user-name --password ********;
     ```
 
@@ -217,11 +212,11 @@ References to Explore:
 - [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web/deploy)
 - [All configurations available via Application Chart Values YAML](https://github.com/stakater/application/blob/master/application)
 
-## 4. Push Helm Chart to Nexus
+## 4. Push Helm Chart to Harbor
 
 > Ask admin for Docker and Helm Registry Credentials for pushing container images and helm chart respectively.
 
-After successfully pushing the image to Nexus. We need to package our helm chart and push to Nexus Helm Repo.
+After successfully pushing the image to Harbor. We need to package our helm chart and push to Harbor.
 Run the following command to package the helm chart into compressed file.
 
 ```sh

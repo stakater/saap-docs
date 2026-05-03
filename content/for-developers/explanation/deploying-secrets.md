@@ -18,15 +18,15 @@ The following secrets are needed for running a fully functional pipeline using p
     * _Type_: Login credentials for nexus docker registry. The secret itself is of type `dockerconfigjson`.
     * _Used for_: Pulling images from the nexus registry. Needs to be deployed in all namespaces of the tenant. We distribute it using a TGI.
     * _Lifecycle_: Every time a new tenant is created, the secret gets deployed in all its namespaces.
-    * _Deployment Process_: Nexus comes shipped with {{ product_name }}. The `nexus3` namespace contains a secret named `docker-reg-creds`. This secret contains the .`dockerconfigjson` file. We use a Multi Tenant Operator Template and TemplateGroupInstance to copy this secret and distribute it all namespaces of the tenants. The Template and TemplateGroupInstance are both named `docker-reg-creds`.
+    * _Deployment Process_: Harbor comes shipped with {{ product_name }}. The `nexus3` namespace contains a secret named `docker-reg-creds`. This secret contains the .`dockerconfigjson` file. We use a Multi Tenant Operator Template and TemplateGroupInstance to copy this secret and distribute it all namespaces of the tenants. The Template and TemplateGroupInstance are both named `docker-reg-creds`.
 1. `helm-reg-creds`
-    * _Purpose_: Used to pull and push charts from the Nexus Helm Registry. We use it in two places for our pipeline:
+    * _Purpose_: Used to pull and push charts from the Harbor Helm Registry. We use it in two places for our pipeline:
         1. `stakater-helm-push` task
         1. ArgoCD to fetch the helm chart
     * _Owner_: {{ product_name }} Admins.
-    * _Used for_: Pulling charts from Nexus.
+    * _Used for_: Pulling charts from Harbor.
     * _Lifecycle_: Every time a new tenant is created, the secret gets deployed in the build namespace. The same secret is deployed in the `rh-openshift-gitops-instance` when {{ product_name }} is provisioned.
-    * _Deployment Process_: Nexus comes shipped with {{ product_name }}. The `nexus3` namespace contains a secret named `helm-reg-creds`. This secret contains the username and password for the helm registry. We use a Multi Tenant Operator Template and TemplateGroupInstance to copy this secret and distribute it all namespaces of the tenants. The Template and TemplateGroupInstance are both named `helm-reg-creds`. Another TGI named `helm-reg-creds-gitops` deploys the secret in GitOps namespace so ArgoCD can fetch the charts.
+    * _Deployment Process_: Harbor comes shipped with {{ product_name }}. The `nexus3` namespace contains a secret named `helm-reg-creds`. This secret contains the username and password for the helm registry. We use a Multi Tenant Operator Template and TemplateGroupInstance to copy this secret and distribute it all namespaces of the tenants. The Template and TemplateGroupInstance are both named `helm-reg-creds`. Another TGI named `helm-reg-creds-gitops` deploys the secret in GitOps namespace so ArgoCD can fetch the charts.
 1. `rox-creds`
     * _Purpose_: Used by three Tekton Tasks:
         1. `stakater-rox-deployment-check`
@@ -124,7 +124,7 @@ The following secrets are needed for running a fully functional pipeline using p
                   url: "https://github.com/DESTINATION_ORG/apps-gitops-config.git"
             ```
 
-        1. Now open up Vault and open the common-secrets path. Add a secret named git-pat-creds and add two key 'password' and 'username'. Password should have Personal Access Token with that can access your `apps-gitops-config` repository.
+        1. Now open up OpenBao and open the common-secrets path. Add a secret named git-pat-creds and add two key 'password' and 'username'. Password should have Personal Access Token with that can access your `apps-gitops-config` repository.
         1. Now go to the `argocd-apps` folder in the `infra-gitops-config` repo and add and ArgoCD application pointing to your `gitops-repositories` folder:
 
             ```yaml
@@ -256,7 +256,7 @@ The following secrets are needed for running a fully functional pipeline using p
 {% endraw %}
 <!-- vale on -->
 
-        1. Now open up the tenant path in Vault and add a secret named `[app-name]-ssh-creds`. Add a key `api_private_key`. The value should have a private ssh key that has access to your application repository as well as you `apps-gitops-config` repository.
+        1. Now open up the tenant path in OpenBao and add a secret named `[app-name]-ssh-creds`. Add a key `api_private_key`. The value should have a private ssh key that has access to your application repository as well as you `apps-gitops-config` repository.
         1. Assuming you have already set up the `apps-gitops-config` repository, you should be able to see the secret deployed to your tenant's build namespace
 
 1. `[app-name]-git-webhook-creds`

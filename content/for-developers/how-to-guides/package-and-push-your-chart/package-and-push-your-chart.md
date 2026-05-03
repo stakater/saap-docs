@@ -1,22 +1,22 @@
-# Package and push your chart to Nexus
+# Package and push your chart to Harbor
 
 ## Objectives
 
-- Push artifacts to Nexus Registry hosted on {{ product_name }}.
+- Push artifacts to Harbor Registry hosted on {{ product_name }}.
 
 ## Key Results
 
-- Helm chart package and pushed to Nexus.
+- Helm chart package and pushed to Harbor.
 
 ## Guide
 
-### Get Nexus Helm Registry URL
+### Get Harbor Helm Registry URL
 
-## Docker Image and Helm Chart Repository hosted by Nexus
+## Docker Image and Helm Chart Repository hosted by Harbor
 
 > Ask admin Helm Registry Credentials for helm chart repository.
 
-Find Nexus Helm Registry URL [here](../../../managed-addons/nexus/explanation/routes.md).
+Find Harbor Helm Registry URL [here](../../../managed-addons/nexus/explanation/routes.md).
 
 Alternatively, Navigate to the cluster Forecastle, search `nexus` using the search bar on top menu and copy the nexus URL.
 
@@ -24,7 +24,7 @@ Alternatively, Navigate to the cluster Forecastle, search `nexus` using the sear
 
     ![nexus-Forecastle](../images/nexus-forecastle.png)
 
-### Package and Upload the chart to Nexus
+### Package and Upload the chart to Harbor
 
 1. Run the following command to package the helm chart into compressed file.
 
@@ -35,7 +35,7 @@ Alternatively, Navigate to the cluster Forecastle, search `nexus` using the sear
 
    This command packages a chart into a versioned chart archive file.
 
-1. Upload packaged chart to Nexus Helm Registry.
+1. Upload packaged chart to Harbor Helm Registry.
 
    ```sh
    curl -u "<helm_user>":"<helm_password>" `nexus-helm-reg-url` --upload-file "CHART_NAME-CHART_VERSION.tgz"
@@ -43,7 +43,7 @@ Alternatively, Navigate to the cluster Forecastle, search `nexus` using the sear
 
    > Make sure to get credentials from Stakater Admin.
 
-1. Open Nexus UI from Forecastle. Upon opening the link, you'll be redirected to Nexus home page.
+1. Open Harbor UI from Forecastle. Upon opening the link, you'll be redirected to Harbor home page.
 
     ![`nexus-Forecastle`](../images/nexus-forecastle.png)
     ![`nexus-homepage`](../images/nexus-homepage.png)

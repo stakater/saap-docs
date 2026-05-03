@@ -34,9 +34,9 @@ Refer to the [User Stories](user-stories.md) to understand common developer jour
 
     Add a new environment to your application's GitOps workflow.
 
-- [Build and Push your Image to Nexus](./how-to-guides/build-and-push-your-image/build-and-push-your-image.md)
+- [Build and Push your Image to Harbor](./how-to-guides/build-and-push-your-image/build-and-push-your-image.md)
 
-    Build a container image and push it to Nexus so it is available for deployment.
+    Build a container image and push it to Harbor so it is available for deployment.
 
 - [Deploy Application with ArgoCD and Helm](./how-to-guides/deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md)
 
@@ -46,9 +46,9 @@ Refer to the [User Stories](user-stories.md) to understand common developer jour
 
     Expose metrics from your Spring Boot application and configure them for visualization.
 
-- [Package and push your chart to Nexus](./how-to-guides/package-and-push-your-chart/package-and-push-your-chart.md)
+- [Package and push your chart to Harbor](./how-to-guides/package-and-push-your-chart/package-and-push-your-chart.md)
 
-    Package your application as a Helm chart and push it to a Nexus repository.
+    Package your application as a Helm chart and push it to Harbor.
 
 - [Application promotion](./how-to-guides/promote-your-application/promote-your-application.md)
 

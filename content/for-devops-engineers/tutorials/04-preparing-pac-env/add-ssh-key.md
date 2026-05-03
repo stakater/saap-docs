@@ -3,13 +3,13 @@
 ## Objectives
 
 * Generate a organization level SSH keypair.
-* Securely store the keypair in Vault for added protection.
+* Securely store the keypair in OpenBao for added protection.
 
 ## Key Results
 
 * SSH keypair with read write access is generated.
 * Public key is stored in SCM (GitHub)
-* SSH key is securely stored in Vault and can be accessed only by authorized entities, enhancing security.
+* SSH key is securely stored in OpenBao and can be accessed only by authorized entities, enhancing security.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@
 1. Generate an ssh keypair. You can follow the official GitHub documentation for this.
 
     !!! note
-        Save the keypair cautiously, you'll need to add it to Vault and GitHub.
+        Save the keypair cautiously, you'll need to add it to OpenBao and GitHub.
 
 1. Once you've generated the keypair, go to your GitHub account `settings` for the top-right corner on your profile.
 
@@ -39,11 +39,11 @@
 
     ![add-public-key](images/add-public-key.png)
 
-### Adding Private Key to Vault
+### Adding Private Key to OpenBao
 
-Now that we have added the public key to GitHub, let's add the private key to Vault.
+Now that we have added the public key to GitHub, let's add the private key to OpenBao.
 
-1. Access Vault from `Forecastle` console, search `Vault` and open the `Vault` tile.
+1. Access OpenBao from `Forecastle` console, search `OpenBao` and open the `OpenBao` tile.
 
     ![Forecastle](images/forecastle.png)
 
@@ -51,7 +51,7 @@ Now that we have added the public key to GitHub, let's add the private key to Va
 
     ![login-oidc](images/login-oidc.png)
 
-1. You will be brought to the `Vault` console. You should see `common-shared-secrets` folder.
+1. You will be brought to the `OpenBao` console. You should see `common-shared-secrets` folder.
 
     ![common-shared-secrets](images/common-shared-secrets.png)
 

@@ -1,42 +1,42 @@
 # Adding External Secrets for your Application
 
-Securing sensitive information, such as API keys, passwords, and tokens, is crucial for any application. In this tutorial, we will explore how to leverage ExternalSecrets to securely manage and consume secrets stored in Vault for your Stakater Nordmart Review application. Now, we will set up applications to consume secrets from Vault, using ExternalSecrets.
+Securing sensitive information, such as API keys, passwords, and tokens, is crucial for any application. In this tutorial, we will explore how to leverage ExternalSecrets to securely manage and consume secrets stored in OpenBao for your Stakater Nordmart Review application. Now, we will set up applications to consume secrets from OpenBao, using ExternalSecrets.
 
 ## Objectives
 
-- Successfully integrate External Secrets within the Stakater Application Chart, allowing your application to consume secrets from Vault.
+- Successfully integrate External Secrets within the Stakater Application Chart, allowing your application to consume secrets from OpenBao.
 
 - Create a secret using ExternalSecrets for the Stakater Nordmart Review API application.
 
-- Observe the dynamic retrieval of secrets from Vault and their seamless integration into your application, ensuring enhanced security and simplified secret management.
+- Observe the dynamic retrieval of secrets from OpenBao and their seamless integration into your application, ensuring enhanced security and simplified secret management.
 
 ## Key Results
 
-- Discover how to configure the External Secrets Operator to fetch secret data from Vault and create Kubernetes secrets within the cluster.
+- Discover how to configure the External Secrets Operator to fetch secret data from OpenBao and create Kubernetes secrets within the cluster.
 
-- Explore how to integrate External Secrets into your Stakater Application Chart, enabling seamless consumption of Vault secrets by your applications.
+- Explore how to integrate External Secrets into your Stakater Application Chart, enabling seamless consumption of OpenBao secrets by your applications.
 
 ## Tutorial
 
-### Create Secret in Vault
+### Create Secret in OpenBao
 
-Login to Vault to view your tenant path.
+Login to OpenBao to view your tenant path.
 
-1. Access Vault from `Forecastle` console, search `Vault` and open the `Vault` tile.
+1. Access OpenBao from `Forecastle` console, search `OpenBao` and open the `OpenBao` tile.
 
-    ![Forecastle-Vault](images/forecastle.png)
+    ![Forecastle-OpenBao](images/forecastle.png)
 
 1. From the drop-down menu under `Method`, select `OIDC` and click on `Sign in with OIDC Provider` and select `workshop` identity Provider.
 
-    ![Vault-odic-login](images/login-oidc.png)
+    ![OpenBao-odic-login](images/login-oidc.png)
 
-1. You will be brought to the `Vault` console. You should see the key/value path for your tenant.
+1. You will be brought to the `OpenBao` console. You should see the key/value path for your tenant.
 
     ![secret engines](images/secret-engines.png)
 
 1. Click on `<your-tenant>/kv/`.
 
-1. You will now be brought to the `secrets` and the `configurations` in Vault for your tenant. Click on `create secret`.
+1. You will now be brought to the `secrets` and the `configurations` in OpenBao for your tenant. Click on `create secret`.
 
     ![create secret](images/create-secret.png)
 
@@ -44,15 +44,15 @@ Login to Vault to view your tenant path.
 
     ![key value secret MongoDB](images/key-val-secret.png)
 
-1. Secret is created in Vault.
+1. Secret is created in OpenBao.
 
     ![secret created](images/secret-created.png)
 
-### Access and Create a Secret on {{ product_name }} from Vault
+### Access and Create a Secret on {{ product_name }} from OpenBao
 
-- External Secrets Operator is used to fetch secret data from Vault and create Kubernetes secret in the {{ product_name }}.
-- External Secrets Operator uses SecretStore to make a connection to the Vault.
-- SecretStore uses ServiceAccount with Vault label to access Vault.
+- External Secrets Operator is used to fetch secret data from OpenBao and create Kubernetes secret in the {{ product_name }}.
+- External Secrets Operator uses SecretStore to make a connection to the OpenBao.
+- SecretStore uses ServiceAccount with OpenBao label to access OpenBao.
 - SecretStore and ServiceAccount are created in each tenant namespace.
 - Each ExternalSecret CR contains a reference to SecretStore to be used.
 - Stakater Application Chart contains support for ExternalSecret.
@@ -63,7 +63,7 @@ Login to Vault to view your tenant path.
     # Enable the usage of ExternalSecrets for this application
     externalSecret:
       enabled: true
-      # The name of the SecretStore to be used for fetching secret data from Vault, this name is constant
+      # The name of the SecretStore to be used for fetching secret data from OpenBao, this name is constant
       secretStore:
         name: tenant-vault-secret-store
         kind: SecretStore
@@ -73,13 +73,13 @@ Login to Vault to view your tenant path.
       files:
       # Name of the secret only suffix
         mongodb-creds:
-      # Fetch secret data from Vault using a specific key in the specified tenant's KV engine
+      # Fetch secret data from OpenBao using a specific key in the specified tenant's KV engine
           dataFrom:
             key: <your-tenant>/kv/review-mongodb-creds
     ```
 
     !!! note
-        Replace <your-tenant> with the actual name of your tenant or the appropriate path in your Vault instance. The indentation should be **application.externalSecret**.
+        Replace <your-tenant> with the actual name of your tenant or the appropriate path in your OpenBao instance. The indentation should be **application.externalSecret**.
 
 1. Save the `values.yaml` and run `tilt up` at the root of your directory. Press the space key to view the progress in Tilt web UI. The application should be running in the namespace used in `tilt_options.json` file.
 

@@ -36,7 +36,7 @@ To promote application from one environment to another, you can check the image 
         tag: 1.0.51
 ```
 
-  > Note: Find Nexus Docker registry URL and Helm Registry URL [here](../../../../managed-addons/nexus/explanation/routes.md)
+  > Note: Find Harbor Docker registry URL and Helm Registry URL [here](../../../../managed-addons/nexus/explanation/routes.md)
 
 Pick version `1.0.51` and paste it to next environment
 
