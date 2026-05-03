@@ -7,7 +7,7 @@ This is the second bootstrap step. If you haven't yet completed [Configure the i
 **Prerequisites:**
 
 - The infra GitOps repository is set up and ArgoCD has synced it.
-- The `git-pat-creds` secret is already in OpenBao from the previous tutorial. If your apps repository is in the same Git organization, the same PAT applies. If it is in a different organization, add a new PAT to `git-pat-creds` with the same permissions before continuing.
+- Credentials for your Git provider are already stored in OpenBao from the previous tutorial. If your apps repository requires different credentials than your infra repository, update `git-pat-creds` in OpenBao with the new values before continuing.
 
 A [template repository](https://github.com/stakater-lab/apps-gitops-config.git) is available to use as a starting point.
 

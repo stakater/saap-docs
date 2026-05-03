@@ -1,6 +1,6 @@
-# Add a new environment to an application
+# Add a new environment
 
-This guide explains how to add a new deployment environment to an existing application in your apps GitOps repository. Use this when you want to deploy an application to an additional environment such as `prod`.
+By the end of this guide, a new environment folder, ArgoCD Application, and root watcher will be committed to your apps GitOps repository and ArgoCD will begin deploying to it.
 
 If the apps GitOps repository is not yet configured, start with [Configure the apps GitOps repository](../tutorials/configure-apps-gitops-repo.md) first.
 

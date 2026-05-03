@@ -1,24 +1,39 @@
 # Use http-01 certificate challenges
 
-This page explains how to issue a TLS certificate for a specific hostname using cert-manager's http-01 challenge. Use this approach when you have a single hostname and a publicly reachable cluster.
+This guide explains how to issue a TLS certificate for a specific hostname using cert-manager's http-01 challenge.
 
-For wildcard certificates or clusters without public http access, use [DNS-01 challenges](tls-certs.md) instead.
+Use this approach when your cluster is publicly reachable from the internet and you need a certificate for a single hostname. cert-manager proves you control the domain by serving a temporary file over http — no DNS provider credentials required. For wildcard certificates or clusters without public internet access, use [DNS-01 challenges](tls-certs.md) instead.
+
+**Prerequisites:**
+
+- A `ClusterIssuer` is configured on your cluster. Confirm the name with your cluster administrator before starting.
+- The hostname you want to secure must resolve to the cluster's ingress IP address before you begin.
+
+Replace the following placeholders with your own values throughout this guide:
+
+| Placeholder | Description |
+|---|---|
+| `HOSTNAME` | The hostname to secure (e.g. `app.example.com`) |
+| `CERT_NAME` | A name for the `Certificate` resource |
+| `TLS_SECRET_NAME` | The name of the Kubernetes secret cert-manager will create |
+| `CLUSTER_ISSUER_NAME` | The name of the `ClusterIssuer` on your cluster |
+| `APP_NAMESPACE` | The namespace where your application runs |
+| `ROUTE_NAME` | A name for the OpenShift `Route` resource |
+| `SERVICE_NAME` | The name of the Kubernetes `Service` to route traffic to |
 
 ---
 
 ## 1. Create a DNS record
 
-Create an entry in your DNS provider for the hostname you want to secure. Map the hostname to the cluster's ingress IP address using an `A` record or `CNAME`.
+Add an `A` record (for a direct IP) or `CNAME` record (for a hostname) in your DNS provider that maps `HOSTNAME` to the cluster's ingress address. Contact your cluster administrator if you do not have the ingress address.
+
+cert-manager will attempt the challenge immediately after the `Certificate` resource is created, so the DNS record must be live before you proceed.
 
 ---
 
 ## 2. Deploy the Certificate and Route
 
-Add both resources to your application's Helm chart at:
-
-```text
-<path-to-app-chart>/templates/
-```
+Add both resources to your application's Helm chart under `templates/`:
 
 ### Certificate
 
@@ -26,26 +41,20 @@ Add both resources to your application's Helm chart at:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: <certificate-name>
-  namespace: <application-namespace>
+  name: CERT_NAME
+  namespace: APP_NAMESPACE
 spec:
-  secretName: <tls-secret-name>
+  secretName: TLS_SECRET_NAME
   issuerRef:
-    name: <cluster-issuer-name>
+    name: CLUSTER_ISSUER_NAME
     kind: ClusterIssuer
-  commonName: <hostname>
+  commonName: HOSTNAME
   dnsNames:
-    - <hostname>
+    - HOSTNAME
 ```
 
-Key fields:
-
-- **`.spec.secretName`** — The secret cert-manager creates once the certificate is issued.
-- **`.spec.dnsNames`** — The hostname to secure. Must match the DNS record you created in step 1.
-- **`.spec.issuerRef.name`** — The `ClusterIssuer` name. Confirm with your cluster administrator.
-
 !!! note
-    Avoid deleting or modifying existing certificates. Doing so can trigger [Let's Encrypt rate limits](https://letsencrypt.org/docs/rate-limits/).
+    Avoid deleting or recrereating certificates unnecessarily. Repeated issuance attempts count against [Let's Encrypt rate limits](https://letsencrypt.org/docs/rate-limits/).
 
 ### Route
 
@@ -53,19 +62,19 @@ Key fields:
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: <route-name>
-  namespace: <application-namespace>
+  name: ROUTE_NAME
+  namespace: APP_NAMESPACE
   annotations:
-    cert-utils-operator.redhat-cop.io/certs-from-secret: <tls-secret-name>
+    cert-utils-operator.redhat-cop.io/certs-from-secret: TLS_SECRET_NAME
     cert-utils-operator.redhat-cop.io/inject-CA: "false"
 spec:
-  host: <hostname>
+  host: HOSTNAME
   path: /
   port:
     targetPort: http
   to:
     kind: Service
-    name: <service-name>
+    name: SERVICE_NAME
     weight: 100
   wildcardPolicy: None
   tls:
@@ -73,7 +82,7 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
 ```
 
-The `cert-utils-operator` annotation injects the certificate from the secret into the route automatically once cert-manager issues it.
+The `cert-utils-operator` annotation injects the certificate from `TLS_SECRET_NAME` into the route automatically once cert-manager issues it.
 
 ---
 
@@ -82,7 +91,7 @@ The `cert-utils-operator` annotation injects the certificate from the secret int
 ### Certificate
 
 1. In the cluster console, switch to **Administrator** view and navigate to **Home > Search**.
-1. Select the application namespace and search for `Certificate`.
+1. Select `APP_NAMESPACE` and search for `Certificate` in the **Resources** dropdown.
 1. Inspect the certificate and confirm the **Condition** shows it is up-to-date.
 
     ![Certificate status](images/certificate-status.png)
@@ -90,5 +99,9 @@ The `cert-utils-operator` annotation injects the certificate from the secret int
 ### Route
 
 1. Navigate to **Networking > Routes** in the cluster console.
-1. Locate the route for your application.
-1. Confirm the route is listed, its status is **Accepted**, and the hostname and TLS configuration are correct.
+1. Locate `ROUTE_NAME` and confirm its status is **Accepted**.
+1. Open `https://HOSTNAME` in a browser to confirm the certificate is valid and the application is reachable.
+
+---
+
+With TLS configured, your application is reachable over https on its custom hostname. See [Configure custom domains](custom-domains.md) for the full end-to-end setup including DNS and application-level configuration.

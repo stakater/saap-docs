@@ -43,7 +43,13 @@ Connect your organization's identity provider and control who can access what:
 
 ## Networking
 
-Configure custom domains and automate TLS certificate management:
+By default, applications are reachable on the cluster's built-in domain. Configure networking when you need your own domain name, HTTPS certificates, or automated DNS management.
+
+| Scenario | Guide |
+|---|---|
+| Serve an application on your own domain | [Configure custom domains](how-to-guides/custom-domains.md) |
+| Add TLS to a public single hostname (no DNS credentials needed) | [Use http-01 certificate challenges](how-to-guides/http01-certs.md) |
+| Wildcard certificate or cluster without public internet access | [Configure TLS certificates](how-to-guides/tls-certs.md) |
 
 - [Configure custom domains](how-to-guides/custom-domains.md)
 - [Configure TLS certificates](how-to-guides/tls-certs.md)
@@ -57,7 +63,7 @@ Recurring tasks for managing your platform after bootstrap:
 
 - [Add a new tenant](how-to-guides/add-a-new-tenant.md)
 - [Add a new application](how-to-guides/add-a-new-application.md)
-- [Add a new environment to an application](how-to-guides/add-a-new-environment-to-application.md)
+- [Add a new environment](how-to-guides/add-a-new-environment-to-application.md)
 
 ---
 

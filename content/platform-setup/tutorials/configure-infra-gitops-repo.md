@@ -53,12 +53,25 @@ Add the **public key** (`argocd_gitops.pub`) as a deploy key (read-only) on both
 
 ## 2. Store credentials in OpenBao
 
-Store your credentials in OpenBao at the path `git-pat-creds` with two fields:
+ArgoCD retrieves credentials at sync time via ExternalSecrets. Store them in OpenBao before you create the repository.
 
-- `username` — your Git provider username (or `git` for SSH key auth)
-- `password` — the PAT or SSH private key you just created
+### Option A: Personal access token
 
-ArgoCD retrieves these credentials at sync time via ExternalSecrets. The same secret is reused in the apps repository setup in the next tutorial.
+Store your PAT at the path `git-pat-creds` with two fields:
+
+- `username` — your Git provider username
+- `password` — the PAT you just created
+
+The same secret is reused for the apps repository in the next tutorial.
+
+### Option B: SSH key
+
+Store the private key content at the path `git-ssh-key` with one field:
+
+- `privateKey` — the contents of your private key file (e.g. `~/.ssh/argocd_gitops`)
+
+!!! note
+    The ExternalSecret template shown in step 3 uses HTTPS fields (`username`/`password`). If you chose SSH, adjust the template to map `git-ssh-key.privateKey` to the `sshPrivateKey` field instead.
 
 ---
 

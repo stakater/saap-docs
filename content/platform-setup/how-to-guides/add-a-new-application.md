@@ -97,4 +97,4 @@ Log in to ArgoCD and open the `TENANT_NAME-ENV_NAME` application. Confirm it has
 
 ---
 
-With the application deployed, continue to [Add a new environment to an application](add-a-new-environment-to-application.md) when you are ready to promote it to the next stage.
+With the application deployed, continue to [Add a new environment](add-a-new-environment-to-application.md) when you are ready to promote it to the next stage.

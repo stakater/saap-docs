@@ -24,7 +24,7 @@ There are two ways to provision a TLS certificate for your domain:
 
 Use cert-manager to issue and renew certificates automatically. See [cert-manager managed addon](../../managed-addons/cert-manager/overview.md) for configuration options.
 
-For step-by-step setup using DNS-01 challenges, see [Manage TLS certificates](tls-certs.md).
+For step-by-step setup using DNS-01 challenges, see [Configure TLS certificates](tls-certs.md).
 
 For http-01 challenges, see [Use http-01 certificate challenges](http01-certs.md).
 
@@ -87,4 +87,4 @@ Once the certificate is issued and the route is created, open `https://custom.do
 
 ---
 
-For DNS-01 wildcard certificate setup, continue to [Manage TLS certificates](tls-certs.md).
+For wildcard certificates or clusters without public internet access, continue to [Configure TLS certificates](tls-certs.md). For a single public hostname, continue to [Use http-01 certificate challenges](http01-certs.md).
