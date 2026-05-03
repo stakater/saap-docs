@@ -30,7 +30,7 @@ On the newly created client, open the **Credentials** tab and copy the **Secret*
 
 ## 3. Share credentials with Stakater Support
 
-Open a support ticket at [support.stakater.com](https://support.stakater.com) and provide:
+Open a support ticket at [Stakater Support](https://support.stakater.com) and provide:
 
 - Client ID: `ap-broker`
 - Client Secret (share via a secure channel)

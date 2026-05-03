@@ -2,7 +2,7 @@
 
 This page explains how to provision a wildcard TLS certificate using cert-manager with a DNS-01 challenge, distribute it across tenant namespaces, and validate the result. Use this approach when you need wildcard coverage (e.g. `*.example.com`) or when your cluster is not publicly reachable.
 
-For HTTP-01 challenges (no DNS credentials required), see [Use HTTP-01 certificate challenges](http01-certs.md).
+For http-01 challenges (no DNS credentials required), see [Use http-01 certificate challenges](http01-certs.md).
 
 ---
 

@@ -89,7 +89,7 @@ The root-level `argocd-apps` folder is the entry point per cluster. It contains 
 
 Create an `argocd-apps/CLUSTER_NAME/` folder for each cluster you are deploying to.
 
-Create `argocd-apps/CLUSTER_NAME/TENANT_NAME-dev.yaml` pointing to the tenant-level argocd-apps for the dev environment:
+Create `argocd-apps/CLUSTER_NAME/TENANT_NAME-dev.yaml` pointing to the tenant-level `argocd-apps` for the dev environment:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -179,7 +179,7 @@ spec:
       selfHeal: true
 ```
 
-Add an ArgoCD Application in `CLUSTER_NAME/argocd-apps/apps-gitops-config.yaml` that watches the root argocd-apps in the apps repository:
+Add an ArgoCD Application in `CLUSTER_NAME/argocd-apps/apps-gitops-config.yaml` that watches the root `argocd-apps` in the apps repository:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

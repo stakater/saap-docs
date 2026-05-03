@@ -51,5 +51,5 @@ This section covers building, deploying, and running applications on {{ product_
 - [Expose your application](./how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md)
 - [Enable Spring Boot metrics](./how-to-guides/expose-spring-boot-metrics/expose-spring-boot-metrics.md)
 - [Remote debugging (.NET)](./how-to-guides/remote-debugging/remote-debugging-dotnet.md)
-- [Remote debugging with MirrorD](./how-to-guides/remote-debugging-mirrord/remote-debugging-mirrord-tilt.md)
+- [Remote debugging with mirrord](./how-to-guides/remote-debugging-mirrord/remote-debugging-mirrord-tilt.md)
 - [Path rewriting](./how-to-guides/rewriting-path-annotation/path-rewriting.md)

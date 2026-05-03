@@ -8,8 +8,8 @@
 
 | Repository | What it contains |
 |---|---|
-| **infra-gitops-config** | Tenants, quotas, namespaces, and the ArgoCD applications that watch everything else. Cluster-scoped configuration. |
-| **apps-gitops-config** | Application deployments, organized by tenant and environment. What your teams ship. |
+| `infra-gitops-config` | Tenants, quotas, namespaces, and the ArgoCD applications that watch everything else. Cluster-scoped configuration. |
+| `apps-gitops-config` | Application deployments, organized by tenant and environment. What your teams ship. |
 
 ArgoCD watches both repositories and reconciles the cluster to match their contents automatically.
 

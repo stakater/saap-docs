@@ -1,8 +1,8 @@
-# Use HTTP-01 certificate challenges
+# Use http-01 certificate challenges
 
-This page explains how to issue a TLS certificate for a specific hostname using cert-manager's HTTP-01 challenge. Use this approach when you have a single hostname and a publicly reachable cluster.
+This page explains how to issue a TLS certificate for a specific hostname using cert-manager's http-01 challenge. Use this approach when you have a single hostname and a publicly reachable cluster.
 
-For wildcard certificates or clusters without public HTTP access, use [DNS-01 challenges](tls-certs.md) instead.
+For wildcard certificates or clusters without public http access, use [DNS-01 challenges](tls-certs.md) instead.
 
 ---
 

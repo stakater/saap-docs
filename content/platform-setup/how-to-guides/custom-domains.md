@@ -26,7 +26,7 @@ Use cert-manager to issue and renew certificates automatically. See [cert-manage
 
 For step-by-step setup using DNS-01 challenges, see [Manage TLS certificates](tls-certs.md).
 
-For HTTP-01 challenges, see [Use HTTP-01 certificate challenges](http01-certs.md).
+For http-01 challenges, see [Use http-01 certificate challenges](http01-certs.md).
 
 ### Option 2: Bring your own certificate
 

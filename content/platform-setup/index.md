@@ -22,7 +22,7 @@ Run these steps once, in order, when your cluster is first provisioned:
 
 1. [Configure the infra GitOps repository](tutorials/configure-infra-gitops-repo.md) — define tenants, quotas, and cluster-level resources
 1. [Configure the apps GitOps repository](tutorials/configure-apps-gitops-repo.md) — register your applications and environments for GitOps delivery
-1. [Connect your identity provider](how-to-guides/keycloak-idp.md) — federate your existing IDP into your Keycloak realm
+1. [Connect your identity provider](how-to-guides/keycloak-idp.md) — federate your existing IdP into your Keycloak realm
 1. [Configure user access](how-to-guides/user-access.md) — assign roles to your teams
 
 ---
@@ -47,7 +47,7 @@ Configure custom domains and automate TLS certificate management:
 
 - [Configure custom domains](how-to-guides/custom-domains.md)
 - [Configure TLS certificates](how-to-guides/tls-certs.md)
-- [Use HTTP-01 certificate challenges](how-to-guides/http01-certs.md)
+- [Use http-01 certificate challenges](how-to-guides/http01-certs.md)
 
 ---
 
