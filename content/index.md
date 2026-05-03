@@ -70,9 +70,9 @@ See [Responsibilities](about/responsibilities.md) for a clear breakdown of what 
 | I want to... | Go to |
 |---|---|
 | See exactly what's included | [Service Definition](about/service-definition.md) |
-| Understand shared responsibilities | [Responsibilities](about/responsibilities.md) |
-| Get started as a developer | [Developer Overview](for-developers/overview.md) |
-| Set up GitOps and configure the platform | [DevOps Engineer Overview](for-devops-engineers/overview.md) |
-| Configure cluster access and security | [Administrator Overview](for-administrators/overview.md) |
-| Review compliance and regulatory coverage | [CISOs and DPOs](for-cisos-dpos/overview.md) |
+| Understand what Stakater manages vs what you own | [Responsibilities](about/responsibilities.md) |
+| Set up GitOps repositories and configure the platform | [Platform Setup](platform-setup/overview.md) |
+| Deploy my first application | [Deploy Your First App](develop/tutorials/deploy-demo-app.md) |
+| Start the inner development loop | [Inner Loop](develop/tutorials/inner-loop/prepare-environment/prepare-env.md) |
+| Review compliance and regulatory coverage | [Security & Compliance](secure/overview.md) |
 | Browse available platform components | [Managed Addons](managed-addons/overview.md) |
