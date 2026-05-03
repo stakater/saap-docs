@@ -1,4 +1,4 @@
-# Connect Azure AD as an identity provider
+# Connect Azure AD
 
 This page explains how to register an Azure AD application and share the credentials with Stakater Support so that users in your Azure AD tenant can log into {{ product_name }}.
 

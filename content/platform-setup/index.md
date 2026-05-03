@@ -29,13 +29,21 @@ Run these steps once, in order, when your cluster is first provisioned:
 
 ## Identity & Access
 
-Connect your organization's identity provider and control who can access what:
+### Identity providers
 
-- [Connect Keycloak as an identity provider](how-to-guides/keycloak-idp.md)
-- [Connect Google](how-to-guides/google-idp.md)
-- [Connect Azure AD](how-to-guides/azure-idp.md)
-- [Configure Azure group sync](how-to-guides/azure-gso.md)
-- [Configure SAML](how-to-guides/saml-idp.md)
+Federate your organization's existing accounts so users can log in without a separate password:
+
+| Provider | Guides |
+|---|---|
+| Keycloak | [Connect Keycloak](how-to-guides/keycloak-idp.md) |
+| Google | [Connect Google](how-to-guides/google-idp.md) |
+| Azure AD | [Azure AD overview](how-to-guides/azure-ad/index.md) — connect + group sync |
+| SAML | [Connect SAML](how-to-guides/saml-idp.md) |
+
+### Access control
+
+Define what authenticated users are allowed to do:
+
 - [Configure authorization roles](how-to-guides/authorization-roles.md)
 - [Configure user access](how-to-guides/user-access.md)
 

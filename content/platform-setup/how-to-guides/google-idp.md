@@ -1,4 +1,4 @@
-# Connect Google as an identity provider
+# Connect Google
 
 This page explains how to register a Google OAuth application and share the credentials with Stakater Support so that users with a Google account can log into {{ product_name }}.
 

@@ -1,4 +1,4 @@
-# Connect Keycloak as an identity provider
+# Connect Keycloak
 
 This page explains how to federate your existing Keycloak realm into {{ product_name }} so that your users can log into the platform's managed addons with their existing accounts.
 

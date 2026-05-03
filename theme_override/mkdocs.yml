@@ -43,13 +43,17 @@ nav:
           - platform-setup/tutorials/configure-infra-gitops-repo.md
           - platform-setup/tutorials/configure-apps-gitops-repo.md
       - Identity & Access:
-          - platform-setup/how-to-guides/keycloak-idp.md
-          - platform-setup/how-to-guides/google-idp.md
-          - platform-setup/how-to-guides/azure-idp.md
-          - platform-setup/how-to-guides/azure-gso.md
-          - platform-setup/how-to-guides/saml-idp.md
-          - platform-setup/how-to-guides/authorization-roles.md
-          - platform-setup/how-to-guides/user-access.md
+          - Identity providers:
+              - platform-setup/how-to-guides/keycloak-idp.md
+              - platform-setup/how-to-guides/google-idp.md
+              - Azure AD:
+                  - platform-setup/how-to-guides/azure-ad/index.md
+                  - platform-setup/how-to-guides/azure-idp.md
+                  - platform-setup/how-to-guides/azure-gso.md
+              - platform-setup/how-to-guides/saml-idp.md
+          - Access control:
+              - platform-setup/how-to-guides/authorization-roles.md
+              - platform-setup/how-to-guides/user-access.md
       - Networking:
           - platform-setup/how-to-guides/custom-domains.md
           - platform-setup/how-to-guides/tls-certs.md

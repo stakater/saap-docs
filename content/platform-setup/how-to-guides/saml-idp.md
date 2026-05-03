@@ -1,4 +1,4 @@
-# Connect a SAML identity provider
+# Connect SAML
 
 This page explains how to integrate a SAML v2.0 identity provider with {{ product_name }} so your users can authenticate with their existing organizational accounts.
 

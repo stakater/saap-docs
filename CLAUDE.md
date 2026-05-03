@@ -30,8 +30,8 @@ Present only what the reader needs at this point in their journey. Information n
 End every major section and every page with a sentence pointing to the next logical action. The reader should never have to decide what to do next on their own.
 
 Examples:
-- "Once you have completed X, continue to [Y](link.md)."
-- "With the repository configured, the next step is [setting up user access](link.md)."
+- "Once you have completed X, continue to Y."
+- "With the repository configured, the next step is setting up user access."
 
 A page that ends without a next step is incomplete.
 
