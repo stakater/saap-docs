@@ -1,290 +1,191 @@
-# Deploy demo app
+# Deploy a demo app
 
-Objective
-Deploy your first app using GitOps
+By the end of this tutorial, you will have built a container image, pushed it to Harbor, packaged a Helm chart, deployed it via ArgoCD, and verified the application is running in your cluster.
 
-Key Results:
+This tutorial uses [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web) as the demo application. Replace `APP_NAME` with `stakater-nordmart-review-web` as you follow along, or substitute your own application.
 
-- Push artifacts to Harbor
-- Deploy app using helm charts via ArgoCD
+**Prerequisites:**
 
-This guide covers the step-by-step guide to onboard a new project/application/microservice on {{ product_name }}.
+- A tenant is defined in your infra GitOps repository — see [Configure the infra GitOps repository](../../platform-setup/tutorials/configure-infra-gitops-repo.md).
+- The tenant is onboarded in your apps GitOps repository — see [Configure the apps GitOps repository](../../platform-setup/tutorials/configure-apps-gitops-repo.md).
+- Harbor registry is available. Contact your administrator for credentials.
+- Tools installed: [`helm`](https://helm.sh/docs/intro/install/), [`git`](https://git-scm.com/downloads), [`oc`](https://docs.openshift.com/container-platform/4.11/cli_reference/openshift_cli/getting-started-cli.html), [`buildah`](https://github.com/containers/buildah/blob/main/install.md)
 
-Changes required in application repository:
+Replace the following placeholders with your own values throughout this tutorial:
 
-1. Add Dockerfile to application repository.
-1. Push Docker Image to Harbor.
-1. Add Helm Chart to application repository.
-1. Push Helm Chart to Harbor.
+| Placeholder | Description |
+|---|---|
+| `TENANT_NAME` | Your tenant name |
+| `APP_NAME` | Your application name (use `stakater-nordmart-review-web` for this demo) |
+| `IMAGE_TAG` | The image tag (e.g. `1.0.0`) |
+| `HARBOR_REGISTRY_URL` | The Harbor Docker registry hostname (without `https://`, find it via Forecastle) |
+| `HARBOR_HELM_REPO_URL` | The Harbor Helm registry URL (find it via Forecastle) |
 
-In this section, we will use [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web) application as an example and add it to our GitOps structure we made in the previous section.
+---
 
-## Prerequisites
+## 1. Log in to the Harbor registry
 
-- [`tenant` for application must be defined via `infra-gitops-config`](../../platform-setup/tutorials/configure-infra-gitops-repo.md).
-- [`tenant` for application should be onboarded onto `apps-gitops-config`](../../platform-setup/tutorials/configure-apps-gitops-repo.md).
-- Harbor registry must be available (contact your administrator for credentials).
-- [helm](https://helm.sh/docs/intro/install/)
-- [git](https://git-scm.com/downloads)
-- [oc](https://docs.openshift.com/container-platform/4.11/cli_reference/openshift_cli/getting-started-cli.html)
-- [buildah](https://github.com/containers/buildah/blob/main/install.md)
+Find the Harbor URL in Forecastle, then log in:
 
-## Harbor Registry
-
-> Ask your administrator for Harbor registry credentials before proceeding.
-
-Navigate to the cluster Forecastle and search `harbor` to find your Harbor instance URL.
-
-- `harbor-docker-reg-url`: The Harbor registry hostname (without `https://`). Used for container image push/pull.
-- `harbor-helm-reg-url`: The Harbor OCI registry URL for Helm charts.
-
-### Login to Docker Registry
-
-Run following command to log into the registry:
-
-```sh
-buildah login <nexus-docker-reg-url>
+```bash
+buildah login HARBOR_REGISTRY_URL
 ```
 
-Specify admin provided username and password to login.
+---
 
-## 1. Add **Dockerfile** to application repository
+## 2. Add a Dockerfile
 
-We need a **Dockerfile** for our application present at the root of our code repo to build a container image.  Navigate to [`RedHat image registry`](https://catalog.redhat.com/software/containers/search) and find a suitable base image for the application.
-
-Below is a Dockerfile for a ReactJS application for product reviews. Visit for more info: <https://github.com/stakater-lab/stakater-nordmart-review-web>
-
-```Dockerfile
-FROM node:14 as builder
-LABEL name="Nordmart review"
-
-# set workdir
-RUN mkdir -p $HOME/application
-WORKDIR $HOME/application
-
-# copy the entire application
-COPY . .
-
-# install dependencies
-RUN npm ci
-ARG VERSION
-
-# build the application
-RUN npm run build -- --env VERSION=$VERSION
-
-EXPOSE 4200
-
-CMD ["node", "server.js"]
-```
-
-> Create [multi-stage builds](https://docs.docker.com/build/building/multi-stage/), use multiple `FROM` statements. Each `FROM` instruction can use a different base, and each of them begins a new stage of the build. You can selectively copy artifacts from one stage to another, leaving behind everything you don't want in the final image. The end result is the same tiny production image as before, with a significant reduction in complexity. You don't need to create any intermediate images, and you don't need to extract any artifacts to your local system at all.
-
-Look into the following Docker guides for a start.
-
-| Framework/Language | Reference                                                   |
-|--------------------|-------------------------------------------------------------|
-| NodeJS             | <https://nodejs.org/en/docs/guides/nodejs-docker-webapp/>     |
-| Django             | <https://blog.logrocket.com/dockerizing-django-app/>          |
-| General            | <https://www.redhat.com/sysadmin/containerizing-applications> |
-
-## 2. Push Docker Image to Harbor
-
-Lets clone the [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web) application.
+Your application repository needs a `Dockerfile` at the root. Clone the demo app to follow along:
 
 ```bash
 git clone https://github.com/stakater-lab/stakater-nordmart-review-web
 cd stakater-nordmart-review-web
 ```
 
-Replace the placeholders and Run the following command inside application folder.
+The demo app already includes a Dockerfile. For your own application, create one based on a suitable base image from the [Red Hat container catalog](https://catalog.redhat.com/software/containers/search). Below is the demo app's Dockerfile as a reference:
 
-```sh
-# Buldah Bud Info : https://manpages.ubuntu.com/manpages/impish/man1/buildah-bud.1.html
-# buildah bud --format=docker --tls-verify=false --no-cache -f ./Dockerfile -t <nexus-docker-reg-url>/<app-name>:<tag> .
-buildah bud --format=docker --tls-verify=false --no-cache -f ./Dockerfile -t <nexus-docker-reg-url>/stakater-nordmart-review-web:1.0.0 .
+```Dockerfile
+FROM node:14 as builder
+LABEL name="Nordmart review"
+
+RUN mkdir -p $HOME/application
+WORKDIR $HOME/application
+
+COPY . .
+
+RUN npm ci
+ARG VERSION
+RUN npm run build -- --env VERSION=$VERSION
+
+EXPOSE 4200
+CMD ["node", "server.js"]
 ```
 
-Lets push the image to nexus docker repo. Make sure to get credentials from Stakater Admin.
+Use [multi-stage builds](https://docs.docker.com/build/building/multi-stage/) to keep the final image small — build in one stage, copy only the output into a minimal runtime image.
 
-```sh
-# Buildah push Info https://manpages.ubuntu.com/manpages/impish/man1/buildah-push.1.html
-# buildah push <nexus-docker-reg-url>/<app-name>:<tag> docker://<nexus-docker-reg-url>/<app-name>:<tag>
-buildah push <nexus-docker-reg-url>/stakater-nordmart-review-web:1.0.0 docker://<nexus-docker-reg-url>/stakater-nordmart-review-web:1.0.0
+---
+
+## 3. Build and push the image
+
+Build the image from your application directory:
+
+```bash
+buildah bud --format=docker --tls-verify=false --no-cache \
+  -f ./Dockerfile \
+  -t HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME:IMAGE_TAG .
 ```
 
-!!! note
-    Harbor registry URL is the one we extract in the above section. Make sure you are logged in to the Harbor registry before building and pushing the application image.**
+Push it to Harbor:
 
-## 3. Add Helm Chart to application repository
-
-In application repo add Helm Chart in ***deploy*** folder at the root of your repository. To configure Helm chart add following 2 files in ***deploy*** folder.
-
-1. A `Chart.yaml` is YAML file containing information about the chart. We will be using an external helm dependency chart called **Stakater Application Chart**. The Helm chart is present in a remote Helm Chart repository
-
-    > More Info : Stakater Application Chart <https://github.com/stakater/application>
-
-    ```yaml
-      apiVersion: v2
-      # Replace Chart Name with AppName.
-      # name: <app-name>
-      name: stakater-nordmart-review-web
-      description: A Helm chart for Kubernetes
-      dependencies:
-      - name: application
-        version: 2.1.13
-        repository: https://stakater.github.io/stakater-charts
-      type: application
-      version: 1.0.0
-    ```
-
-1. The `values.yaml` contains all the application specific **Kubernetes resources** (deployments, ConfigMaps, namespaces, secrets, services, route, `podautoscalers`, RBAC) for the particular environment. Configure Helm values as per application needs.
-
-    Here is a minimal values file defined for an application with deployment,route,service.
-
-    ```yaml
-    # Name of the dependency chart
-    application:
-      # application name should be short so limit of 63 characters in route can be fulfilled.
-      # Default route name formed is <application-name>-<namespace>.<base-domain> .
-      # Config Maps have <application> prefixed
-
-      # Replace applicationName with <app-name>
-      applicationName: stakater-nordmart-review-web
-
-      deployment:
-        # nexus-docker-config-forked is deployed in all tenant namespaces for pulling images
-        imagePullSecrets: nexus-docker-config-forked
-        image:
-          # <app-name>
-          # you can leave repository and tag emtpy as they are overrided in gitops
-          repository: stakater-nordmart-review-web
-          tag: 1.0.0
-      route:
-        enabled: true
-        port:
-          targetPort: http
-    ```
-
-1. Add Helm chart repos
-
-    If you reference Helm charts from private registry then you first need to add it
-
-    ```sh
-    cd deploy
-
-    # Add Stakater Charts repo defined in the Chart.yaml
-    helm repo add stakater-charts https://stakater.github.io/stakater-charts
-
-    # Add nexus helm repo
-    # Helm credentials can be found in OpenBao or in a secret in build namespace
-    helm repo add stakater-nexus <private repo URL> --username helm-user-name --password ********;
-    ```
-
-1. Make sure to validate the helm chart before doing a commit to the repository.
-If your application contains dependency charts run the following command in deploy/ folder to download helm dependencies using **helm dependency build**.
-
-    ```sh
-    # Make sure you are working in deploy directory
-    cd deploy/
-    # Download helm dependencies in Chart.yaml
-    # command info : helm dependency --help
-    helm dependency build
-    ```
-
-    ![helm-dependency-build](images/helm-dependency-build.png)
-
-1. Run the following command to see the Kubernetes manifests are being generated successfully and validate whether they match your required configuration. This simple helm chart generates deployment, service and route resources.
-
-    > View Application Chart Usage [here](https://github.com/stakater/application)
-
-    ```sh
-    # Generates the chart against values file provided
-    # and write the output to application-output.yaml
-    # command info : helm template --help
-    helm template . > application-output.yaml
-    ```
-
-    Open the file to view raw Kubernetes manifests separated by '---' that ll be deployed for your application.
-
-References to Explore:
-
-- [`stakater-nordmart-review`](https://github.com/stakater-lab/stakater-nordmart-review/deploy)
-- [`stakater-nordmart-review-web`](https://github.com/stakater-lab/stakater-nordmart-review-web/deploy)
-- [All configurations available via Application Chart Values YAML](https://github.com/stakater/application/blob/master/application)
-
-## 4. Push Helm Chart to Harbor
-
-> Ask admin for Docker and Helm Registry Credentials for pushing container images and helm chart respectively.
-
-After successfully pushing the image to Harbor. We need to package our helm chart and push to Harbor.
-Run the following command to package the helm chart into compressed file.
-
-```sh
-# helm package [CHART_PATH]
-helm package .
-# output : successfully packaged chart and saved it to: /Desktop/stakater-nordmart-review-web/deploy/stakater-nordmart-review-web-1.0.0.tgz
+```bash
+buildah push HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME:IMAGE_TAG \
+  docker://HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME:IMAGE_TAG
 ```
 
-This command packages a chart into a versioned chart archive file.
+---
 
-```sh
-# helm
-# curl -u "<helm_user>":"<helm_password>" <nexus-helm-reg-url>/ --upload-file "<app-name>-1.0.0.tgz"
-curl -u "helm-user":"password123" https://<nexus-helm-reg-url>/repository/helm-charts/ --upload-file "stakater-nordmart-review-web-1.0.0.tgz"
-```
+## 4. Add a Helm chart
 
-## 5. Add application chart to `apps-gitops-config`
+In your application repository, create a `deploy/` folder at the root with two files.
 
-Navigate to `apps-gitops-config` repository and add a helm chart in path `gabbar/stakater-nordmart-review/dev` i.e. `<tenant-name>/<app-name>/dev`.
-
-![app-in-dev-env](images/app-in-dev-env.png)
-
-For `Chart.yaml`:
-
-!!! note
-    In **`Chart.yaml`** 'C' is capitalized.
+`deploy/Chart.yaml`:
 
 ```yaml
-# <tenant-name>/<app-name>/dev/Chart.yaml
 apiVersion: v2
-# name: <app-name>
-name: stakater-nordmart-review-web
+name: APP_NAME
 description: A Helm chart for Kubernetes
 dependencies:
-  # name: <chart-name-in-deploy-folder>
-  - name: stakater-nordmart-review-web
-    version: "1.0.0"
-    # repository: <nexus-helm-reg-url>/repository/helm-charts/
-    repository: https://<nexus-helm-reg-url>/repository/helm-charts/
-version: 1.0.0
+  - name: application
+    version: 2.1.13
+    repository: https://stakater.github.io/stakater-charts
+type: application
+version: IMAGE_TAG
 ```
 
-For `values.yaml`:
+`deploy/values.yaml`:
 
 ```yaml
-# <tenant-name>/<app-name>/dev/values.yaml
-# Name of dependency in Chart.yaml
-<dependency-name>:
+application:
+  applicationName: APP_NAME
+  deployment:
+    imagePullSecrets: nexus-docker-config-forked
+    image:
+      repository: APP_NAME
+      tag: IMAGE_TAG
+  route:
+    enabled: true
+    port:
+      targetPort: http
+```
+
+Validate the chart before committing:
+
+```bash
+cd deploy/
+helm dependency build
+helm template . > output.yaml
+```
+
+Open `output.yaml` to confirm the generated manifests look correct.
+
+---
+
+## 5. Package and push the chart to Harbor
+
+```bash
+helm package .
+curl -u "HARBOR_USERNAME":"HARBOR_PASSWORD" HARBOR_HELM_REPO_URL \
+  --upload-file "APP_NAME-IMAGE_TAG.tgz"
+```
+
+---
+
+## 6. Add the application to apps-gitops-config
+
+In your `apps-gitops-config` repository, create the deployment folder at `TENANT_NAME/APP_NAME/dev/`.
+
+`TENANT_NAME/APP_NAME/dev/Chart.yaml`:
+
+```yaml
+apiVersion: v2
+name: APP_NAME
+description: A Helm chart for Kubernetes
+dependencies:
+  - name: APP_NAME
+    version: IMAGE_TAG
+    repository: HARBOR_HELM_REPO_URL
+version: IMAGE_TAG
+```
+
+`TENANT_NAME/APP_NAME/dev/values.yaml`:
+
+```yaml
+APP_NAME:
   application:
     deployment:
       image:
-        # repository: <nexus-docker-reg-url>/<tenant-name>/<app-name>
-        repository: <nexus-docker-reg-url>/stakater-nordmart-review-web
-        tag: 1.0.0
+        repository: HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME
+        tag: IMAGE_TAG
 ```
 
-## 6. View Application in Cluster
+Commit and push both files.
 
-Login into ArgoCD UI using Forecastle console. Visit the application against dev environment inside your tenant. Usual naming convention is **tenantName-envName-appName**. Make sure that there aren't any error while deploying during ArgoCD.
+---
 
-![dev-ArgoCD-app](images/dev-argocd-app.png)
+## 7. Verify in ArgoCD
 
-Visit the OpenShift console to verify the application deployment.
+Log in to ArgoCD via Forecastle. Locate the application named `TENANT_NAME-dev-APP_NAME` and confirm it has synced successfully.
 
-![review-web-pod](images/review-web-pod.png)
+![ArgoCD application view](images/dev-argocd-app.png)
 
-![review-web-route](images/review-web-route.png)
+Open the OpenShift console, navigate to **Workloads > Pods** in the `TENANT_NAME-dev` namespace, and confirm the pods are running.
 
-Visit the application URL using routes to check if application is working as expected.
+![Application pod running](images/review-web-pod.png)
 
-![review-web-UI](images/review-web-ui.png)
+Open the route URL to confirm the application is serving traffic.
+
+![Application UI](images/review-web-ui.png)
+
+---
+
+With your first application deployed, continue to [Promote your application](../how-to-guides/promote-your-application/promote-your-application.md) to release it to the next environment.

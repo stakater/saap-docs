@@ -1,52 +1,69 @@
-# Promote your Application
+# Promote your application
 
-To promote application from one environment to another; as mentioned above you will need to bump chart version and image tag version in that environment. You can do so by picking these versions from previous environment.
+This tutorial walks through promoting an application from `dev` to `staging` by updating the chart version and image tag in your apps GitOps repository.
 
-This guide assumes that application is already [on-boarded](../../../../develop/tutorials/deploy-demo-app.md) to different environments.
+This tutorial assumes your application is already deployed in the `dev` environment via the apps GitOps repository. If not, complete [Deploy a demo app](../../deploy-demo-app.md) first.
 
-## 1. Promote chart
+Replace the following placeholders with your own values:
 
-To promote application from one environment to another, you can check the chart version from `Chart.yaml` file from one environment and update version in `Chart.yaml` of next environment:
+| Placeholder | Description |
+|---|---|
+| `TENANT_NAME` | Your tenant name |
+| `APP_NAME` | Your application name |
+| `SOURCE_ENV` | The environment you are promoting from (e.g. `dev`) |
+| `TARGET_ENV` | The environment you are promoting to (e.g. `staging`) |
+
+---
+
+## 1. Check the current version in the source environment
+
+Open `TENANT_NAME/APP_NAME/SOURCE_ENV/Chart.yaml` in your apps GitOps repository:
 
 ```yaml
 apiVersion: v2
 dependencies:
-  - name: <application-name>
-    repository: <application-chart-repo>
+  - name: APP_NAME
+    repository: HARBOR_HELM_REPO_URL
     version: 1.0.51
-description: A Helm chart for Kubernetes
-name: <application-name>
+name: APP_NAME
 version: 1.0.51
 ```
 
-pick version `1.0.51` from above `Chart.yaml` and copy it in `Chart.yaml` of next environment
+Note the version — you will copy it to the target environment.
 
-## 2. Promote image
+---
 
-To promote application from one environment to another, you can check the image tag version from `values.yaml` file from one environment and update version in `values.yaml` of next environment:
+## 2. Update the target environment
 
-`<gitops-repo>/<tenant>/<application>/<env-1>/values.yaml`
+Open `TENANT_NAME/APP_NAME/TARGET_ENV/Chart.yaml` and set the same version:
 
 ```yaml
-<application-name>:
+apiVersion: v2
+dependencies:
+  - name: APP_NAME
+    repository: HARBOR_HELM_REPO_URL
+    version: 1.0.51
+name: APP_NAME
+version: 1.0.51
+```
+
+Open `TENANT_NAME/APP_NAME/TARGET_ENV/values.yaml` and update the image tag to match:
+
+```yaml
+APP_NAME:
   application:
     deployment:
       image:
-        repository: nexus-docker-stakater-nexus.{CLUSTER_DOMAIN}/
+        repository: HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME
         tag: 1.0.51
 ```
 
-  > Note: Find Harbor Docker registry URL and Helm Registry URL the Harbor registry URL (find it in Forecastle)
+---
 
-Pick version `1.0.51` and paste it to next environment
+## 3. Commit and verify
 
-`<gitops-repo>/<tenant>/<application>/<env-2>/values.yaml`
+Commit and push your changes. Log in to ArgoCD and confirm the `TENANT_NAME-TARGET_ENV-APP_NAME` application has synced and the pods are running in the `TENANT_NAME-TARGET_ENV` namespace.
 
-```yaml
-<application-name>:
-  application:
-    deployment:
-      image:
-        repository: nexus-docker-stakater-nexus.{CLUSTER_DOMAIN}/
-        tag: 1.0.50
-```
+---
+
+You have promoted the application through one environment. Repeat the same steps for each subsequent environment.

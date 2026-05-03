@@ -1,57 +1,51 @@
-<!-- vale off -->
-# Exposing your application to the internet over HTTPS with a custom hostname
+# Expose your application over HTTPS
 
-This guide covers how to configure an OpenShift `Route` resource to expose your application to the internet over HTTPS with a custom hostname.
-<!-- vale on -->
+This guide explains how to configure an OpenShift `Route` to serve your application on a custom hostname over HTTPS using a TLS certificate managed by cert-manager.
 
-## Prerequisites
+**Prerequisites:**
 
-Before proceeding, ensure the following prerequisites are met:
+- A `Certificate` resource is configured in your cluster. Confirm the secret name with your cluster administrator.
+- ExternalDNS is operational and will register the DNS record automatically when the `Route` is created.
 
-- **Cert Manager Certificate**: Verify with your cluster administrator that cert manager `Certificate` is properly configured.
-- **External DNS**: Confirm that External DNS is set up and operational for managing DNS records.
+Replace the following placeholders with your own values throughout this guide:
 
-## Step 1: Deploy the Route
+| Placeholder | Description |
+|---|---|
+| `TLS_SECRET_NAME` | The name of the Kubernetes secret holding the TLS certificate |
+| `HOSTNAME` | The custom hostname for your application (e.g. `app.example.com`) |
+| `APP_PATH` | The URL path to expose (e.g. `/` or `/api`) |
 
-A [`Route`](https://docs.openshift.com/container-platform/4.17/networking/routes/route-configuration.html) resource is used to expose your application to the internet using a specific host name. Follow the steps below to configure the Route.
+---
 
-### Update `values.yaml`
+## 1. Update your Helm values
 
-Update the `values.yaml` file in your application’s Helm chart with the following configuration:
+Add a `route` section to your application's `values.yaml`:
 
 ```yaml
 application:
-  ...
   route:
     enabled: true
     annotations:
-      cert-utils-operator.redhat-cop.io/certs-from-secret: <name-of-certificate-secret>
-      external-dns.alpha.kubernetes.io/hostname: <desired-host-name>
+      cert-utils-operator.redhat-cop.io/certs-from-secret: TLS_SECRET_NAME
+      external-dns.alpha.kubernetes.io/hostname: HOSTNAME
       cert-utils-operator.redhat-cop.io/inject-CA: "false"
-    host: <desired-host-name>
-    path: <desired-path>
+    host: HOSTNAME
+    path: APP_PATH
 ```
 
-#### Important Details
+The `cert-utils-operator` annotation injects the TLS certificate from `TLS_SECRET_NAME` into the route automatically. The `external-dns` annotation registers the DNS record with your configured DNS provider.
 
-- **Annotations**:
-    - `cert-utils-operator.redhat-cop.io/certs-from-secret`: Specifies the name of the secret that stores the TLS certificate created by the Certificate resource.
-    - `external-dns.alpha.kubernetes.io/hostname`: Registers the DNS record with the configured provider (e.g., Cloudflare).
-    - `cert-utils-operator.redhat-cop.io/inject-CA`: Indicates whether to inject the Certificate Authority (CA) into the Route. Set to "false" if not required.
+---
 
-- **Additional Configuration**:
-    - `route.host`: Specifies the host name that you want to use for this route. This value must match the `external-dns.alpha.kubernetes.io/hostname` annotation.
-    - `route.path`:  Specifies the URL path where your application will be exposed (e.g., `/api`).
+## 2. Verify
 
-### Validation
+Commit and push your changes. After ArgoCD syncs:
 
-After updating the `values.yaml` file and applying the Helm chart, verify the deployment:
+1. Navigate to **Networking > Routes** in the OpenShift console.
+1. Locate the route for your application.
+1. Confirm the status is **Accepted** and the hostname and TLS settings are correct.
+1. Open `https://HOSTNAME` in a browser to confirm the application is reachable.
 
-#### Route
+---
 
-1. Navigate to the OpenShift cluster console.
-1. Go to Networking > Routes and locate the Route resource for your application.
-1. Confirm that:
-    - The Route resource is listed.
-    - Its status is Accepted.
-    - The DNS name and TLS configuration are correct.
+For wildcard certificates or custom TLS setup, see [Configure TLS certificates](../../../platform-setup/how-to-guides/tls-certs.md).

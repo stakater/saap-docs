@@ -55,4 +55,10 @@ The following figure illustrates the interplay of the inner and outer loops in a
 
 ![A flow diagram of the inner and outer loops in a Kubernetes development process](./images/inner-vs-outer-v4.png)
 
-Notice that, while you code, you are constantly iterating through various development activities: You code, build, deploy locally, and debug—and you keep going until you achieve a degree of feature completeness. At some point, you will be ready to transition from inner to outer, right? Not so quick.
+Notice that, while you code, you are constantly iterating through various development activities: you code, build, deploy locally, and debug — and you keep going until you achieve a degree of feature completeness. The transition from inner to outer loop happens when you commit your changes and the CI/CD pipeline takes over: running tests, building the release image, and deploying through ArgoCD.
+
+On {{ product_name }}, the outer loop is driven entirely from Git. A commit to your apps GitOps repository triggers ArgoCD to deploy the new version — no manual steps required.
+
+---
+
+With the inner and outer loop concepts clear, continue to [Plan your deployment](plan-your-deployment.md) to evaluate your application's requirements before you start.

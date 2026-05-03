@@ -59,18 +59,21 @@ nav:
           - platform-setup/how-to-guides/add-a-new-application.md
           - platform-setup/how-to-guides/add-a-new-environment-to-application.md
   - Deploy:
-      - develop/explanation/inner-outer-loop.md
-      - develop/explanation/plan-your-deployment.md
-      - develop/tutorials/deploy-demo-app.md
-      - develop/how-to-guides/build-and-push-your-image/build-and-push-your-image.md
-      - develop/how-to-guides/package-and-push-your-chart/package-and-push-your-chart.md
-      - develop/how-to-guides/deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md
-      - develop/how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md
-      - develop/how-to-guides/rewriting-path-annotation/path-rewriting.md
-      - operate/secure-routes.md
-      - develop/how-to-guides/promote-your-application/promote-your-application.md
-      - develop/tutorials/outer-loop/access-cluster/access-the-cluster.md
-      - develop/tutorials/outer-loop/promote-application/promote-app.md
+      - develop/index.md
+      - Concepts:
+          - develop/explanation/inner-outer-loop.md
+          - develop/explanation/plan-your-deployment.md
+      - Tutorials:
+          - develop/tutorials/outer-loop/access-cluster/access-the-cluster.md
+          - develop/tutorials/deploy-demo-app.md
+      - How-to guides:
+          - develop/how-to-guides/build-and-push-your-image/build-and-push-your-image.md
+          - develop/how-to-guides/package-and-push-your-chart/package-and-push-your-chart.md
+          - develop/how-to-guides/deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md
+          - develop/how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md
+          - develop/how-to-guides/rewriting-path-annotation/path-rewriting.md
+          - operate/secure-routes.md
+          - develop/how-to-guides/promote-your-application/promote-your-application.md
   - Develop:
       - develop/explanation/local-development-workflow.md
       - develop/explanation/developer-training.md

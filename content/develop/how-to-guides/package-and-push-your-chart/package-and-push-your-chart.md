@@ -1,57 +1,59 @@
 # Package and push your chart to Harbor
 
-## Objectives
+By the end of this guide, your Helm chart will be packaged and available in Harbor's Helm registry, ready to be deployed via ArgoCD.
 
-- Push artifacts to Harbor Registry hosted on {{ product_name }}.
+Replace the following placeholders with your own values throughout this guide:
 
-## Key Results
+| Placeholder | Description |
+|---|---|
+| `HARBOR_HELM_REPO_URL` | The Helm registry URL from Harbor (find it via Forecastle) |
+| `HARBOR_USERNAME` | Your Harbor username |
+| `HARBOR_PASSWORD` | Your Harbor password |
+| `CHART_NAME` | The name of your Helm chart |
+| `CHART_VERSION` | The chart version (e.g. `1.0.0`) |
 
-- Helm chart package and pushed to Harbor.
+---
 
-## Guide
+## 1. Find your Harbor Helm registry URL
 
-### Get Harbor Helm Registry URL
+Open Forecastle from your cluster and locate the Harbor tile. Copy the Harbor URL, then derive the Helm registry URL:
 
-## Docker Image and Helm Chart Repository hosted by Harbor
+- Add `-helm` after the `harbor` portion of the hostname
+- Append `/repository/helm-charts/` to the path
 
-> Ask admin Helm Registry Credentials for helm chart repository.
+The result is your `HARBOR_HELM_REPO_URL` (e.g. `https://harbor-helm-stakater-harbor.apps.clustername.example.com/repository/helm-charts/`).
 
-Find Harbor Helm Registry URL the Harbor registry URL (find it in Forecastle).
+---
 
-Alternatively, Navigate to the cluster Forecastle, search `nexus` using the search bar on top menu and copy the nexus URL.
+## 2. Package the chart
 
-- `nexus-helm-reg-url` : Add `-helm` in URL after `nexus` and append `/repository/helm-charts/`. This URL points to Helm Registry referred as `nexus-helm-reg-url` in this tutorial for example `https://nexus-helm-stakater-nexus.apps.clustername.random123string.kubeapp.cloud/repository/helm-charts/`
+Run the following command from your chart directory:
 
-    ![nexus-Forecastle](../images/nexus-forecastle.png)
+```bash
+helm package .
+```
 
-### Package and Upload the chart to Harbor
+This creates a versioned archive file: `CHART_NAME-CHART_VERSION.tgz`.
 
-1. Run the following command to package the helm chart into compressed file.
+---
 
-   ```sh
-   # helm package [CHART_PATH]
-   helm package .
-   ```
+## 3. Push the chart to Harbor
 
-   This command packages a chart into a versioned chart archive file.
+```bash
+curl -u "HARBOR_USERNAME":"HARBOR_PASSWORD" HARBOR_HELM_REPO_URL \
+  --upload-file "CHART_NAME-CHART_VERSION.tgz"
+```
 
-1. Upload packaged chart to Harbor Helm Registry.
+---
 
-   ```sh
-   curl -u "<helm_user>":"<helm_password>" `nexus-helm-reg-url` --upload-file "CHART_NAME-CHART_VERSION.tgz"
-   ```
+## 4. Verify
 
-   > Make sure to get credentials from Stakater Admin.
+Open the Harbor UI from Forecastle. Select **Browse**, then click **Helm Charts** to confirm your chart is listed.
 
-1. Open Harbor UI from Forecastle. Upon opening the link, you'll be redirected to Harbor home page.
+![Harbor Forecastle tile](../images/nexus-forecastle.png)
 
-    ![`nexus-Forecastle`](../images/nexus-forecastle.png)
-    ![`nexus-homepage`](../images/nexus-homepage.png)
+![Harbor Helm chart list](../images/nexus-helm-charts.png)
 
-1. Select `Browse` from the left sidebar, Click on `Helm Charts` to view your Helm Registry Charts.
+---
 
-    ![`nexus-browse-helm`](../images/nexus-browse-helm.png)
-
-1. Verify that the chart you uploaded is present in the list.
-
-    ![`nexus-helm-charts`](../images/nexus-helm-charts.png)
+With your chart in Harbor, continue to [Deploy with ArgoCD and Helm](../deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md) to deploy it to the cluster.

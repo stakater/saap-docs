@@ -1,69 +1,52 @@
-# Path Rewriting for OpenShift Routes Using Annotations
+# Rewrite request paths
 
-OpenShift Routes provide a way to expose services externally. Sometimes, it's necessary to rewrite the request path before forwarding it to the backend service. OpenShift allows path rewriting using route annotations.
+This guide explains how to configure path rewriting on an OpenShift Route using the [Stakater Application Chart](https://github.com/stakater/application).
 
-## Objectives
+Use path rewriting when your application serves traffic from one path internally but you need to expose it at a different path externally. For example, your backend serves from `/` but you want external traffic to arrive at `/api`.
 
-Understand how to configure path rewriting for OpenShift Routes using annotations.
+Replace the following placeholders with your own values throughout this guide:
 
-## Key Results
+| Placeholder | Description |
+|---|---|
+| `APP_HOSTNAME` | The hostname for your route |
+| `EXTERNAL_PATH` | The path exposed externally (e.g. `/api`) |
+| `BACKEND_PATH` | The path the backend expects to receive (e.g. `/`) |
 
-Successfully implement and verify path rewriting in an OpenShift Route.
+---
 
-## Guide
+## 1. Configure path rewriting in your values
 
-### Step 1: Create a Route with Path Rewriting Annotations
-
-OpenShift allows path rewriting using the `haproxy.router.openshift.io/rewrite-target` annotation.
-
-#### Example YAML Configuration
+In your application's `deploy/values.yaml`, add the `rewrite-target` annotation and set `path` to the external path you want to expose:
 
 ```yaml
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: my-app-route
-  annotations:
-    haproxy.router.openshift.io/rewrite-target: /  # Rewrites path to root
-spec:
-  host: myapp.example.com
-  path: /app
-  to:
-    kind: Service
-    name: my-app-service
-  port:
-    targetPort: http
-  tls:
-    termination: edge
-```
-
-If you're using [Stakater Leader Chart](https://github.com/stakater/application) same can be achieved by adding following lines to you're application helm chart's `values.yaml`:
-
-```YAML
 application:
-...
   route:
     enabled: true
+    host: APP_HOSTNAME
+    path: EXTERNAL_PATH
+    port:
+      targetPort: http
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
     annotations:
-      haproxy.router.openshift.io/rewrite-target: /
-    host: myapp.example.com
-    path: /app
+      haproxy.router.openshift.io/rewrite-target: BACKEND_PATH
 ```
 
-### Step 2: Apply the Route Configuration
+With this configuration, a request arriving at `https://APP_HOSTNAME/EXTERNAL_PATH/foo` is rewritten to `BACKEND_PATH/foo` before reaching your container.
 
-Save the above YAML file and apply it using inner or outer loop:
+---
 
-### Step 3: Verify the Route
+## 2. Verify
 
-Run the following command to check if the route is created:
+Commit and push your changes. After ArgoCD syncs, confirm the route in the OpenShift console under **Networking > Routes**.
 
-```sh
-oc get route <route name> -o yaml
+Send a request to the external path and confirm your application responds correctly:
+
+```bash
+curl https://APP_HOSTNAME/EXTERNAL_PATH
 ```
 
-Try accessing `http://myapp.example.com/app`, and the request should be rewritten to `/` before reaching the backend.
+---
 
-## Conclusion
-
-Path rewriting in OpenShift Routes allows flexible URL handling for backend services. By using the `haproxy.router.openshift.io/rewrite-target` annotation, you can efficiently modify request paths as needed.
+For securing a route with IP restrictions or custom timeouts, see [Configure secure routes](../../../operate/secure-routes.md). For exposing on a custom domain with a cert-manager certificate, see [Expose your application over HTTPS](../expose-applications-to-internet/expose-applications-to-internet.md).

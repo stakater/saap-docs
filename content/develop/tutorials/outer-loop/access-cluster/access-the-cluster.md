@@ -1,63 +1,49 @@
-# Access your Cluster
+# Access your cluster
 
-## Objectives
+This guide explains how to access the {{ product_name }} cluster via the web console and the `oc` CLI.
 
-Access the {{ product_name }} cluster on UI and CLI.
+---
 
-## Key Results
+## 1. Log in via the web console
 
-- Access {{ product_name }} Console
-- View Forecastle Page and view different tools/services.
+1. Go to [{{ product_name }}](https://cloud.stakater.com/) and enter the enterprise domain provided by your cluster administrator.
 
-## PreRequisites
+    ![{{ product_name }} home](images/cloud-stakater-com.png)
 
-- Working laptop or desktop computer.
+1. Log in using the method configured for your organization.
 
-## Guide
+    ![{{ product_name }} login](images/cloud-stakater-com-login.png)
 
-### Access OpenShift UI
+1. After login you will see the cluster overview page.
 
-Lets see how will you access your cluster.
+    ![Cluster management page](images/cluster-management-page.png)
 
-1. Access your cluster by going to [{{ product_name }}](https://cloud.stakater.com/). Enter your enterprise domain provide by Stakater Cloud administrator.
+1. Click the dropdown for your cluster and select **OpenShift Web Console**.
 
-    ![{{ product_name }} Home](images/cloud-stakater-com.png)
+    ![OpenShift console](images/admin-view.png)
 
-1. Log In with the method configured for your Organization.
+1. To view the services available on the cluster, select **Forecastle** from the same dropdown.
 
-    ![{{ product_name }} Login](images/cloud-stakater-com-login.png)
+    ![Forecastle homepage](images/forecastle-homepage.png)
 
-1. Once you've logged in, you ll be directed to similar cluster overview page.
+---
 
-    ![{{ product_name }} Home](images/cluster-management-page.png)
+## 2. Log in via the CLI
 
-1. Click on drop down toggle for the relevant cluster:
+1. In the OpenShift console, click your username in the top-right corner and select **Copy login command**.
 
-    1. Select `OpenShift Web Console` to open the OpenShift Web Console.
-
-        ![OpenShift Console](images/admin-view.png)
-
-        > You should belong to a Tenant
-
-    1. Select Forecastle for view services available on the cluster.
-
-        ![{{ product_name }} Home](images/forecastle-homepage.png)
-
-### Login with CLI
-
-1. In your `OpenShift Console`, click your username in the top right corner and select `Copy login command`.
     ![Copy login command](images/copy-login-command.png)
 
-1. Click on `Display token` to view your token and login command.
+1. Click **Display token**.
 
-    ![Display Token](images/display-token.png)
+    ![Display token](images/display-token.png)
 
-1. Copy your Log in command.
-
-    ![Copy login token](images/copy-login-token.png)
-
-1. Run the following command from your CLI.
+1. Copy the login command and run it in your terminal:
 
     ```bash
     oc login --token=<TOKEN> --server=<SERVER>
     ```
+
+---
+
+With cluster access confirmed, continue to [Deploy a demo app](../../deploy-demo-app.md) to deploy your first application.

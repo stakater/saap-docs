@@ -1,115 +1,109 @@
+# Deploy an application with ArgoCD and Helm
 
-# Deploy application with ArgoCD and Helm
+This guide walks through deploying a Helm chart from Harbor using both the Helm CLI and the ArgoCD UI, so you can verify the application is running and understand how ArgoCD manages it.
 
-This guide covers application deployment with Helm and ArgoCD.
+Replace the following placeholders with your own values throughout this guide:
 
-## Deploy your application with Helm
+| Placeholder | Description |
+|---|---|
+| `TENANT_NAME` | Your tenant name |
+| `APP_NAME` | Your application name |
+| `HARBOR_HELM_REPO_NAME` | A local alias for the Harbor Helm repository |
+| `HARBOR_HELM_REPO_URL` | The Helm registry URL from Harbor (find it via Forecastle) |
+| `HARBOR_HELM_REGISTRY_URL` | The OCI or HTTPS URL used by ArgoCD to source the chart |
+| `CHART_VERSION` | The chart version to deploy |
 
-Deploy a simple application using Helm. Helm charts are packaged and stored in repositories. They can be added as dependencies of other charts or used directly. Add a chart repository first. The chart repository stores the version history of your charts as well as the packaged tar file.
+---
 
-A Helm chart has been packaged and published to the Harbor Helm Repository available in {{ product_name }}
+## 1. Add the Harbor Helm repository
 
-1. From your Terminal, add the Harbor Helm Repository using the following command. Consider the
+```bash
+helm repo add HARBOR_HELM_REPO_NAME HARBOR_HELM_REPO_URL
+helm repo update
+```
 
-    ```bash
-    helm repo add NEXUS_HELM_REPO_NAME NEXUS_HELM_REPO_URL
-    ```
+---
 
-1. Install a chart from this repo. Start by searching the repository to see what is available.
+## 2. Install the chart
 
-    ```bash
-    helm search repo stakater-nordmart-review
-    ```
+```bash
+helm install APP_NAME HARBOR_HELM_REPO_NAME/APP_NAME \
+  --version CHART_VERSION \
+  --namespace TENANT_NAME-dev
+```
 
-1. Now install the latest version. Helm likes to give each install its own release.
+Verify the pods are running:
 
-    ```bash
-    helm install RELEASE_NAME NEXUS_HELM_REPO_NAME/takater-nordmart-review --namespace ${TENANT_NAME}-dev
-    ```
+```bash
+oc get pods -n TENANT_NAME-dev
+```
 
-1. Open the application up in the browser to verify it's up and running. Here's a handy one-liner to get the URL of the app.
+---
 
-    ```bash
-    oc project ${TENANT_NAME}-dev
-    oc get pods,svc -n ${TENANT_NAME}-dev
-    ```
+## 3. Test the application
 
-1. Run the following command to port forward the pod to your local machine and run curl command to verify your application is running and serving requests.
+Port-forward to your local machine and send a test request:
 
-     ```sh
-     # get podname with oc get
-     oc port-forward <podname> 8080:8080
-     curl localhost:8080/api/review/329199
-     ```
+```bash
+oc port-forward deployment/APP_NAME 8080:8080 -n TENANT_NAME-dev
+curl localhost:8080
+```
 
-1. You can upgrade your chart values with CLI. By default, your application has only 1 replica. You can view this using the following command.
+---
 
-     ```bash#test
-     oc get pods -n ${TENANT_NAME}-dev
-     ```
+## 4. Scale using Helm
 
-    By default, there is one replica of your application. Use Helm to set this to 5.
+Use `helm upgrade` to change the replica count:
 
-    ```bash#test
-    helm upgrade RELEASE_NAME NEXUS_HELM_REPO_NAME/APP_NAME --set APP_NAME.deployment.replicas=5 --namespace ${TENANT_NAME}-dev
-    ```
+```bash
+helm upgrade APP_NAME HARBOR_HELM_REPO_NAME/APP_NAME \
+  --set APP_NAME.deployment.replicas=3 \
+  --namespace TENANT_NAME-dev
+```
 
-    Verify the deployment has scaled up to 5 replicas.
+Verify the scale-up:
 
-    ```bash#test
-    oc get pods -n ${TENANT_NAME}-dev
-    ```
+```bash
+oc get pods -n TENANT_NAME-dev
+```
 
-1. If you're done playing with the `Nordmart Review API`. You can tidy up your work by removing the chart. To do this, run `helm uninstall` to remove your release of the chart.
+---
 
-    ```bash#test
-    helm uninstall stakater-nord -namespace ${TENANT_NAME}-dev
-    ```
+## 5. Clean up
 
-    Verify the cleanup.
+Remove the Helm release when you are done:
 
-    ```bash#test
-    oc get pods -n ${TENANT_NAME}-dev
-    ```
+```bash
+helm uninstall APP_NAME --namespace TENANT_NAME-dev
+```
 
-## Deploy your application with ArgoCD
+---
 
-1. Log into the ArgoCD UI.
+## 6. Deploy via the ArgoCD UI
 
-1. Deploy a sample application through the UI. Get ArgoCD to deploy the `stakater-nordmart-review` app you manually deployed previously using Helm. On ArgoCD, click `+ NEW APP`. Fill out the form with the following:
+For GitOps-managed deployments, use ArgoCD instead of the Helm CLI directly.
 
-      - On the **GENERAL** box
+1. Log in to the ArgoCD UI.
+1. Click **+ NEW APP** and fill in the following:
 
-         - Application Name: `<TENANT_NAME>-nordmart-review`
-         - Project: `<TENANT_NAME>` (select the project corresponding to your `<TENANT_NAME>` from the `project` dropdown)
-         - Sync Policy: `Automatic`
+    **GENERAL**
+    - Application Name: `TENANT_NAME-APP_NAME`
+    - Project: `TENANT_NAME`
+    - Sync Policy: `Automatic`
 
-      - On the **SOURCE** box
+    **SOURCE**
+    - Repository URL: `HARBOR_HELM_REGISTRY_URL`
+    - Select `Helm` from the type dropdown
+    - Chart: `APP_NAME`
+    - Version: `CHART_VERSION`
 
-         - Repository URL: `NEXUS_HELM_REGISTRY_URL`
-         - Select `Helm` from the right dropdown menu
-         - Chart: `stakater-nordmart-review`
-         - Version: `1.0.0`
+    **DESTINATION**
+    - Cluster URL: `https://kubernetes.default.svc`
+    - Namespace: `TENANT_NAME-dev`
 
-      - On the **DESTINATION** box
+1. Click **Create**. ArgoCD deploys the application and displays all Kubernetes resources it manages.
+1. Navigate to **Workloads > Pods** in the `TENANT_NAME-dev` namespace of the OpenShift console to confirm the pods are running.
 
-         - Cluster URL: `https://kubernetes.default.svc`
-         - Namespace: `<TENANT_NAME>-test`
+---
 
-    Your form should look like the follow image, if so click `Create`
-
-1. After you hit `Create`, you'll see `<TENANT_NAME>-nordmart-review` application is created and should start deploying in your `<TENANT_NAME>-test` namespace.
-
-1. If you drill down into the application you will get ArgoCD's amazing view of all k8s resources that were generated by the chart
-
-1. You can verify the application is running and behaving as expected by navigating to `Workloads` > `Pods` section in the `<TENANT_NAME-test` namespace in your `OpenShift Console`.
-
-      > Select the dropdown menu and switch to `Administrator` view in the OpenShift console if you are not already there
-
-1. Run the following command to port forward the pod to your local machine and run curl command to verify your application is running and serving requests.
-
-     ```sh
-     # get podname with oc get
-     oc port-forward <podname> 8080:8080
-     curl localhost:8080/api/review/329199
-     ```
+With the application deployed, continue to [Promote your application](../promote-your-application/promote-your-application.md) when you are ready to release it to the next environment.

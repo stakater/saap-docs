@@ -124,6 +124,8 @@ Users can expose your application in/out the cluster using Services, Ingresses, 
 
 OpenShift has a built-in `HAProxy` ingress controller that allows users to expose services externally with routes and ingress.
 
-Read more about Routes vs Ingress [here](https://cloud.redhat.com/blog/kubernetes-ingress-vs-openshift-route)
+Read more about [Routes vs Ingress](https://cloud.redhat.com/blog/kubernetes-ingress-vs-openshift-route) and [Route configuration](https://docs.openshift.com/container-platform/4.12/networking/routes/route-configuration.html).
 
-Read More about Routes Configuration [here](https://docs.openshift.com/container-platform/4.12/networking/routes/route-configuration.html)
+---
+
+With your deployment requirements understood, continue to [Deploy a demo app](../tutorials/deploy-demo-app.md) to deploy your first application end-to-end.

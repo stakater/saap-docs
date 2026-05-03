@@ -1,58 +1,64 @@
-# Application promotion
+# Promote your application
 
-To promote application from one environment to another; as mentioned above you will need to bump chart version and image tag version in that environment. You can do so by picking these versions from previous environment.
+This guide explains how to promote an application from one environment to the next by updating the chart version and image tag in your apps GitOps repository.
 
-Objectives:
+Promotion means copying the verified versions from a source environment into the target environment's configuration. ArgoCD detects the change and deploys automatically.
 
-- Promote your Application to another environment
+This guide assumes your application is already deployed in at least one environment. If not, start with [Deploy with ArgoCD and Helm](../deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md) first.
 
-Key Results:
+Replace the following placeholders with your own values throughout this guide:
 
-- Image or Chart version updated
+| Placeholder | Description |
+|---|---|
+| `TENANT_NAME` | Your tenant name |
+| `APP_NAME` | Your application name |
+| `SOURCE_ENV` | The environment you are promoting from (e.g. `dev`) |
+| `TARGET_ENV` | The environment you are promoting to (e.g. `staging`) |
+| `APPS_GITOPS_REPO_URL` | The URL of your apps GitOps repository |
 
-This guide assumes that application is already [on-boarded](../../tutorials/deploy-demo-app.md) to different environments.
+---
 
-## 1. Promote chart
+## 1. Promote the chart version
 
-To promote application from one environment to another, you can check the chart version from `Chart.yaml` file from one environment and update version in `Chart.yaml` of next environment:
+Open `TENANT_NAME/APP_NAME/SOURCE_ENV/Chart.yaml` in your apps GitOps repository and note the chart version:
 
 ```yaml
 apiVersion: v2
 dependencies:
-  - name: <application-name>
-    repository: <application-chart-repo>
+  - name: APP_NAME
+    repository: HARBOR_HELM_REPO_URL
     version: 1.0.51
-description: A Helm chart for Kubernetes
-name: <application-name>
+name: APP_NAME
 version: 1.0.51
 ```
 
-pick version `1.0.51` from above `Chart.yaml` and copy it in `Chart.yaml` of next environment
+Copy that version into `TENANT_NAME/APP_NAME/TARGET_ENV/Chart.yaml`.
 
-## 2. Promote image
+---
 
-To promote application from one environment to another, you can check the image tag version from `values.yaml` file from one environment and update version in `values.yaml` of next environment:
+## 2. Promote the image tag
 
-`<gitops-repo>/<tenant>/<application>/<env-1>/values.yaml`
+Open `TENANT_NAME/APP_NAME/SOURCE_ENV/values.yaml` and note the image tag:
 
 ```yaml
-<application-name>:
+APP_NAME:
   application:
     deployment:
       image:
-        repository: <application-docker-repo>
+        repository: HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME
         tag: 1.0.51
 ```
 
-Pick version `1.0.51` and paste it to next environment
+Copy that tag into `TENANT_NAME/APP_NAME/TARGET_ENV/values.yaml`.
 
-`<gitops-repo>/<tenant>/<application>/<env-2>/values.yaml`
+---
 
-```yaml
-<application-name>:
-  application:
-    deployment:
-      image:
-        repository: <application-repo>
-        tag: 1.0.50
-```
+## 3. Commit and verify
+
+Commit and push your changes. ArgoCD detects the update and redeploys the application in `TARGET_ENV` within a few minutes.
+
+Log in to ArgoCD and confirm the `TENANT_NAME-TARGET_ENV-APP_NAME` application has synced and the pods are running.
+
+---
+
+To add an entirely new environment to an application, see [Add a new environment](../../../platform-setup/how-to-guides/add-a-new-environment-to-application.md).
