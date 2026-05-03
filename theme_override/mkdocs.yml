@@ -152,31 +152,29 @@ nav:
           - secure/hipaa.md
           - secure/dora.md
   - Managed Addons:
-      - managed-addons/overview.md
+      - managed-addons/index.md
       - Dev Ready:
           - ArgoCD:
-              - managed-addons/argocd/overview.md
-              - managed-addons/argocd/for-administrators/availability.md
-              - managed-addons/argocd/for-administrators/installation.md
-              - managed-addons/argocd/for-administrators/observability.md
-              - managed-addons/argocd/for-administrators/resource-requirements.md
+              - managed-addons/argocd/index.md
           - Tronador:
-              - managed-addons/tronador/overview.md
+              - managed-addons/tronador/index.md
           - Renovate:
-              - managed-addons/renovate/overview.md
+              - managed-addons/renovate/index.md
               - managed-addons/renovate/how-to-guides/automerge.md
               - managed-addons/renovate/how-to-guides/run-locally.md
           - Forecastle:
-              - managed-addons/forecastle/overview.md
+              - managed-addons/forecastle/index.md
               - managed-addons/forecastle/tutorial/add-forecastle-app.md
           - Tilt:
-              - managed-addons/tilt/overview.md
+              - managed-addons/tilt/index.md
+          - mirrord:
+              - managed-addons/mirrord/index.md
               - managed-addons/mirrord/tutorial/mirrod-setup.md
           - Reloader:
-              - managed-addons/reloader/overview.md
+              - managed-addons/reloader/index.md
               - managed-addons/reloader/tutorial/configure-resources.md
           - Stakater Application Helm Chart:
-              - managed-addons/helm-leader-chart/overview.md
+              - managed-addons/helm-leader-chart/index.md
       - Ops Ready:
           - Multi Tenant Operator:
               - managed-addons/mto/overview.md
