@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const selectors = {
+  consentDialog: '#__consent',
   consentControlsDiv: '.md-consent__controls',
   acceptButtonText: 'Accept',
   searchInput: 'input.md-search__input[placeholder="Search"]',
@@ -12,6 +13,7 @@ async function acceptConsentIfPresent(page) {
   const accept = page.locator(`${selectors.consentControlsDiv} button:has-text("${selectors.acceptButtonText}")`);
   if (await accept.isVisible()) {
     await accept.click();
+    await page.locator(selectors.consentDialog).waitFor({ state: 'hidden' });
   }
 }
 
