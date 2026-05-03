@@ -1,59 +1,104 @@
 # Package and push your chart to Harbor
 
-By the end of this guide, your Helm chart will be packaged and available in Harbor's Helm registry, ready to be deployed via ArgoCD.
+By the end of this guide, your Helm chart will be packaged and available in Harbor's Helm registry, ready to be referenced from your apps GitOps repository.
+
+The chart lives in a `deploy/` folder at the root of your application repository. It uses the [Stakater Application Chart](https://github.com/stakater/application) as a dependency to define all Kubernetes resources (Deployment, Service, Route, etc.) through a single `values.yaml`.
 
 Replace the following placeholders with your own values throughout this guide:
 
 | Placeholder | Description |
 |---|---|
+| `APP_NAME` | Your application name |
+| `CHART_VERSION` | The chart version to publish (e.g. `1.0.0`) |
 | `HARBOR_HELM_REPO_URL` | The Helm registry URL from Harbor (find it via Forecastle) |
 | `HARBOR_USERNAME` | Your Harbor username |
 | `HARBOR_PASSWORD` | Your Harbor password |
-| `CHART_NAME` | The name of your Helm chart |
-| `CHART_VERSION` | The chart version (e.g. `1.0.0`) |
 
 ---
 
-## 1. Find your Harbor Helm registry URL
+## 1. Set up the chart structure
 
-Open Forecastle from your cluster and locate the Harbor tile. Copy the Harbor URL, then derive the Helm registry URL:
+If your `deploy/` folder does not exist yet, create it with the following two files.
+
+`deploy/Chart.yaml`:
+
+```yaml
+apiVersion: v2
+name: APP_NAME
+description: A Helm chart for Kubernetes
+dependencies:
+  - name: application
+    version: 2.1.13
+    repository: https://stakater.github.io/stakater-charts
+type: application
+version: CHART_VERSION
+```
+
+`deploy/values.yaml` — minimal example with a Deployment and Route:
+
+```yaml
+application:
+  applicationName: APP_NAME
+  deployment:
+    imagePullSecrets: nexus-docker-config-forked
+    image:
+      repository: APP_NAME
+      tag: CHART_VERSION
+  route:
+    enabled: true
+    port:
+      targetPort: http
+```
+
+All available configuration options are documented in the [Application Chart values reference](https://github.com/stakater/application/blob/master/application).
+
+---
+
+## 2. Download chart dependencies
+
+```bash
+cd deploy/
+helm dependency build
+```
+
+---
+
+## 3. Find your Harbor Helm registry URL
+
+Open Forecastle from your cluster and locate the Harbor tile. Derive the Helm registry URL:
 
 - Add `-helm` after the `harbor` portion of the hostname
-- Append `/repository/helm-charts/` to the path
+- Append `/repository/helm-charts/`
 
-The result is your `HARBOR_HELM_REPO_URL` (e.g. `https://harbor-helm-stakater-harbor.apps.clustername.example.com/repository/helm-charts/`).
+For example: `https://harbor-helm-stakater-harbor.apps.clustername.example.com/repository/helm-charts/`
 
 ---
 
-## 2. Package the chart
-
-Run the following command from your chart directory:
+## 4. Package the chart
 
 ```bash
 helm package .
 ```
 
-This creates a versioned archive file: `CHART_NAME-CHART_VERSION.tgz`.
+This creates `APP_NAME-CHART_VERSION.tgz` in the current directory.
 
 ---
 
-## 3. Push the chart to Harbor
+## 5. Push the chart to Harbor
 
 ```bash
 curl -u "HARBOR_USERNAME":"HARBOR_PASSWORD" HARBOR_HELM_REPO_URL \
-  --upload-file "CHART_NAME-CHART_VERSION.tgz"
+  --upload-file "APP_NAME-CHART_VERSION.tgz"
 ```
 
 ---
 
-## 4. Verify
+## 6. Verify
 
-Open the Harbor UI from Forecastle. Select **Browse**, then click **Helm Charts** to confirm your chart is listed.
-
-![Harbor Forecastle tile](../images/nexus-forecastle.png)
+Open the Harbor UI from Forecastle. Select **Browse**, then click **Helm Charts** to confirm your chart is listed with the expected version.
 
 ![Harbor Helm chart list](../images/nexus-helm-charts.png)
 
 ---
 
-With your chart in Harbor, continue to [Deploy with ArgoCD and Helm](../deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md) to deploy it to the cluster.
+With your chart in Harbor, continue to [Deploy a new version via GitOps](../deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md) to release it to your cluster.

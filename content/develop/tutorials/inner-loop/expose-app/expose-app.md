@@ -140,4 +140,4 @@ By following the tutorials above, you can successfully expose your application d
 
 ## Whitelisting application routes
 
-See [Additional route configurations](../../../../operate/secure-routes.md#additional-route-configuration) section on how to allow only whitelisted IPs for your application routes.
+See [Configure secure routes](../../../../operate/secure-routes.md) for how to restrict access to whitelisted IPs and other route security options.

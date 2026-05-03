@@ -50,7 +50,7 @@ application:
 ```
 
 !!! note
-    A custom hostname requires a DNS record pointing to the cluster ingress and a matching TLS certificate. See [Configure custom domains](../../platform-setup/how-to-guides/custom-domains.md) for the full setup.
+    A custom hostname requires a DNS record pointing to the cluster ingress and a matching TLS certificate. See [Configure custom domains](../platform-setup/how-to-guides/custom-domains.md) for the full setup.
 
 ---
 

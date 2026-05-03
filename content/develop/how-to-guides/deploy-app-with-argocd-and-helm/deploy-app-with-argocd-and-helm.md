@@ -1,6 +1,8 @@
-# Deploy an application with ArgoCD and Helm
+# Deploy a new version via GitOps
 
-This guide walks through deploying a Helm chart from Harbor using both the Helm CLI and the ArgoCD UI, so you can verify the application is running and understand how ArgoCD manages it.
+By the end of this guide, a new image and chart version will be deployed to your environment — no `kubectl` or `helm` CLI required. You update the version references in the apps GitOps repository and ArgoCD applies the change automatically.
+
+This guide assumes your application is already onboarded in the apps GitOps repository. If it is not, complete [Add a new application](../../../platform-setup/how-to-guides/add-a-new-application.md) first.
 
 Replace the following placeholders with your own values throughout this guide:
 
@@ -8,102 +10,64 @@ Replace the following placeholders with your own values throughout this guide:
 |---|---|
 | `TENANT_NAME` | Your tenant name |
 | `APP_NAME` | Your application name |
-| `HARBOR_HELM_REPO_NAME` | A local alias for the Harbor Helm repository |
-| `HARBOR_HELM_REPO_URL` | The Helm registry URL from Harbor (find it via Forecastle) |
-| `HARBOR_HELM_REGISTRY_URL` | The OCI or HTTPS URL used by ArgoCD to source the chart |
-| `CHART_VERSION` | The chart version to deploy |
+| `ENV_NAME` | The target environment (e.g. `dev`) |
+| `CHART_VERSION` | The new chart version in Harbor (e.g. `1.0.1`) |
+| `IMAGE_TAG` | The new image tag in Harbor (e.g. `1.0.1`) |
+| `HARBOR_HELM_REPO_URL` | The Helm registry URL from Harbor |
+| `HARBOR_REGISTRY_URL` | The Docker registry URL from Harbor |
 
 ---
 
-## 1. Add the Harbor Helm repository
+## 1. Update the chart version
 
-```bash
-helm repo add HARBOR_HELM_REPO_NAME HARBOR_HELM_REPO_URL
-helm repo update
+In your apps GitOps repository, open `TENANT_NAME/APP_NAME/ENV_NAME/Chart.yaml` and update the dependency version to the new chart version:
+
+```yaml
+apiVersion: v2
+name: APP_NAME
+description: A Helm chart for Kubernetes
+dependencies:
+  - name: APP_NAME
+    version: CHART_VERSION
+    repository: HARBOR_HELM_REPO_URL
+version: CHART_VERSION
 ```
 
 ---
 
-## 2. Install the chart
+## 2. Update the image tag
 
-```bash
-helm install APP_NAME HARBOR_HELM_REPO_NAME/APP_NAME \
-  --version CHART_VERSION \
-  --namespace TENANT_NAME-dev
-```
+Open `TENANT_NAME/APP_NAME/ENV_NAME/values.yaml` and update the image tag:
 
-Verify the pods are running:
-
-```bash
-oc get pods -n TENANT_NAME-dev
-```
-
----
-
-## 3. Test the application
-
-Port-forward to your local machine and send a test request:
-
-```bash
-oc port-forward deployment/APP_NAME 8080:8080 -n TENANT_NAME-dev
-curl localhost:8080
+```yaml
+APP_NAME:
+  application:
+    deployment:
+      image:
+        repository: HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME
+        tag: IMAGE_TAG
 ```
 
 ---
 
-## 4. Scale using Helm
-
-Use `helm upgrade` to change the replica count:
+## 3. Commit and push
 
 ```bash
-helm upgrade APP_NAME HARBOR_HELM_REPO_NAME/APP_NAME \
-  --set APP_NAME.deployment.replicas=3 \
-  --namespace TENANT_NAME-dev
+git add TENANT_NAME/APP_NAME/ENV_NAME/
+git commit -m "chore: deploy APP_NAME CHART_VERSION to ENV_NAME"
+git push
 ```
 
-Verify the scale-up:
-
-```bash
-oc get pods -n TENANT_NAME-dev
-```
+ArgoCD detects the commit within seconds and begins syncing the new version to the `TENANT_NAME-ENV_NAME` namespace.
 
 ---
 
-## 5. Clean up
+## 4. Verify
 
-Remove the Helm release when you are done:
+Log in to ArgoCD via Forecastle. Open the `TENANT_NAME-ENV_NAME-APP_NAME` application and confirm it has synced successfully and the new version is running.
 
-```bash
-helm uninstall APP_NAME --namespace TENANT_NAME-dev
-```
+In the OpenShift console, navigate to **Workloads > Pods** in the `TENANT_NAME-ENV_NAME` namespace and confirm the pods are healthy.
 
 ---
 
-## 6. Deploy via the ArgoCD UI
-
-For GitOps-managed deployments, use ArgoCD instead of the Helm CLI directly.
-
-1. Log in to the ArgoCD UI.
-1. Click **+ NEW APP** and fill in the following:
-
-    **GENERAL**
-    - Application Name: `TENANT_NAME-APP_NAME`
-    - Project: `TENANT_NAME`
-    - Sync Policy: `Automatic`
-
-    **SOURCE**
-    - Repository URL: `HARBOR_HELM_REGISTRY_URL`
-    - Select `Helm` from the type dropdown
-    - Chart: `APP_NAME`
-    - Version: `CHART_VERSION`
-
-    **DESTINATION**
-    - Cluster URL: `https://kubernetes.default.svc`
-    - Namespace: `TENANT_NAME-dev`
-
-1. Click **Create**. ArgoCD deploys the application and displays all Kubernetes resources it manages.
-1. Navigate to **Workloads > Pods** in the `TENANT_NAME-dev` namespace of the OpenShift console to confirm the pods are running.
-
----
-
-With the application deployed, continue to [Promote your application](../promote-your-application/promote-your-application.md) when you are ready to release it to the next environment.
+With the application running in `ENV_NAME`, continue to [Promote your application](../promote-your-application/promote-your-application.md) when you are ready to release it to the next environment.

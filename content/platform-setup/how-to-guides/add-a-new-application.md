@@ -13,6 +13,9 @@ Replace the following placeholders with your own values throughout this guide:
 | `ENV_NAME` | The target environment (e.g. `dev`, `staging`, `prod`) |
 | `CLUSTER_NAME` | Your cluster folder name in the infra repository |
 | `APPS_GITOPS_REPO_URL` | The URL of your apps GitOps repository |
+| `HARBOR_HELM_REPO_URL` | The Helm registry URL from Harbor (find it via Forecastle) |
+| `HARBOR_REGISTRY_URL` | The Docker registry URL from Harbor (find it via Forecastle) |
+| `CHART_VERSION` | The initial chart version (e.g. `1.0.0`) |
 
 ---
 
@@ -35,30 +38,33 @@ The `APP_NAME/ENV_NAME/` folder will hold the Helm values or plain YAML for the 
 
 ## 2. Add the Helm chart configuration
 
-Inside `TENANT_NAME/APP_NAME/ENV_NAME/`, create a `Chart.yaml` that references the application chart from your registry:
+Inside `TENANT_NAME/APP_NAME/ENV_NAME/`, create a `Chart.yaml` that references the application's packaged chart from Harbor:
 
 ```yaml
 apiVersion: v2
-dependencies:
-- name: APP_NAME
-  repository: 'YOUR_HARBOR_REGISTRY_URL'
-  version: 1.0.0
 name: APP_NAME
-version: 0.0.0
+description: A Helm chart for Kubernetes
+dependencies:
+  - name: APP_NAME
+    version: CHART_VERSION
+    repository: HARBOR_HELM_REPO_URL
+version: CHART_VERSION
 ```
 
-Create a `values.yaml` in the same folder to configure the application for this environment:
+Create a `values.yaml` in the same folder. Values are nested under `APP_NAME` (the chart dependency name) then `application` (the [Stakater Application Chart](https://github.com/stakater/application) key):
 
 ```yaml
 APP_NAME:
-  replicaCount: 1
-  image:
-    repository: YOUR_HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME
-    tag: latest
+  application:
+    deployment:
+      image:
+        repository: HARBOR_REGISTRY_URL/TENANT_NAME/APP_NAME
+        tag: CHART_VERSION
+    route:
+      enabled: true
+      port:
+        targetPort: http
 ```
-
-!!! note
-    Replace `YOUR_HARBOR_REGISTRY_URL` with the URL from your Harbor registry. Find it via Forecastle.
 
 ---
 
