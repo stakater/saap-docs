@@ -1,26 +1,34 @@
 # Connect SAML
 
-This page explains how to integrate a SAML v2.0 identity provider with {{ product_name }} so your users can authenticate with their existing organizational accounts.
+This guide explains how to integrate a SAML 2.0 identity provider with {{ product_name }} so your users can authenticate with their existing organizational accounts.
 
-The configuration is coordinated with Stakater Support: you provide your SAML metadata URL, and Stakater provides the SP metadata URL for your identity provider to trust.
-
----
-
-## Prerequisites
-
-Your SAML identity provider must expose the following attributes in its assertions:
-
-- Email address (or an equivalent unique identifier such as `eppn`)
-- First name
-- Last name
+The configuration is a two-way exchange: you register {{ product_name }} as a service provider in your IdP, and you provide Stakater Support with your IdP metadata URL to complete the federation.
 
 ---
 
-## Steps
+## 1. Request the SP metadata URL
 
-1. Contact Stakater Support to receive the **SAML 2.0 SP Metadata URL** for your {{ product_name }} instance.
-1. Register {{ product_name }} as a service provider in your identity provider using the SP metadata URL.
-1. Provide Stakater Support with your **SAML 2.0 IdP Metadata URL** so the integration can be completed.
+Open a support ticket at [Stakater Support](https://support.stakater.com) and request the **SAML 2.0 SP Metadata URL** for your {{ product_name }} instance. Stakater will provide this URL before you proceed.
+
+---
+
+## 2. Register {{ product_name }} in your identity provider
+
+Using the SP metadata URL from step 1, register {{ product_name }} as a service provider in your IdP. The exact steps depend on your IdP, but the outcome is the same: your IdP trusts {{ product_name }} and will redirect authenticated users back to it.
+
+Ensure your IdP is configured to include the following attributes in its SAML assertions:
+
+| Attribute | Description |
+|---|---|
+| Email address | Or an equivalent unique identifier such as `eppn` |
+| First name | |
+| Last name | |
+
+---
+
+## 3. Share your IdP metadata URL with Stakater Support
+
+Provide Stakater Support with your **SAML 2.0 IdP Metadata URL**. Stakater will complete the configuration and confirm when authentication is active.
 
 ---
 
