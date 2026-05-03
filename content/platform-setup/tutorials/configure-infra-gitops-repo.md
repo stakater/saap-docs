@@ -8,46 +8,55 @@ This is the first of two bootstrap steps. The infra repository is where you defi
 
 - Your cluster has been provisioned by Stakater and ArgoCD is running.
 
-A [template repository](https://github.com/NordMart/infra-gitops-config.git) is available to use as a starting point.
+A [template repository](https://github.com/stakater-lab/infra-gitops-config.git) is available to use as a starting point.
 
----
+Replace the following placeholders with your own values throughout this tutorial:
 
-## 1. Create a personal access token
-
-ArgoCD needs read access to your repository. Create a personal access token (PAT) on your Git provider before you create the repository.
-
-### GitHub: Fine-grained PAT (recommended)
-
-[Create a fine-grained token](https://github.blog/2022-10-18-introducing-fine-grained-personal-access-tokens-for-github/) scoped to your GitOps repositories. Required permissions:
-
-| Permission | Level |
+| Placeholder | Description |
 |---|---|
-| Actions | Read and write |
-| Administration | Read and write |
-| Commit statuses | Read only |
-| Contents | Read and write |
-| Deployments | Read only |
-| Metadata | Read only |
-| Pull requests | Read and write |
-
-Note: Fine-grained PATs cannot be edited after creation. Create the repositories first if you want to scope the token to specific repos, or create the token with organization-wide scope and tighten it later.
-
-### GitHub: Classic PAT
-
-[Create a classic personal access token](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with `repo` permissions. This grants access to all repositories in your account.
-
-### SSH key (alternative)
-
-[Generate an SSH key pair](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key) and add the public key to your [GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or as a [deploy key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys) on the specific repository.
+| `CLUSTER_NAME` | Your cluster folder name (e.g. `dev-cluster`) |
+| `TENANT_NAME` | Your first tenant name |
+| `INFRA_GITOPS_REPO_URL` | The URL of your infra GitOps repository |
+| `APPS_GITOPS_REPO_URL` | The URL of your apps GitOps repository |
+| `YOUR_HARBOR_REGISTRY_URL` | The URL of your Harbor registry (find it via Forecastle) |
 
 ---
 
-## 2. Store the token in OpenBao
+## 1. Create repository credentials
 
-Store your PAT in OpenBao at the path `git-pat-creds` with two fields:
+ArgoCD needs read access to your repository to sync resources from it. Create credentials on your Git provider before you create the repository.
 
-- `username` — your Git provider username
-- `password` — the PAT you just created
+### Option A: Personal access token (HTTPS)
+
+Create a personal access token (PAT) — also called an access token or app password depending on your provider — with at minimum **repository read** permission on the infra and apps repositories.
+
+| Provider | Token type | Docs |
+|---|---|---|
+| GitHub | Fine-grained PAT or Classic PAT | Settings → Developer settings → Personal access tokens |
+| GitLab | Project or Group access token | Settings → Access tokens |
+| Bitbucket | Repository or Workspace access token | Personal settings → App passwords |
+| Azure DevOps | Personal access token | User settings → Personal access tokens |
+
+Scope the token to the two GitOps repositories only and set an expiry that matches your rotation policy.
+
+### Option B: SSH key
+
+Generate an ED25519 key pair:
+
+```bash
+ssh-keygen -t ed25519 -C "argocd-gitops" -f ~/.ssh/argocd_gitops
+```
+
+Add the **public key** (`argocd_gitops.pub`) as a deploy key (read-only) on both the infra and apps repositories. The setting is typically found under the repository's **Settings → Deploy keys** (GitHub, GitLab) or **Repository settings → Access keys** (Bitbucket).
+
+---
+
+## 2. Store credentials in OpenBao
+
+Store your credentials in OpenBao at the path `git-pat-creds` with two fields:
+
+- `username` — your Git provider username (or `git` for SSH key auth)
+- `password` — the PAT or SSH private key you just created
 
 ArgoCD retrieves these credentials at sync time via ExternalSecrets. The same secret is reused in the apps repository setup in the next tutorial.
 
@@ -127,8 +136,8 @@ spec:
     - your-user@example.com
   argocd:
       sourceRepos:
-      - 'https://github.com/your-organization/infra-gitops-config'
-      - 'https://github.com/your-organization/apps-gitops-config'
+      - 'INFRA_GITOPS_REPO_URL'
+      - 'APPS_GITOPS_REPO_URL'
       - 'YOUR_HARBOR_REGISTRY_URL'
   templateInstances:
   - spec:

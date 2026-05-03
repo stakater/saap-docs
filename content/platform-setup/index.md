@@ -55,6 +55,8 @@ Configure custom domains and automate TLS certificate management:
 
 Recurring tasks for managing your platform after bootstrap:
 
+- [Add a new tenant](how-to-guides/add-a-new-tenant.md)
+- [Add a new application](how-to-guides/add-a-new-application.md)
 - [Add a new environment to an application](how-to-guides/add-a-new-environment-to-application.md)
 
 ---

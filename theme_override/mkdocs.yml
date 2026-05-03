@@ -55,6 +55,8 @@ nav:
           - platform-setup/how-to-guides/tls-certs.md
           - platform-setup/how-to-guides/http01-certs.md
       - Day-2 Operations:
+          - platform-setup/how-to-guides/add-a-new-tenant.md
+          - platform-setup/how-to-guides/add-a-new-application.md
           - platform-setup/how-to-guides/add-a-new-environment-to-application.md
   - Deploy:
       - develop/explanation/inner-outer-loop.md
