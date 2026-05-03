@@ -20,7 +20,7 @@ Replace the following placeholders with your own values throughout this guide:
 
 In your apps GitOps repository, navigate to `TENANT_NAME/APP_NAME/` and create a folder named after the new environment:
 
-```
+```text
 TENANT_NAME/
 └── APP_NAME/
     └── ENV_NAME/
@@ -32,7 +32,7 @@ TENANT_NAME/
 
 Inside the `ENV_NAME` folder, add `Chart.yaml` and `values.yaml` with configuration specific to this environment. Add a `templates/` folder for any additional Kubernetes resources:
 
-```
+```text
 TENANT_NAME/
 └── APP_NAME/
     └── ENV_NAME/

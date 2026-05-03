@@ -19,8 +19,8 @@ Your SAML identity provider must expose the following attributes in its assertio
 ## Steps
 
 1. Contact Stakater Support to receive the **SAML 2.0 SP Metadata URL** for your {{ product_name }} instance.
-2. Register {{ product_name }} as a service provider in your identity provider using the SP metadata URL.
-3. Provide Stakater Support with your **SAML 2.0 IdP Metadata URL** so the integration can be completed.
+1. Register {{ product_name }} as a service provider in your identity provider using the SP metadata URL.
+1. Provide Stakater Support with your **SAML 2.0 IdP Metadata URL** so the integration can be completed.
 
 ---
 

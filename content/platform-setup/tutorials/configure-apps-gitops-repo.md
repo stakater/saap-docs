@@ -39,7 +39,7 @@ Create an application folder inside the tenant folder (`APP_NAME`). Inside the a
 
 Your structure should now look like this:
 
-```
+```text
 apps-gitops-config/
 └── TENANT_NAME/
     ├── argocd-apps/

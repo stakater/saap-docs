@@ -21,9 +21,9 @@ GitOps is the delivery model at the heart of {{ product_name }}. The entire stat
 CI (building and testing your code) is a separate concern from GitOps (deploying it). A typical flow looks like this:
 
 1. A developer merges a pull request in the application repository.
-2. CI builds a container image, tags it with a version, and pushes it to Harbor.
-3. CI (or a human) opens a pull request in the apps GitOps repository updating the image tag.
-4. Once that PR merges, ArgoCD detects the change and deploys the new version.
+1. CI builds a container image, tags it with a version, and pushes it to Harbor.
+1. CI (or a human) opens a pull request in the apps GitOps repository updating the image tag.
+1. Once that PR merges, ArgoCD detects the change and deploys the new version.
 
 {{ product_name }} does not include a CI pipeline. Teams bring their own — GitHub Actions, GitLab CI, or anything that can push an image and open a PR.
 

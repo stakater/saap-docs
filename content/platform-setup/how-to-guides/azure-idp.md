@@ -9,11 +9,11 @@ Azure AD requires two separate app registrations: one for identity (this page) a
 ## 1. Register an application in Azure AD
 
 1. Log in to the [Azure Portal](https://portal.azure.com).
-2. Open the **Azure Active Directory** service.
-3. Under **Manage**, click **App registrations**, then **New registration**.
-4. Enter `{{ product_name_lower }}` as the name.
-5. Under **Redirect URI**, select `Web` and enter the URI provided by Stakater Support.
-6. Click **Register**.
+1. Open the **Azure Active Directory** service.
+1. Under **Manage**, click **App registrations**, then **New registration**.
+1. Enter `{{ product_name_lower }}` as the name.
+1. Under **Redirect URI**, select `Web` and enter the URI provided by Stakater Support.
+1. Click **Register**.
 
 ![Azure AD app registration](images/azure-ad.png)
 
@@ -33,9 +33,9 @@ Go to **API permissions** for the newly created app and add the following Micros
 ## 3. Create a client secret
 
 1. Click **Certificates & secrets** in the left sidebar.
-2. Click **New client secret**.
-3. Enter `{{ product_name_lower }}-oidc` as the description, choose an expiry, and click **Add**.
-4. Copy the **Value** of the new secret immediately — it will not be shown again.
+1. Click **New client secret**.
+1. Enter `{{ product_name_lower }}-oidc` as the description, choose an expiry, and click **Add**.
+1. Copy the **Value** of the new secret immediately — it will not be shown again.
 
 ![Certificates and secrets](images/azure-ad-certificates-secrets.png)
 

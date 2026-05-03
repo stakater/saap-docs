@@ -16,7 +16,7 @@ Create an entry in your DNS provider for the hostname you want to secure. Map th
 
 Add both resources to your application's Helm chart at:
 
-```
+```text
 <path-to-app-chart>/templates/
 ```
 
@@ -82,13 +82,13 @@ The `cert-utils-operator` annotation injects the certificate from the secret int
 ### Certificate
 
 1. In the cluster console, switch to **Administrator** view and navigate to **Home > Search**.
-2. Select the application namespace and search for `Certificate`.
-3. Inspect the certificate and confirm the **Condition** shows it is up-to-date.
+1. Select the application namespace and search for `Certificate`.
+1. Inspect the certificate and confirm the **Condition** shows it is up-to-date.
 
     ![Certificate status](images/certificate-status.png)
 
 ### Route
 
 1. Navigate to **Networking > Routes** in the cluster console.
-2. Locate the route for your application.
-3. Confirm the route is listed, its status is **Accepted**, and the hostname and TLS configuration are correct.
+1. Locate the route for your application.
+1. Confirm the route is listed, its status is **Accepted**, and the hostname and TLS configuration are correct.

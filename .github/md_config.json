@@ -15,6 +15,9 @@
     },
     {
       "pattern": "^(https://access.redhat.com).+"
+    },
+    {
+      "pattern": "^(https://docs.openshift.com).+"
     }
   ]
 }

@@ -144,9 +144,9 @@ Commit and push. ArgoCD distributes the secret to the selected namespaces within
 ## 4. Validate
 
 1. In the cluster console, switch to **Administrator** view and navigate to **Home > Search**.
-2. Select the system namespace and search for `Certificate` in the **Resources** dropdown.
-3. Inspect the certificate. In the **Condition** section, confirm the issuer is up-to-date.
+1. Select the system namespace and search for `Certificate` in the **Resources** dropdown.
+1. Inspect the certificate. In the **Condition** section, confirm the issuer is up-to-date.
 
     ![Certificate status](images/certificate-status.png)
 
-4. Confirm the TLS secret is present in the target tenant namespaces.
+1. Confirm the TLS secret is present in the target tenant namespaces.

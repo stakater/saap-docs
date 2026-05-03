@@ -29,9 +29,9 @@ Navigate to **APIs & Services > Credentials** and select **OAuth client ID** und
 On the **Create OAuth client ID** page:
 
 1. Set the application type to `Web application`.
-2. Enter a name for the client.
-3. Add the **Authorized redirect URIs** provided by Stakater Support.
-4. Click **Create**.
+1. Enter a name for the client.
+1. Add the **Authorized redirect URIs** provided by Stakater Support.
+1. Click **Create**.
 
 ![Google Create OAuth client ID](images/google-create-oauth-id.png)
 

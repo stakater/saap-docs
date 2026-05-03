@@ -19,7 +19,7 @@ ArgoCD watches both repositories and reconciles the cluster to match their conte
 
 The apps repository is organized around three levels: **tenant → application → environment**.
 
-```
+```text
 apps-gitops-config/
 ├── <tenant>/
 │   ├── <application>/
@@ -38,9 +38,9 @@ apps-gitops-config/
 **How it works:**
 
 1. Each tenant has a folder. Inside it, each application has a folder.
-2. Inside each application folder, each environment (dev, staging, prod) has its own folder with the deployment manifests.
-3. `argocd-apps` inside the tenant folder contains ArgoCD Application resources that tell ArgoCD which folder to watch for each environment.
-4. `argocd-apps` at the root contains cluster-level ArgoCD Applications — one per cluster — that point to the tenant-level `argocd-apps` above.
+1. Inside each application folder, each environment (dev, staging, prod) has its own folder with the deployment manifests.
+1. `argocd-apps` inside the tenant folder contains ArgoCD Application resources that tell ArgoCD which folder to watch for each environment.
+1. `argocd-apps` at the root contains cluster-level ArgoCD Applications — one per cluster — that point to the tenant-level `argocd-apps` above.
 
 This is the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/): ArgoCD manages other ArgoCD applications, giving you one entry point per cluster.
 
@@ -52,7 +52,7 @@ This is the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/opera
 
 The infra repository is organized by cluster. Each cluster folder contains the cluster-scoped resources and the ArgoCD applications that deploy them.
 
-```
+```text
 infra-gitops-config/
 └── <cluster>/
     ├── argocd-apps/
@@ -68,8 +68,8 @@ infra-gitops-config/
 **How it works:**
 
 1. Each cluster has its own folder.
-2. The `argocd-apps` folder contains ArgoCD Application resources that watch the sibling folders — so ArgoCD deploys the tenants and quotas automatically.
-3. One of those ArgoCD applications (`apps-gitops-config.yaml`) points to the apps repository, linking the two repos together.
+1. The `argocd-apps` folder contains ArgoCD Application resources that watch the sibling folders — so ArgoCD deploys the tenants and quotas automatically.
+1. One of those ArgoCD applications (`apps-gitops-config.yaml`) points to the apps repository, linking the two repos together.
 
 ---
 
@@ -77,7 +77,7 @@ infra-gitops-config/
 
 The infra repository is the entry point. When ArgoCD syncs the infra repo, it deploys the tenant configuration and creates an ArgoCD application that watches the apps repo. From that point, the apps repo drives all application deployments.
 
-```
+```text
 infra-gitops-config  →  creates tenants and quotas
                      →  creates ArgoCD apps that watch apps-gitops-config
                                 ↓

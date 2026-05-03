@@ -100,7 +100,7 @@ spec:
 
 The repository is organized by cluster. Create the following structure (replace `dev` with your cluster name):
 
-```
+```text
 infra-gitops-config/
 └── dev/
     ├── argocd-apps/

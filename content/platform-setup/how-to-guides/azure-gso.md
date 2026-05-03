@@ -9,9 +9,9 @@ Complete [Connect Azure AD as an identity provider](azure-idp.md) before this st
 ## 1. Register the group-sync application
 
 1. Log in to the [Azure Portal](https://portal.azure.com).
-2. Open the **Azure Active Directory** service.
-3. Under **Manage**, click **App registrations**, then **New registration**.
-4. Enter `group-sync` as the name and click **Register**.
+1. Open the **Azure Active Directory** service.
+1. Under **Manage**, click **App registrations**, then **New registration**.
+1. Enter `group-sync` as the name and click **Register**.
 
 ![Azure AD app registration](images/azure-ad.png)
 
@@ -32,9 +32,9 @@ Go to **API permissions > Configured permissions** for the `group-sync` app and 
 ## 3. Create a client secret
 
 1. Click **Certificates & secrets** in the left sidebar.
-2. Click **New client secret**.
-3. Enter `{{ product_name_lower }}-group-sync` as the description, choose an expiry, and click **Add**.
-4. Copy the **Value** immediately — it will not be shown again.
+1. Click **New client secret**.
+1. Enter `{{ product_name_lower }}-group-sync` as the description, choose an expiry, and click **Add**.
+1. Copy the **Value** immediately — it will not be shown again.
 
 ![Certificates and secrets](images/azure-ad-certificates-secrets.png)
 

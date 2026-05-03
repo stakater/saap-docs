@@ -21,9 +21,9 @@ Read these before you start if you are new to the GitOps model {{ product_name }
 Run these steps once, in order, when your cluster is first provisioned:
 
 1. [Configure the infra GitOps repository](tutorials/configure-infra-gitops-repo.md) — define tenants, quotas, and cluster-level resources
-2. [Configure the apps GitOps repository](tutorials/configure-apps-gitops-repo.md) — register your applications and environments for GitOps delivery
-3. [Connect your identity provider](how-to-guides/keycloak-idp.md) — federate your existing IDP into your Keycloak realm
-4. [Configure user access](how-to-guides/user-access.md) — assign roles to your teams
+1. [Configure the apps GitOps repository](tutorials/configure-apps-gitops-repo.md) — register your applications and environments for GitOps delivery
+1. [Connect your identity provider](how-to-guides/keycloak-idp.md) — federate your existing IDP into your Keycloak realm
+1. [Configure user access](how-to-guides/user-access.md) — assign roles to your teams
 
 ---
 
