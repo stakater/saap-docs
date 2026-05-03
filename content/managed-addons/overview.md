@@ -12,7 +12,7 @@ All addons are installed, configured, upgraded, and operated by Stakater. For a 
 |-------|-------------|
 | [ArgoCD](./argocd/overview.md) | GitOps continuous delivery engine. All deployments are driven from Git — changes committed to your repository are applied to the cluster automatically. |
 | [Tronador](https://docs.stakater.com/tronador/) | Ephemeral preview environments per pull request — created automatically on PR open, torn down on merge. |
-| [Harbor](./harbor/overview.md) | Private container image and Helm chart registry. Push your images and charts here; ArgoCD deploys from here. |
+| Harbor | Private container image and Helm chart registry. Push your images and charts here; ArgoCD deploys from here. |
 | [Renovate](./renovate/overview.md) | Automatically opens pull requests to update application dependencies. Keeps applications current without manual effort. |
 | [Forecastle](./forecastle/overview.md) | A dashboard that lists and links to all applications running in your cluster — a single place to discover everything. |
 | [Tilt](./tilt/overview.md) | Fast local development loop for Kubernetes. Rebuilds and redeploys your application on every code change. |
@@ -67,7 +67,7 @@ All addons are installed, configured, upgraded, and operated by Stakater. For a 
 |-------|-------------|
 | [OpenBao](./vault/overview.md) | Open-source secrets management (community fork of HashiCorp Vault). Stores and manages secrets for all applications on the platform. |
 | [External Secrets Operator](./external-secrets-operator/overview.md) | Syncs secrets from OpenBao and supported cloud secret stores (AWS Secrets Manager, Azure Key Vault, GCP Secret Manager) into Kubernetes Secrets automatically. |
-| [Kyverno](./kyverno/overview.md) | Kubernetes-native policy engine. Enforces security and compliance guardrails across all tenants and workloads — preventing misconfiguration before it reaches the cluster. |
+| Kyverno | Kubernetes-native policy engine. Enforces security and compliance guardrails across all tenants and workloads — preventing misconfiguration before it reaches the cluster. |
 | [Keycloak](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6) | Each {{ product_name }} account gets a dedicated Keycloak realm. Connect any identity provider your organization already uses — LDAP, SAML, OpenID Connect, or social login. |
 
 ---

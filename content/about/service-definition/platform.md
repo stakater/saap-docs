@@ -44,8 +44,8 @@ See the [{{ product_name }} Update Life Cycle](../update-lifecycle.md) for more 
 
 ## Kubernetes Operator Support
 
-All operators listed in the [Operator Hub marketplace](https://operatorhub.io/) should be available for installation. These operators are considered customer workloads, and are not monitored by Stakater SRE, see [customer applications responsibilities](../responsibilities.md#data-and-applications).
+All operators listed in the [Operator Hub marketplace](https://operatorhub.io/) should be available for installation. These operators are considered customer workloads, and are not monitored by Stakater SRE, see [customer applications responsibilities](../responsibilities.md#applications-and-workloads).
 
 ## Red Hat Operator Support
 
-Red Hat workloads typically refer to Red Hat-provided operators made available through [Operator Hub](https://operatorhub.io/). Red Hat workloads are not managed by the Stakater SRE team, and must be deployed on worker nodes and must be managed by the customer, see [customer applications responsibilities](../responsibilities.md#data-and-applications).
+Red Hat workloads typically refer to Red Hat-provided operators made available through [Operator Hub](https://operatorhub.io/). Red Hat workloads are not managed by the Stakater SRE team, and must be deployed on worker nodes and must be managed by the customer, see [customer applications responsibilities](../responsibilities.md#applications-and-workloads).
