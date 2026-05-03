@@ -1,4 +1,4 @@
-# Authorization roles
+# Configure authorization roles
 
 {{ product_name }} provides two roles that control what users can do on your cluster: **Customer Admin** and **Tenant member**. Assign the right role based on what each person needs to do.
 
@@ -76,4 +76,4 @@ A Customer Admin grants tenant-level access by editing the `Tenant` CR. See [Ten
 
 ---
 
-Continue to [Manage user access](user-access.md) to assign these roles to your users.
+Continue to [Configure user access](user-access.md) to assign these roles to your users.

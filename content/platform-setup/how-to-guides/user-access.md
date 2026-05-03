@@ -1,4 +1,4 @@
-# Manage user access
+# Configure user access
 
 Users who log in via your identity provider have no permissions by default. This page explains how to grant the two types of access available in {{ product_name }}.
 

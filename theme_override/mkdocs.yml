@@ -34,7 +34,7 @@ nav:
       - about/service-definition.md
       - about/responsibilities.md
   - Platform Setup:
-      - platform-setup/overview.md
+      - platform-setup/index.md
       - Concepts:
           - platform-setup/explanation/gitops-intro.md
           - platform-setup/explanation/gitops-structure.md
@@ -55,7 +55,6 @@ nav:
           - platform-setup/how-to-guides/tls-certs.md
           - platform-setup/how-to-guides/http01-certs.md
       - Day-2 Operations:
-          - platform-setup/how-to-guides/configure-repository-secret.md
           - platform-setup/how-to-guides/add-a-new-environment-to-application.md
   - Deploy:
       - develop/explanation/inner-outer-loop.md

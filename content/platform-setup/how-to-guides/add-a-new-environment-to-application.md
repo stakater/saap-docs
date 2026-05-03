@@ -1,89 +1,109 @@
 # Add a new environment to an application
 
-This guide explains how to add a new deployment environment to an existing application in your apps GitOps repository. You need this when you provision a new cluster or want to deploy an application to an additional environment such as `prod`.
+This guide explains how to add a new deployment environment to an existing application in your apps GitOps repository. Use this when you want to deploy an application to an additional environment such as `prod`.
 
-This assumes the apps GitOps repository is already configured. If not, start with [Configure the apps GitOps repository](../tutorials/configure-apps-gitops-repo.md).
+If the apps GitOps repository is not yet configured, start with [Configure the apps GitOps repository](../tutorials/configure-apps-gitops-repo.md) first.
+
+Replace the following placeholders with your own values throughout this guide:
+
+| Placeholder | Description |
+|---|---|
+| `TENANT_NAME` | Your tenant name |
+| `APP_NAME` | Your application name |
+| `ENV_NAME` | The new environment name (e.g. `prod`) |
+| `CLUSTER_NAME` | Your cluster folder name |
+| `APPS_GITOPS_REPO_URL` | The URL of your apps GitOps repository |
 
 ---
 
-## Steps
+## 1. Create the environment folder
 
-1. Create an environment folder inside the application folder.
+In your apps GitOps repository, navigate to `TENANT_NAME/APP_NAME/` and create a folder named after the new environment:
 
-    In your apps GitOps repository, navigate to `<tenant>/<application>/` and create a folder named after the new environment. Using `gabbar` as the tenant and `stakater-nordmart-review` as the application:
+```
+TENANT_NAME/
+└── APP_NAME/
+    └── ENV_NAME/
+```
 
-    ```
-    gabbar/
-    └── stakater-nordmart-review/
-        └── prod/
-    ```
+---
 
-2. Add the Helm chart configuration for the new environment.
+## 2. Add the Helm chart configuration
 
-    Inside the `prod` folder, add `Chart.yaml` and `values.yaml` with configuration specific to this environment:
+Inside the `ENV_NAME` folder, add `Chart.yaml` and `values.yaml` with configuration specific to this environment. Add a `templates/` folder for any additional Kubernetes resources:
 
-    ```
-    gabbar/
-    └── stakater-nordmart-review/
-        └── prod/
-            ├── Chart.yaml
-            ├── values.yaml
-            └── templates/
-    ```
+```
+TENANT_NAME/
+└── APP_NAME/
+    └── ENV_NAME/
+        ├── Chart.yaml
+        ├── values.yaml
+        └── templates/
+```
 
-3. Create an ArgoCD Application in the tenant's `argocd-apps` folder pointing to this environment.
+---
 
-    Add a file at `gabbar/argocd-apps/prod/stakater-nordmart-review.yaml`:
+## 3. Create a tenant-level ArgoCD Application
 
-    ```yaml
-    apiVersion: argoproj.io/v1alpha1
-    kind: Application
-    metadata:
-      name: gabbar-prod-stakater-nordmart-review
-      namespace: rh-openshift-gitops-instance
-    spec:
-      destination:
-        namespace: gabbar-prod
-        server: 'https://kubernetes.default.svc'
-      project: gabbar
-      source:
-        path: gabbar/stakater-nordmart-review/prod
-        repoURL: 'APPS_GITOPS_REPO_URL'
-        targetRevision: HEAD
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-    ```
+In the tenant's `argocd-apps` folder, create an ArgoCD Application that points to the environment folder you just created.
 
-4. Create a root-level ArgoCD Application pointing to the tenant's `argocd-apps/prod` folder.
+Add `TENANT_NAME/argocd-apps/ENV_NAME/APP_NAME.yaml`:
 
-    Add a file at `argocd-apps/<cluster>/gabbar-prod.yaml`. This tells ArgoCD to watch the tenant-level ArgoCD applications for this environment:
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: TENANT_NAME-ENV_NAME-APP_NAME
+  namespace: rh-openshift-gitops-instance
+spec:
+  destination:
+    namespace: TENANT_NAME-ENV_NAME
+    server: 'https://kubernetes.default.svc'
+  project: TENANT_NAME
+  source:
+    path: TENANT_NAME/APP_NAME/ENV_NAME
+    repoURL: 'APPS_GITOPS_REPO_URL'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
 
-    ```yaml
-    apiVersion: argoproj.io/v1alpha1
-    kind: Application
-    metadata:
-      name: gabbar-prod
-      namespace: rh-openshift-gitops-instance
-    spec:
-      destination:
-        namespace: rh-openshift-gitops-instance
-        server: 'https://kubernetes.default.svc'
-      project: gabbar
-      source:
-        path: gabbar/argocd-apps/prod
-        repoURL: 'APPS_GITOPS_REPO_URL'
-        targetRevision: HEAD
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-    ```
+---
 
-5. Verify the infra GitOps repository has an ArgoCD Application watching `argocd-apps/<cluster>/`.
+## 4. Create a root-level ArgoCD Application
 
-    If this is a new cluster, ensure the infra repository's `argocd-apps` folder includes an application pointing to this cluster's folder in the apps repository. See [Configure the apps GitOps repository](../tutorials/configure-apps-gitops-repo.md#link-the-apps-repository-to-the-infra-repository) for the linking step.
+At the root of the apps repository, create an ArgoCD Application that points to the tenant's `argocd-apps/ENV_NAME` folder. This tells ArgoCD to watch all tenant-level applications for this environment.
+
+Add `argocd-apps/CLUSTER_NAME/TENANT_NAME-ENV_NAME.yaml`:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: TENANT_NAME-ENV_NAME
+  namespace: rh-openshift-gitops-instance
+spec:
+  destination:
+    namespace: rh-openshift-gitops-instance
+    server: 'https://kubernetes.default.svc'
+  project: TENANT_NAME
+  source:
+    path: TENANT_NAME/argocd-apps/ENV_NAME
+    repoURL: 'APPS_GITOPS_REPO_URL'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+---
+
+## 5. Verify the infra repository is watching this cluster
+
+The infra repository must have an ArgoCD Application pointing to `argocd-apps/CLUSTER_NAME/` in the apps repository. If this is an existing cluster, this application already exists. If this is a new cluster, add it now — see [Link the apps repository to the infra repository](../tutorials/configure-apps-gitops-repo.md#5-link-the-apps-repository-to-the-infra-repository).
 
 ---
 

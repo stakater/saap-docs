@@ -71,7 +71,7 @@ See [Responsibilities](about/responsibilities.md) for a clear breakdown of what 
 |---|---|
 | See exactly what's included | [Service Definition](about/service-definition.md) |
 | Understand what Stakater manages vs what you own | [Responsibilities](about/responsibilities.md) |
-| Set up GitOps repositories and configure the platform | [Platform Setup](platform-setup/overview.md) |
+| Set up GitOps repositories and configure the platform | [Platform Setup](platform-setup/index.md) |
 | Deploy my first application | [Deploy Your First App](develop/tutorials/deploy-demo-app.md) |
 | Start the inner development loop | [Inner Loop](develop/tutorials/inner-loop/prepare-environment/prepare-env.md) |
 | Review compliance and regulatory coverage | [Security & Compliance](secure/overview.md) |

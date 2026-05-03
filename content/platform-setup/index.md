@@ -37,7 +37,7 @@ Connect your organization's identity provider and control who can access what:
 - [Configure Azure group sync](how-to-guides/azure-gso.md)
 - [Configure SAML](how-to-guides/saml-idp.md)
 - [Configure authorization roles](how-to-guides/authorization-roles.md)
-- [Manage user access](how-to-guides/user-access.md)
+- [Configure user access](how-to-guides/user-access.md)
 
 ---
 
@@ -46,7 +46,7 @@ Connect your organization's identity provider and control who can access what:
 Configure custom domains and automate TLS certificate management:
 
 - [Configure custom domains](how-to-guides/custom-domains.md)
-- [Manage TLS certificates](how-to-guides/tls-certs.md)
+- [Configure TLS certificates](how-to-guides/tls-certs.md)
 - [Use HTTP-01 certificate challenges](how-to-guides/http01-certs.md)
 
 ---
@@ -55,7 +55,6 @@ Configure custom domains and automate TLS certificate management:
 
 Recurring tasks for managing your platform after bootstrap:
 
-- [Configure a repository secret for ArgoCD](how-to-guides/configure-repository-secret.md)
 - [Add a new environment to an application](how-to-guides/add-a-new-environment-to-application.md)
 
 ---
