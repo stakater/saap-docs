@@ -1,139 +1,122 @@
-# Internal alerting
+# Configure application alerting
 
-{{ product_name }} also provides fully managed dedicated workload monitoring stack based on Prometheus, Alertmanager and Grafana.
+This guide explains how to configure metrics scraping, alert routing, and alert rules for your application using the Stakater Application Helm Chart.
 
-To configure alerting for your application do following:
+1. [Create a ServiceMonitor](#1-create-a-servicemonitor) — tell Prometheus which endpoint to scrape
+1. [Create an AlertmanagerConfig](#2-create-an-alertmanagerconfig) — route alerts to Slack, PagerDuty, or another target
+1. [Create a PrometheusRule](#3-optional-create-a-prometheusrule) (optional) — define custom alert thresholds
 
-1. Create `ServiceMonitor` for the application
-1. Create `AlertmanagerConfig` for the application
-1. [Optional] Create `PrometheusRule` for defining the alerting rule
+---
 
-**Note:** OpenShift Cluster needs to be on version greater than or equal to 4.7
+## 1. Create a ServiceMonitor
 
-## 1. Create ServiceMonitor for the application
-
-Service Monitor uses the service that is used by your application. Then Service Monitor scrapes metrics via that service.
-
-You need to define `ServiceMonitor` so, the application metrics can be scrapped.
-
-`ServiceMonitor` can be enabled in [Application Chart](https://github.com/stakater-charts/application).
+A `ServiceMonitor` tells Prometheus which endpoint on your application to scrape for metrics. Enable it in your `values.yaml`:
 
 | Parameter | Description |
 |:---|:---|
-| `.Values.serviceMonitor.enabled` | Enable `ServiceMonitor` |
-| `.Values.serviceMonitor.endpoints` | Array of endpoints to be scraped by Prometheus |
+| `application.serviceMonitor.enabled` | Enable `ServiceMonitor` |
+| `application.serviceMonitor.endpoints` | Array of endpoints to be scraped by Prometheus |
 
 ```yaml
-serviceMonitor:
-  enabled: true
-  endpoints:
-  - interval: 5s
-    path: /actuator/prometheus
-    port: http
+application:
+  serviceMonitor:
+    enabled: true
+    endpoints:
+      - interval: 5s
+        path: /actuator/prometheus
+        port: http
 ```
 
-## 2. Create AlertmanagerConfig for the application
+---
 
-You need to define AlertmanagerConfig to direct alerts to your target alerting medium like Slack, PagerDuty, etc.
+## 2. Create an AlertmanagerConfig
 
-A sample AlertmanagerConfig can be configured in [Application Chart](https://github.com/stakater-charts/application).
+An `AlertmanagerConfig` routes alerts to a notification target. This example routes to a Slack channel.
 
-| Parameter | Description |
-|:---|:---|
-| `.Values.alertmanagerConfig.enabled` | Enable AlertmanagerConfig for this app (Will be merged in the base config) |
-| `.Values.alertmanagerConfig.spec.route` | The Alertmanager route definition for alerts matching the resource's namespace. It will be added to the generated Alertmanager configuration as a first-level route |
-| `.Values.alertmanagerConfig.spec.receivers` | List of receivers |
-
-We will use Slack as an example here.
-
-Step 1: Create a `slack-webhook-config` secret which holds Slack webhook URL
+**Step 1:** Create a secret containing the Slack webhook URL:
 
 ```yaml
 kind: Secret
 apiVersion: v1
 metadata:
   name: slack-webhook-config
-  namespace: <your-namespace>
+  namespace: YOUR_NAMESPACE
 data:
-  webhook-url: <slack-webhook-url-in-base64>
+  webhook-url: SLACK_WEBHOOK_URL_BASE64
 type: Opaque
 ```
 
-Step 2: Add a AlertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1, you need to replace `<workload-alertmanager-url>` with the link of Workload Alertmanager that you can get from Forecastle.
+**Step 2:** Configure the `AlertmanagerConfig` in your `values.yaml`. Replace `ALERTMANAGER_URL` with the Workload Alertmanager URL from Forecastle.
+
+| Parameter | Description |
+|:---|:---|
+| `application.alertmanagerConfig.enabled` | Enable AlertmanagerConfig (merged into the base Alertmanager config) |
+| `application.alertmanagerConfig.spec.route` | Alertmanager route definition for alerts matching the resource's namespace |
+| `application.alertmanagerConfig.spec.receivers` | List of receivers |
 
 <!-- vale off -->
 {% raw %}
 
 ```yaml
-alertmanagerConfig:
-  enabled: true
-  spec:
-    route:
-      receiver: 'slack-webhook'
-    receivers:
-    - name: 'slack-webhook'
-      slackConfigs:
-      - apiURL:
-          name: slack-webhook-config
-          key: webhook-url
-        channel: '#channel-name'
-        sendResolved: true
-        text: |2-
-          {{ range .Alerts }}
-          *Alert:* `{{ .Labels.severity | toUpper }}` - {{ .Annotations.summary }}
-          *Description:* {{ .Annotations.description }}
-          *Details:*
-            {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
-            {{ end }}
-          {{ end }}
-        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {% endraw %}{{ product_name }}{% raw %} Alertmanager Event Notification'
-        titleLink: |2
-          <workload-alertmanager-url>/#/alerts?receiver={{ .Receiver | urlquery }}
-        httpConfig:
-          tlsConfig:
-            insecureSkipVerify: true
+application:
+  alertmanagerConfig:
+    enabled: true
+    spec:
+      route:
+        receiver: 'slack-webhook'
+      receivers:
+        - name: 'slack-webhook'
+          slackConfigs:
+            - apiURL:
+                name: slack-webhook-config
+                key: webhook-url
+              channel: '#CHANNEL_NAME'
+              sendResolved: true
+              text: |2-
+                {{ range .Alerts }}
+                *Alert:* `{{ .Labels.severity | toUpper }}` - {{ .Annotations.summary }}
+                *Description:* {{ .Annotations.description }}
+                *Details:*
+                  {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
+                  {{ end }}
+                {{ end }}
+              title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {% endraw %}{{ product_name }}{% raw %} Alertmanager Event Notification'
+              titleLink: |2
+                ALERTMANAGER_URL/#/alerts?receiver={{ .Receiver | urlquery }}
+              httpConfig:
+                tlsConfig:
+                  insecureSkipVerify: true
 ```
 
 {% endraw %}
 <!-- vale on -->
 
-With this configuration all predefined rules and any new rule which you define should land in the configured Slack channel.
+Alerts are namespaced automatically — Alertmanager adds a `namespace` match for the namespace where this config is deployed.
 
-**Note:**
-AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
+---
 
-```yaml
-...
-      match:
-        namespace: <your-namespace>
-...
-```
+## 3. [Optional] Create a PrometheusRule
 
-## 3. [Optional] Create PrometheusRule for the application
-
-{{ product_name }} comes with lots of [Predefined PrometheusRules](./predefined-prometheusrules.md) which covers most of the common use cases.
-
-If required you can definitely create a new PrometheusRule to define for defining alerting rule.
-
-A sample PrometheusRule can be configured in [Application Chart](https://github.com/stakater-charts/application).
+{{ product_name }} ships with [predefined PrometheusRules](./predefined-prometheusrules.md) that cover common scenarios. Define a custom rule only when the predefined ones do not cover your use case.
 
 | Parameter | Description |
 |:---|:---|
-| `prometheusRule.enabled` | Enable PrometheusRule for this app |
-| `prometheusRule.spec.groups` | PrometheusRules in their groups to be added |
+| `application.prometheusRule.enabled` | Enable PrometheusRule for this app |
+| `application.prometheusRule.groups` | PrometheusRule groups to be added |
 
 ```yaml
-prometheusRule:
-  enabled: true
-  groups: []
-  - name: example-app-uptime
-    rules:
-    - alert: ExampleAppDown
-      annotations:
-        message: >-
-          The Example App is Down (Test Alert)
-      expr: up{namespace="test-app"} == 0
-      for: 1m
-      labels:
-        severity: critical
+application:
+  prometheusRule:
+    enabled: true
+    groups:
+      - name: example-app-uptime
+        rules:
+          - alert: ExampleAppDown
+            annotations:
+              message: >-
+                The Example App is Down (Test Alert)
+            expr: up{namespace="test-app"} == 0
+            for: 1m
+            labels:
+              severity: critical
 ```

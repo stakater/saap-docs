@@ -111,24 +111,23 @@ nav:
           - develop/how-to-guides/remote-debugging/remote-debugging-dotnet.md
           - develop/how-to-guides/remote-debugging-mirrord/remote-debugging-mirrord-tilt.md
   - Observe:
-      - managed-addons/monitoring-stack/overview.md
-      - managed-addons/monitoring-stack/stack.md
+      - managed-addons/monitoring-stack/index.md
       - Metrics & Alerts:
-          - managed-addons/monitoring-stack/app-uptime.md
-          - managed-addons/monitoring-stack/app-alerts.md
           - managed-addons/monitoring-stack/workload-application-alerts.md
           - managed-addons/monitoring-stack/predefined-prometheusrules.md
           - develop/how-to-guides/expose-spring-boot-metrics/expose-spring-boot-metrics.md
       - Dashboards:
           - managed-addons/monitoring-stack/grafana-dashboard.md
       - Logs:
-          - managed-addons/logging-stack/overview.md
+          - managed-addons/logging-stack/index.md
           - managed-addons/monitoring-stack/log-alerts.md
       - Traces:
-          - managed-addons/tracing/overview.md
-          - managed-addons/opentelemetry/overview.md
+          - Tempo:
+              - managed-addons/tracing/index.md
+          - OpenTelemetry:
+              - managed-addons/opentelemetry/index.md
       - Uptime:
-          - managed-addons/imc/overview.md
+          - managed-addons/imc/index.md
           - managed-addons/imc/tutorial/add-configuration.md
           - managed-addons/imc/tutorial/add-monitors.md
           - managed-addons/monitoring-stack/downtime-notifications-uptimerobot.md
@@ -177,38 +176,45 @@ nav:
               - managed-addons/helm-leader-chart/index.md
       - Ops Ready:
           - Multi Tenant Operator:
-              - managed-addons/mto/overview.md
+              - managed-addons/mto/index.md
           - Velero:
-              - managed-addons/velero/overview.md
-              - managed-addons/velero/introduction.md
+              - managed-addons/velero/index.md
               - managed-addons/velero/backup-restore.md
               - managed-addons/velero/cli.md
               - managed-addons/velero/limitations.md
               - managed-addons/velero/cleanup.md
               - managed-addons/velero/troubleshooting.md
           - Descheduler:
-              - managed-addons/descheduler/overview.md
+              - managed-addons/descheduler/index.md
           - Autoscaling:
-              - managed-addons/vertical-pod-autoscaler/overview.md
-              - managed-addons/horizontal-pod-autoscaler/overview.md
-              - managed-addons/custom-metrics-autoscaler/overview.md
+              - Vertical Pod Autoscaler:
+                  - managed-addons/vertical-pod-autoscaler/index.md
+              - Horizontal Pod Autoscaler:
+                  - managed-addons/horizontal-pod-autoscaler/index.md
+              - Custom Metrics Autoscaler:
+                  - managed-addons/custom-metrics-autoscaler/index.md
           - Networking:
-              - managed-addons/cert-manager/overview.md
-              - managed-addons/external-dns/overview.md
-              - managed-addons/service-mesh/overview.md
-          - Databases (coming soon):
-              - managed-addons/postgres/tutorial/connect-to-postgres-cli/connect-to-postgres-cli.md
-              - managed-addons/redis/tutorial/connect-to-redis-cli/connect-to-redis-cli.md
+              - Cert-Manager:
+                  - managed-addons/cert-manager/index.md
+              - ExternalDNS:
+                  - managed-addons/external-dns/index.md
+              - Service Mesh:
+                  - managed-addons/service-mesh/index.md
+          - Databases:
+              - PostgreSQL:
+                  - managed-addons/postgres/index.md
+                  - managed-addons/postgres/tutorial/connect-to-postgres-cli/connect-to-postgres-cli.md
+              - Redis:
+                  - managed-addons/redis/index.md
+                  - managed-addons/redis/tutorial/connect-to-redis-cli/connect-to-redis-cli.md
       - Compliance Ready:
           - OpenBao:
-              - managed-addons/vault/overview.md
+              - managed-addons/vault/index.md
           - External Secrets Operator:
-              - managed-addons/external-secrets-operator/overview.md
-          - Cert Manager:
-              - managed-addons/cert-manager/overview.md
+              - managed-addons/external-secrets-operator/index.md
       - Optional Add-ons:
           - RHACS:
-              - managed-addons/rhacs/overview.md
+              - managed-addons/rhacs/index.md
               - managed-addons/rhacs/accessing-rhacs.md
               - managed-addons/rhacs/permissions.md
   - Help:
