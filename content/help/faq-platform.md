@@ -22,15 +22,15 @@ _Git has strong auditability, and it fits naturally into a developer's flow._
 
 ## 6. How do you keep my tokens secret in the Git repository?
 
-_We are going with Sealed Secrets because of it's low-maintenance, and because it requires little investment to get going._
+_Secrets are stored in OpenBao and synced into your workloads via the External Secrets Operator. They are never stored as plain text in Git._
 
 ## 7. How do I get started?
 
 _Add some resources to a directory, and git commit and push, then ask ArgoCD to deploy the repository, change your resource, git commit and push, and the change should be deployed automatically._
 
-## 8. How are OpenShift pipelines (Tekton) used?
+## 8. How does CI integrate with GitOps?
 
-_They are used in the default setup to drive the CI from pushes to your application code repository_.
+_Your CI pipeline builds and pushes the container image, then updates the image tag in Git. ArgoCD detects the change and deploys it to the cluster automatically._
 
 ## 9. How is GitOps different from DevOps?
 

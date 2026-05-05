@@ -247,7 +247,7 @@ Sometimes this concept takes a little bit of getting used to. Application develo
 
 Cloud applications can make no assumptions about the file system on which they run, other than the fact that it is ephemeral. A cloud native application writes all of its log entries to stdout and stderr. This might scare a lot of people, fearing the loss of control that this implies.
 
-You should consider the aggregation, processing, and storage of logs as a nonfunctional requirement that is satisfied not by your application, but by your cloud provider or some other tool suite running in cooperation with your platform. You can use tools like the ELK stack (ElasticSearch, Logstash, and Kibana), Splunk, Sumologic, or any number of other tools to capture and analyze your log emissions.
+You should consider the aggregation, processing, and storage of logs as a nonfunctional requirement that is satisfied not by your application, but by your cloud provider or some other tool suite running in cooperation with your platform. You can use tools like the LGTM stack (Loki, Grafana, Tempo, and Mimir), Splunk, Sumologic, or any number of other tools to capture and analyze your log emissions.
 
 Embracing the notion that your application has less work to do in the cloud than it does in the enterprise can be a liberating experience.
 
@@ -269,7 +269,7 @@ It is recommended application logs as JSON.
 - Events are structured event streams (e.g. JSON)
 - Do not write logs to disk (to mitigate the need for log rotation)
 
-{{ product_name }} includes fully managed logging stack based on ElasticSearch, Fluentd and Kibana.
+{{ product_name }} includes a fully managed logging stack based on Loki, Grafana, and the OpenTelemetry collector.
 
 ## 8. Backing services
 
@@ -642,7 +642,7 @@ For reproducibility and auditability.
 
 **How?**
 
-Stakater team has Helm [application chart](https://github.com/stakater-charts/application) which can be used for application deployment.
+Stakater team has Helm [application chart](https://github.com/stakater/application) which can be used for application deployment.
 
 ## 19. Secrets handling
 
@@ -656,7 +656,7 @@ Vanilla Kubernetes secrets are only base64 encoded so, they can't be put to SCM 
 
 **How?**
 
-{{ product_name }} has secrets handling support with Sealed Secrets and OpenBao.
+{{ product_name }} manages secrets with OpenBao. The External Secrets Operator syncs them into your workloads automatically.
 
 ## 20. Tracing instrumentation
 
@@ -708,7 +708,7 @@ When multiple applications are deployed on the same node, if the upper and lower
 
 **How?**
 
-Stakater application Helm chart always sets default requests and limits: <https://github.com/stakater-charts/application/blob/master/application/values.yaml#L142> but of course each application can individually override them.
+Stakater application Helm chart always sets default requests and limits, but of course each application can individually override them.
 
 ## 23. Alerts
 

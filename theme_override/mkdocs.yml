@@ -132,8 +132,7 @@ nav:
           - managed-addons/imc/tutorial/add-monitors.md
           - managed-addons/monitoring-stack/downtime-notifications-uptimerobot.md
   - Secure:
-      - secure/overview.md
-      - secure/deploying-secrets.md
+      - secure/index.md
       - secure/backup.md
       - Backup & Restore:
           - operate/velero-stateful-app-example.md
@@ -218,10 +217,12 @@ nav:
               - managed-addons/rhacs/accessing-rhacs.md
               - managed-addons/rhacs/permissions.md
   - Help:
+      - help/index.md
       - help/support/support.md
       - help/faq-platform.md
       - help/faq-administrators.md
       - Kubernetes Concepts:
+          - help/k8s-concepts/index.md
           - help/k8s-concepts/storage-basics.md
           - help/k8s-concepts/cloud-native-app.md
           - help/k8s-concepts/helm.md
