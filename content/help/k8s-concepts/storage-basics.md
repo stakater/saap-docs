@@ -29,4 +29,3 @@ A PV is a virtual storage instance that is added as a volume to the cluster. The
 ### Physical storage
 
 A physical storage instance that you can use to persist your data. Examples of physical storage in cloud include File Storage, Block Storage, Object Storage, and local worker node storage that you can use as SDS storage with Portworx. Clouds usually provide high availability for physical storage instances. However, data that is stored on a physical storage instance is not backed up automatically. Depending on the type of storage that you use, different methods exist to set up backup and restore solutions.
-
