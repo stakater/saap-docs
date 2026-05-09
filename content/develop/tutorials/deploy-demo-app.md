@@ -140,7 +140,7 @@ curl -u "HARBOR_USERNAME":"HARBOR_PASSWORD" HARBOR_HELM_REPO_URL \
 
 ---
 
-## 6. Add the application to apps-gitops-config
+## 6. Add the application to `apps-gitops-config`
 
 In your `apps-gitops-config` repository, create the deployment folder at `TENANT_NAME/APP_NAME/dev/`.
 

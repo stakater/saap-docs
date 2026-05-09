@@ -54,7 +54,7 @@ spec:
 ```
 
 !!! note
-    Avoid deleting or recrereating certificates unnecessarily. Repeated issuance attempts count against [Let's Encrypt rate limits](https://letsencrypt.org/docs/rate-limits/).
+    Avoid deleting or recreating certificates unnecessarily. Repeated issuance attempts count against [Let's Encrypt rate limits](https://letsencrypt.org/docs/rate-limits/).
 
 ### Route
 

@@ -1,6 +1,6 @@
-# Expose your application over HTTPS
+# Expose your application over https
 
-This guide explains how to configure an OpenShift `Route` to serve your application on a custom hostname over HTTPS using a TLS certificate managed by cert-manager.
+This guide explains how to configure an OpenShift `Route` to serve your application on a custom hostname over https using a TLS certificate managed by cert-manager.
 
 **Prerequisites:**
 

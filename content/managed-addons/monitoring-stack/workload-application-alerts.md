@@ -91,7 +91,7 @@ application:
 {% endraw %}
 <!-- vale on -->
 
-Alerts are namespaced automatically — Alertmanager adds a `namespace` match for the namespace where this config is deployed.
+Alertmanager automatically scopes alerts to the deploying namespace by adding a `namespace` match.
 
 ---
 

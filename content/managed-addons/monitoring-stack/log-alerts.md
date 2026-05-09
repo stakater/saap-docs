@@ -49,7 +49,7 @@ deployment:
       pattern: "(ERROR|ERR|error|E[A-Z0-9]{4})"
 ```
 
-Log entry sent to slack channel:
+Log entry sent to Slack channel:
 
 ```json
 {"timestamp":"2021-03-09 15:03:44.405",**"level":"ERROR"**,"thread":"failedEventListener-0-C-1","logger":"org.apache.kafka.clients.consumer.internals.ConsumerCoordinator","message":"[Consumer instanceId=qwertyapp-54f646c54c-9bblt-0, clientId=consumer-app-54f646c54c-9bblt-0, groupId=qwertyapp-consumer] Setting offset for partition qwertyapp.failed-events-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[qwertyapp-kafka-0.qwertyapp-kafka-brokers.team-dev.svc:9092 (id: 0 rack: null)], epoch=0}}","context":"default"}

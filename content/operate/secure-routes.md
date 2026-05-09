@@ -1,6 +1,6 @@
 # Configure secure routes
 
-This guide explains how to expose your application over HTTPS using an OpenShift Route configured through the [Stakater Application Chart](https://github.com/stakater/application).
+This guide explains how to expose your application over https using an OpenShift Route configured through the [Stakater Application Chart](https://github.com/stakater/application).
 
 {{ product_name }} provisions every cluster with a wildcard domain in the format `*.apps.CLUSTER_NAME.CLUSTER_ID.kubeapp.cloud`, pre-configured with edge TLS termination. Any route using this domain is already secured — no additional certificate setup required.
 
@@ -102,4 +102,4 @@ In the OpenShift console, navigate to **Networking > Routes** in your applicatio
 
 ---
 
-For path-based routing or URL rewriting, see [Rewrite request paths](../develop/how-to-guides/rewriting-path-annotation/path-rewriting.md). For exposing on a custom domain with cert-manager, see [Expose your application over HTTPS](../develop/how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md).
+For path-based routing or URL rewriting, see [Rewrite request paths](../develop/how-to-guides/rewriting-path-annotation/path-rewriting.md). For exposing on a custom domain with cert-manager, see [Expose your application over https](../develop/how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md).

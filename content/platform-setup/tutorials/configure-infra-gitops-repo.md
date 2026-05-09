@@ -26,7 +26,7 @@ Replace the following placeholders with your own values throughout this tutorial
 
 ArgoCD needs read access to your repository to sync resources from it. Create credentials on your Git provider before you create the repository.
 
-### Option A: Personal access token (HTTPS)
+### Option A: Personal access token (https)
 
 Create a personal access token (PAT) — also called an access token or app password depending on your provider — with at minimum **repository read** permission on the infra and apps repositories.
 
@@ -71,7 +71,7 @@ Store the private key content at the path `git-ssh-key` with one field:
 - `privateKey` — the contents of your private key file (e.g. `~/.ssh/argocd_gitops`)
 
 !!! note
-    The ExternalSecret template shown in step 3 uses HTTPS fields (`username`/`password`). If you chose SSH, adjust the template to map `git-ssh-key.privateKey` to the `sshPrivateKey` field instead.
+    The ExternalSecret template shown in step 3 uses https fields (`username`/`password`). If you chose SSH, adjust the template to map `git-ssh-key.privateKey` to the `sshPrivateKey` field instead.
 
 ---
 

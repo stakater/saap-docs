@@ -96,7 +96,7 @@ Recognize your API as a first-class artifact of the development process, API fir
 
 Even if you're not planning on building a service as part of a larger ecosystem, the discipline of starting all of your development at the API level still pays enough dividends to make it worth your time.
 
-Built into every decision you make and every line of code you write is the notion that every functional requirement of your application will be met through the consumption of an API. Even a user interface, be it web or mobile, is really nothing more than a consumer of an API.
+Built into every decision you make and every line of code you write is the principle that every functional requirement of your application will be met through the consumption of an API. Even a user interface, be it web or mobile, is really nothing more than a consumer of an API.
 
 By designing your API first, you are able to facilitate discussion with your stakeholders (your internal team, customers, or possibly other teams within your organization who want to consume your API) well before you might have coded yourself past the point of no return. This collaboration then allows you to build user stories, mock your API, and generate documentation that can be used to further socialize the intent and functionality of the service you're building.
 
@@ -249,7 +249,7 @@ Cloud applications can make no assumptions about the file system on which they r
 
 You should consider the aggregation, processing, and storage of logs as a nonfunctional requirement that is satisfied not by your application, but by your cloud provider or some other tool suite running in cooperation with your platform. You can use tools like the LGTM stack (Loki, Grafana, Tempo, and Mimir), Splunk, Sumologic, or any number of other tools to capture and analyze your log emissions.
 
-Embracing the notion that your application has less work to do in the cloud than it does in the enterprise can be a liberating experience.
+Accepting the idea that your application has less work to do in the cloud than it does in the enterprise can be a liberating experience.
 
 **Why?**
 

@@ -25,7 +25,7 @@ Work through [Deploy a demo app](tutorials/deploy-demo-app.md) for a complete en
 | Build a container image and push it to Harbor | [Build and push your image](how-to-guides/build-and-push-your-image/build-and-push-your-image.md) |
 | Package a Helm chart and push it to Harbor | [Package and push your chart](how-to-guides/package-and-push-your-chart/package-and-push-your-chart.md) |
 | Deploy an application using ArgoCD and Helm | [Deploy with ArgoCD and Helm](how-to-guides/deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md) |
-| Expose an application on a custom hostname over HTTPS | [Expose your application](how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md) |
+| Expose an application on a custom hostname over https | [Expose your application](how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md) |
 | Rewrite URL paths at the ingress | [Path rewriting](how-to-guides/rewriting-path-annotation/path-rewriting.md) |
 | Promote an application to the next environment | [Promote your application](how-to-guides/promote-your-application/promote-your-application.md) |
 

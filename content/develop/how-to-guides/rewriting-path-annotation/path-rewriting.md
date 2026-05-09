@@ -49,4 +49,4 @@ curl https://APP_HOSTNAME/EXTERNAL_PATH
 
 ---
 
-For securing a route with IP restrictions or custom timeouts, see [Configure secure routes](../../../operate/secure-routes.md). For exposing on a custom domain with a cert-manager certificate, see [Expose your application over HTTPS](../expose-applications-to-internet/expose-applications-to-internet.md).
+For securing a route with IP restrictions or custom timeouts, see [Configure secure routes](../../../operate/secure-routes.md). For exposing on a custom domain with a cert-manager certificate, see [Expose your application over https](../expose-applications-to-internet/expose-applications-to-internet.md).

@@ -51,7 +51,7 @@ Define what authenticated users are allowed to do:
 
 ## Networking
 
-By default, applications are reachable on the cluster's built-in domain. Configure networking when you need your own domain name, HTTPS certificates, or automated DNS management.
+By default, applications are reachable on the cluster's built-in domain. Configure networking when you need your own domain name, TLS certificates, or automated DNS management.
 
 | Scenario | Guide |
 |---|---|
