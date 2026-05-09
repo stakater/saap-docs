@@ -1,6 +1,6 @@
 # External downtime alerting
 
-Stakater App Agility Platform provides downtime notifications for Applications via [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which out of the box integrates with [UptimeRobot](https://uptimerobot.com) and many other services. For this guide we will configure a Slack channel for receiving the alerts; but you can configure any medium supported by the service (email, PagerDuty, etc.).
+{{ product_name }} provides downtime notifications for Applications via [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which out of the box integrates with [UptimeRobot](https://uptimerobot.com) and many other services. For this guide we will configure a Slack channel for receiving the alerts; but you can configure any medium supported by the service (email, PagerDuty, etc.).
 
 To configure downtime alerting do following:
 

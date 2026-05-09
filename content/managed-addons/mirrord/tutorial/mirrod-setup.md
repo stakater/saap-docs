@@ -22,7 +22,7 @@ For additional guidance, refer to the [mirrord VSCode extension quick start guid
 
 1. **Deploy or Verify Application Pod**:
 Ensure your application pod is running in your sandbox environment.
-    - You may deploy the latest version using an [inner loop approach](https://docs.stakater.com/saap/for-developers/tutorials/inner-loop/prepare-environment/prepare-env.html), or use a previously stable version already deployed in cluster.
+    - You may deploy the latest version using the [inner loop approach](../../../develop/tutorials/inner-loop/prepare-environment/prepare-env.md), or use a previously stable version already deployed in cluster.
 1. **Record Pod Details**:
 Copy the exact name of the pod you plan to debug. This name will be used in the mirrord configuration.
 

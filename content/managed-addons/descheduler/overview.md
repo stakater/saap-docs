@@ -2,7 +2,7 @@
 
 While the scheduler is used to determine the most suitable node to host a new pod, the descheduler can be used to evict a running pod so that the pod can be rescheduled onto a more suitable node.
 
-SAAP comes pre-configured with a descheduler.
+{{ product_name }} comes pre-configured with a descheduler.
 
 ## About the descheduler
 

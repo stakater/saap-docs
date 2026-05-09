@@ -20,7 +20,7 @@ To read from and write to your storage instance, you must mount the persistent v
 
 ### Persistent volume claim (PVC)
 
-A PVC is the request to provision persistent storage with a specific type and configuration. To specify the persistent storage flavor that you want, you use Kubernetes storage classes. The cluster admin can define storage classes, or you can choose from one of the predefined storage classes in SAAP. When you create a PVC, the request is sent to the storage provider. Depending on the configuration that is defined in the storage class, the physical storage device is ordered and provisioned into your cloud infrastructure account. If the requested configuration does not exist, the storage is not created.
+A PVC is the request to provision persistent storage with a specific type and configuration. To specify the persistent storage flavor that you want, you use Kubernetes storage classes. The cluster admin can define storage classes, or you can choose from one of the predefined storage classes in {{ product_name }}. When you create a PVC, the request is sent to the storage provider. Depending on the configuration that is defined in the storage class, the physical storage device is ordered and provisioned into your cloud infrastructure account. If the requested configuration does not exist, the storage is not created.
 
 ### Persistent volume (PV)
 
@@ -29,9 +29,3 @@ A PV is a virtual storage instance that is added as a volume to the cluster. The
 ### Physical storage
 
 A physical storage instance that you can use to persist your data. Examples of physical storage in cloud include File Storage, Block Storage, Object Storage, and local worker node storage that you can use as SDS storage with Portworx. Clouds usually provide high availability for physical storage instances. However, data that is stored on a physical storage instance is not backed up automatically. Depending on the type of storage that you use, different methods exist to set up backup and restore solutions.
-
-## Dynamic provisioning
-
-## Static provisioning
-
-## Storage classes

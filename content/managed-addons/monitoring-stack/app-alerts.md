@@ -48,7 +48,7 @@ oc label namespace my-project 'openshift.io/user-monitoring=false'
 
 ## Creating Application Alerts to Monitor Application workloads
 
-In order to define Prometheus rules to monitor applications on the basis of exposed metrics. You need 3 things:
+To define Prometheus rules to monitor applications on the basis of exposed metrics. You need 3 things:
 
 1. Metrics Exposed by Application endpoints
 1. Metrics endpoints are scraped via ServiceMonitor by Prometheus

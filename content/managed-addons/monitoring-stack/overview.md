@@ -1,6 +1,6 @@
 # Monitoring stack
 
-Stakater App Agility Platform supports all four levels in service monitoring maturity model.
+{{ product_name }} supports all four levels in service monitoring maturity model.
 
 ## Service Monitoring Maturity Model
 
@@ -24,9 +24,10 @@ Level 3: Custom instrumentation of service (logged in users, unprocessed orders,
 
 ## Components
 
-Here are the monitoring stack components:
+{{ product_name }} uses the LGTM stack for a unified observability experience:
 
-- Prometheus
-- Grafana
-- Alert Manager
-- Thanos
+- Grafana — unified dashboards for metrics, logs, and traces
+- Mimir — scalable, long-term metrics storage
+- Loki — log aggregation and querying
+- Tempo — distributed tracing
+- Alertmanager — alert routing and notifications

@@ -1,6 +1,6 @@
 # Application Monitoring Stack
 
-Stakater App Agility Platform (SAAP) monitoring stack is based on following components
+{{ product_name }} monitoring stack is based on following components
 
 ## Prometheus
 
@@ -16,4 +16,4 @@ Metrics visualization via Grafana, the leading metrics visualization technology.
 
 ## Stakater Ingress Monitor Controller (IMC)
 
-[Stakater IMC](https://github.com/stakater/IngressMonitorController) watches ingress/routes and creates liveness alerts in third party uptime checkers; for downtime notifications. By default SAAP uses UptimeRobot free tier.
+[Stakater IMC](https://github.com/stakater/IngressMonitorController) watches ingress/routes and creates liveness alerts in third party uptime checkers; for downtime notifications. By default {{ product_name }} uses UptimeRobot free tier.

@@ -1,6 +1,6 @@
 # Overview
 
-In the era of cloud-native applications, safeguarding your Kubernetes workloads is paramount. Our Managed Red Hat Advanced Cluster Security (RHACS) addon, seamlessly integrated into the Stakater App Agility Platform (SAAP), provides the critical layer of security your organization needs to protect its containerized applications and infrastructure.
+In the era of cloud-native applications, safeguarding your Kubernetes workloads is paramount. Our Managed Red Hat Advanced Cluster Security (RHACS) addon, integrated into the {{ product_name }}, provides the critical layer of security your organization needs to protect its containerized applications and infrastructure.
 
 ## What is RHACS?
 

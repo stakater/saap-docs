@@ -20,6 +20,9 @@ For configuring IMC end user has to create a secret `imc-config` in `stakater-sy
 configuration for IMC. A sample configuration for using IMC with [UptimeRobot](https://uptimerobot.com/) would look
 like:
 
+<!-- vale off -->
+{% raw %}
+
 ```yaml
 apiVersion: v1
 stringData:
@@ -38,6 +41,9 @@ metadata:
   namespace: stakater-system
 type: Opaque
 ```
+
+{% endraw %}
+<!-- vale on -->
 
 Where the following variables need to be replaced with their corresponding values:
 

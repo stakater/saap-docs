@@ -178,7 +178,7 @@ Payment is due once during a Service Period and the Customer will be charged for
 
 ## 15. Covered Service
 
-- **Covered Service** refers to the **OpenShift API** in the Customer's cluster(s) for both Zonal and Regional Clusters, as long as the OpenShift version deployed is available in the Stable Channel and not under [Limited Support Status](../about/update-lifecycle.md#limited-support-status).
+- **Covered Service** refers to the **OpenShift API** in the Customer's cluster(s) for both Zonal and Regional Clusters, as long as the OpenShift version deployed is available in the Stable Channel and not under a Limited Support Status.
 - **Stable Channel** means the Red Hat OpenShift Container Platform Stable release channel.
 - **Zonal Cluster** means a single-Zone cluster with control planes running in one Zone (data centre).
 - **Regional Cluster** means a cluster topology that consists of three replicas of the control plane, running in multiple Zones within a given Region.

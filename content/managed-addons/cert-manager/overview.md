@@ -1,6 +1,6 @@
 # Cert Manager Operator
 
-SAAP uses [Cert-Manager](https://cert-manager.io/) to provide Automatic rotation of Certificates for application workloads.
+{{ product_name }} uses [Cert-Manager](https://cert-manager.io/) to provide Automatic rotation of Certificates for application workloads.
 It will ensure certificates are valid and up to date, and attempt to renew certificates at a configured time before expiry. It can issue certificates from a variety of supported sources, including `Let's Encrypt`, `HashiCorp Vault`, and `Venafi` as well as `private PKI`.
 
 ## Example Certificate Generation using Let's Encrypt
@@ -13,7 +13,7 @@ Before you start creating Certificates, you will have to first define a `Issuer`
     Secret can reside in the same namespace for Issuer
 
 !!! tip
-    Consider using the cluster's default domain i.e. `*.kubeapp.cloud` for CI/staging environment which are all secured by SAAP by default
+    Consider using the cluster's default domain i.e. `*.kubeapp.cloud` for CI/staging environment which are all secured by {{ product_name }} by default
 
 ### Defining ClusterIssuer
 

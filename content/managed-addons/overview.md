@@ -1,63 +1,82 @@
-# Addons
+# Managed Addons
 
-Here is the list of fully managed addons available on SAAP (Stakater App Agility Platform):
+{{ product_name }} ships with fully managed addons organized around the same three pillars as the platform itself: Dev Ready, Ops Ready, and Compliance Ready.
 
-* No addons lock you in
-* All addons work well together, and we have long experience running them, but they can still be considered optional
-* You can replace addons if you already use a similar tool
-* You can suggest adding new addons to the list
-* Addons are independent of your source code
+All addons are installed, configured, upgraded, and operated by Stakater. For a full breakdown of responsibilities, see [Responsibilities](../about/responsibilities.md).
 
-| Managed Addon | Description | License |
-| --- | --- | --- |
-| CI (continuous integration) | [Tekton](./tekton/overview.md) | OSS |
-| CD (continuous delivery) | [ArgoCD](./argocd/overview.md) | OSS |
-| Logging | [Loki and Vector](./logging-stack/overview.md) | OSS |
-| Monitoring | [Grafana, Prometheus, Thanos and Alertmanager](./monitoring-stack/overview.md) | OSS |
-| Distributed Tracing | [Tempo Stack](./tracing/overview.md) | OSS |
-| Internal alerting | [Alertmanager](./monitoring-stack/overview.md) | OSS |
-| External (downtime) alerting | [Stakater IMC](https://github.com/stakater/IngressMonitorController) | OSS |
-| OpenTelemetry | [OpenTelemetry](./opentelemetry/overview.md) | OSS |
-| Service mesh | [Istio, Kiali and Jaeger](./service-mesh/overview.md) (only one fully managed control plane) | OSS |
-| Image scanning | [Trivy](https://github.com/aquasecurity/trivy) | OSS |
-| Backups & Recovery | [Velero](./velero/overview.md) | OSS |
-| Authentication and SSO (for managed addons - customer applications requires its own customer managed Keycloak instance) | [Keycloak](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6), [OAuth Proxy](https://github.com/oauth2-proxy/oauth2-proxy) | OSS |
-| Secrets management | [Vault](./vault/overview.md) | OSS |
-| Artifacts management (Docker, Helm and Package registry) | [Nexus](./nexus/overview.md) | OSS |
-| Code inspection | [SonarQube](./sonarqube/overview.md) | OSS |
-| Authorization & Policy Enforcement | [Open Policy Agent, Gatekeeper](./gatekeeper/overview.md) | OSS |
-| Log alerting | [Stakater Konfigurator](./konfigurator/overview.md) | OSS |
-| Automatic application reload | [Stakater Reloader](./reloader/overview.md) | OSS |
-| Developer dashboard - Launchpad to discover applications | [Stakater Forecastle](./forecastle/overview.md) | OSS |
-| Multi-tenancy | [Stakater Multi Tenant Operator](./mto/overview.md) | Enterprise licence |
-| Feature environments, Preview Environments, Environments-as-a-Service | [Stakater Tronador](https://docs.stakater.com/tronador/#) | Enterprise license |
-| Replicate Secrets & ConfigMaps | [Stakater Multi Tenant Operator](./mto/overview.md) | Enterprise license |
-| GitOps application manager | Stakater Fabrikate | Enterprise license |
-| Management and issuance of TLS certificates | [cert-manager](./cert-manager/overview.md) | OSS |
-| Automated base image management | [Renovate](./renovate/overview.md) | OSS |
-| Advanced cluster security | [RHACS](./rhacs/overview.md) | Enterprise License |
-| Automatic volume extension | [Volume Expander Operator](./volume-expander-operator/overview.md) | OSS |
-| Vertical pod autoscaling | [Vertical Pod Autoscaling](./vertical-pod-autoscaler/overview.md) | OSS |
-| Horizontal pod autoscaling | [Horizontal Pod Autoscaling](./horizontal-pod-autoscaler/overview.md) | OSS |
-| DORA metrics | [Pelorus](./pelorus/overview.md) | OSS |
-| Declarative resource patching | [Patch Operator](./patch-operator/overview.md) | OSS |
-| Ingress controller | [OpenShift Router](./ingress-controller/overview.md) | OSS |
-| Kubernetes event routing | [Event Router](./event-router/overview.md) | OSS |
-| Lock manager | [RDLM](./rdlm/overview.md) | Enterprise license |
-| Local development | [Tilt](./tilt/overview.md) | OSS |
-| Showback | [OpenCost](./opencost/overview.md) | OSS |
-| Kubernetes dashboard | [Kubernetes Dashboard](./kubernetes-dashboard/overview.md) | OSS |
-| Software defined storage | [OpenShift Data Foundation - ODF](./odf/overview.md) | Enterprise license |
-| Custom metrics autoscaler | [Custom Metrics Autoscaler](./custom-metrics-autoscaler/overview.md) | OSS |
-| Dev Spaces | [Dev Spaces](./devspaces/overview.md) | OSS |
-| DNS handling | [External DNS](./external-dns/overview.md) | OSS |
-| Leader application chart | [Stakater Application Helm Chart](./helm-leader-chart/overview.md) | OSS |
-| Web terminal | [Web Terminal Operator](./web-terminal-operator/overview.md) | OSS |
-| Internal development portal/platform | [Backstage](./backstage/overview.md) | OSS |
-| Automatic cluster rebalancing | [Descheduler](./descheduler/overview.md) | OSS |
-| Automatic compliance scans | [OpenSCAP](./compliance-operator/overview.md) | OSS |
-| Infrastructure self-service | [Crossplane](./crossplane/overview.md) | OSS |
-| Fetch external secrets | [External Secrets Operator](./external-secrets-operator/overview.md) | OSS |
+---
 
-!!! info
-    OSS: Open-Source Software
+## Dev Ready
+
+| Addon | What It Does |
+|-------|-------------|
+| [ArgoCD](./argocd/overview.md) | GitOps continuous delivery engine. All deployments are driven from Git — changes committed to your repository are applied to the cluster automatically. |
+| [Tronador](https://docs.stakater.com/tronador/) | Ephemeral preview environments per pull request — created automatically on PR open, torn down on merge. |
+| Harbor | Private container image and Helm chart registry. Push your images and charts here; ArgoCD deploys from here. |
+| [Renovate](./renovate/overview.md) | Automatically opens pull requests to update application dependencies. Keeps applications current without manual effort. |
+| [Forecastle](./forecastle/overview.md) | A dashboard that lists and links to all applications running in your cluster — a single place to discover everything. |
+| [Tilt](./tilt/overview.md) | Fast local development loop for Kubernetes. Rebuilds and redeploys your application on every code change. |
+| [Reloader](./reloader/overview.md) | Automatically restarts pods when their ConfigMap or Secret changes. No manual rollouts needed. |
+| [Stakater Application Helm Chart](./helm-leader-chart/overview.md) | A standardized Helm chart for deploying any application consistently across all environments. |
+
+---
+
+## Ops Ready
+
+### Multi-Tenancy
+
+| Addon | What It Does |
+|-------|-------------|
+| [Stakater MTO](./mto/overview.md) | Manages namespaces, resource quotas, RBAC, and network policies across all teams. Each team gets an isolated, governed environment without cluster-admin access. |
+
+### Observability
+
+| Addon | What It Does |
+|-------|-------------|
+| [Grafana](./monitoring-stack/overview.md) | Unified dashboards and visualization for all observability signals — metrics, logs, and traces in one place. |
+| [Mimir](./monitoring-stack/overview.md) | Scalable, long-term metrics storage and querying. Receives metrics from across all workloads. |
+| [Loki](./logging-stack/overview.md) | Log aggregation and querying. Application logs written to stdout are captured and indexed automatically. |
+| [Tempo](./tracing/overview.md) | Distributed tracing. Correlate requests across services to diagnose latency and errors. |
+| [OpenTelemetry](./opentelemetry/overview.md) | Telemetry collection and forwarding. Instruments your applications for metrics, logs, and traces. |
+| [Alertmanager](./monitoring-stack/overview.md) | Routes and deduplicates alerts. Sends notifications to PagerDuty, Slack, email, and other targets. |
+| [IngressMonitorController](https://github.com/stakater/IngressMonitorController) | Automatically registers external uptime monitors for your application ingresses. Alerts when an endpoint goes down. |
+
+### Cluster Operations
+
+| Addon | What It Does |
+|-------|-------------|
+| [Velero](./velero/overview.md) | Application and persistent volume backup and restore. A default backup location is provided; additional targets are supported. |
+| [Descheduler](./descheduler/overview.md) | Continuously rebalances pod placement across nodes to improve resource utilization and avoid hot spots. |
+| [Vertical Pod Autoscaler](./vertical-pod-autoscaler/overview.md) | Automatically right-sizes container resource requests based on actual usage. |
+| [Horizontal Pod Autoscaler](./horizontal-pod-autoscaler/overview.md) | Scales the number of pod replicas up or down based on metrics. |
+| [Custom Metrics Autoscaler](./custom-metrics-autoscaler/overview.md) | Scales workloads based on custom and external metrics beyond CPU and memory. |
+
+### Networking
+
+| Addon | What It Does |
+|-------|-------------|
+| [Cert-Manager](./cert-manager/overview.md) | Automates TLS certificate issuance and renewal. Certificates are provisioned and rotated without manual intervention. |
+| [ExternalDNS](./external-dns/overview.md) | Automatically creates and updates DNS records as you create or modify services and ingresses. |
+| [Istio](./service-mesh/overview.md) | Service mesh providing mutual TLS between services, fine-grained traffic management, and inter-service observability. One control plane included; additional control planes available on request. |
+
+---
+
+## Compliance Ready
+
+| Addon | What It Does |
+|-------|-------------|
+| [OpenBao](./vault/overview.md) | Open-source secrets management (community fork of HashiCorp Vault). Stores and manages secrets for all applications on the platform. |
+| [External Secrets Operator](./external-secrets-operator/overview.md) | Syncs secrets from OpenBao and supported cloud secret stores (AWS Secrets Manager, Azure Key Vault, GCP Secret Manager) into Kubernetes Secrets automatically. |
+| Kyverno | Kubernetes-native policy engine. Enforces security and compliance guardrails across all tenants and workloads — preventing misconfiguration before it reaches the cluster. |
+| [Keycloak](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6) | Each {{ product_name }} account gets a dedicated Keycloak realm. Connect any identity provider your organization already uses — LDAP, SAML, OpenID Connect, or social login. |
+
+---
+
+## Optional Add-ons
+
+The following components are available but not included in the base subscription.
+
+| Addon | What It Does |
+|-------|-------------|
+| [RHACS](./rhacs/overview.md) | Red Hat Advanced Cluster Security. Runtime threat detection, vulnerability scanning, image policy enforcement, and compliance reporting. |
+| Additional Istio control planes | Multiple Istio control planes for advanced service mesh isolation between tenants or environments. Available on request. |

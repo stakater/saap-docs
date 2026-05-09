@@ -58,14 +58,14 @@ Before running `psql` command we need to port forward to Postgres Pod running in
     psql -h localhost -U $PGUSER -d $PGDATABASE
     ```
   
-    - `$PGUSER` is a reference to a variable that must be set (or you can replace this with username) used to connect to Postgres. This can easily be retrieved from Vault.
-    - `$PGDATABASE` contains name of the database that you want to connect to. This can also be retrieved from Vault.
+    - `$PGUSER` is a reference to a variable that must be set (or you can replace this with username) used to connect to Postgres. This can easily be retrieved from OpenBao.
+    - `$PGDATABASE` contains name of the database that you want to connect to. This can also be retrieved from OpenBao.
 
     - This should result in following output:
 
         ![`Postgres Password Prompt`](../images/postgres-password-promt.png)
 
-    - Paste in the password that you can get from Vault.
+    - Paste in the password that you can get from OpenBao.
 
 1. At this moment, you should have access to `psql`. You can run `\q` at anytime to exit out of this terminal access.
 

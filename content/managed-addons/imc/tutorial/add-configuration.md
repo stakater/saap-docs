@@ -1,6 +1,6 @@
 # Add Configuration
 
-SAAP uses UptimeRobot free tier as uptime checker, by default.
+{{ product_name }} uses UptimeRobot free tier as uptime checker, by default.
 
 Uptime checker is configured in the `config.yaml` based on uptime provider.
 A secret named
