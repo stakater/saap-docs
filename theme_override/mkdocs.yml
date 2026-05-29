@@ -111,26 +111,26 @@ nav:
           - develop/how-to-guides/remote-debugging/remote-debugging-dotnet.md
           - develop/how-to-guides/remote-debugging-mirrord/remote-debugging-mirrord-tilt.md
   - Observe:
-      - managed-addons/monitoring-stack/index.md
-      - Metrics & Alerts:
-          - managed-addons/monitoring-stack/workload-application-alerts.md
-          - managed-addons/monitoring-stack/predefined-prometheusrules.md
+      - managed-addons/observe/index.md
+      - Metrics:
+          - managed-addons/metrics/index.md
           - develop/how-to-guides/expose-spring-boot-metrics/expose-spring-boot-metrics.md
-      - Dashboards:
-          - managed-addons/monitoring-stack/grafana-dashboard.md
+      - Alerts:
+          - managed-addons/alerts/index.md
+          - managed-addons/alerts/workload-application-alerts.md
+          - managed-addons/alerts/predefined-prometheusrules.md
+          - managed-addons/alerts/log-alerts.md
       - Logs:
-          - managed-addons/logging-stack/index.md
-          - managed-addons/monitoring-stack/log-alerts.md
+          - managed-addons/logging/index.md
       - Traces:
-          - Tempo:
-              - managed-addons/tracing/index.md
-          - OpenTelemetry:
-              - managed-addons/opentelemetry/index.md
+          - managed-addons/tracing/index.md
+          - managed-addons/opentelemetry/index.md
+      - Dashboards:
+          - managed-addons/dashboards/index.md
       - Uptime:
-          - managed-addons/imc/index.md
-          - managed-addons/imc/tutorial/add-configuration.md
-          - managed-addons/imc/tutorial/add-monitors.md
-          - managed-addons/monitoring-stack/downtime-notifications-uptimerobot.md
+          - managed-addons/uptime/index.md
+          - managed-addons/uptime/add-monitors.md
+          - managed-addons/uptime/downtime-notifications.md
   - Secure:
       - secure/index.md
       - secure/backup.md
