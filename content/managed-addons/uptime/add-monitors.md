@@ -15,7 +15,7 @@ endpointMonitor:
   enabled: true
 ```
 
-To force HTTPS or override the monitor name, extend the same block:
+To force a secure connection or override the monitor name, extend the same block:
 
 ```yaml
 endpointMonitor:

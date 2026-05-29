@@ -21,7 +21,7 @@ deployment:
       value: otlp
 ```
 
-For Java, Python, Node.js, and .NET, the auto-instrumentation agent captures HTTP, database, and messaging spans without code changes. Open Grafana from Forecastle, switch to Explore, select the Tempo data source, and search by trace ID, service name, or duration. From a trace you can jump to the matching logs in Loki or metrics in Mimir.
+For Java, Python, Node.js, and .NET, the auto-instrumentation agent captures web request, database, and messaging spans without code changes. Open Grafana from Forecastle, switch to Explore, select the Tempo data source, and search by trace ID, service name, or duration. From a trace you can jump to the matching logs in Loki or metrics in Mimir.
 
 ## Next step
 

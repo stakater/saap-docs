@@ -4,7 +4,7 @@ This guide shows you how to instrument a Spring Boot application so that its met
 
 ## How it works
 
-The OpenTelemetry Spring Boot starter emits JVM, HTTP server, and database metrics as soon as it is on the classpath. You point the SDK at the in-cluster OTel collector through your `values.yaml` for the [Stakater Application Helm Chart](../../../managed-addons/helm-leader-chart/index.md); the platform receives the metrics over OTLP and stores them in Mimir.
+The OpenTelemetry Spring Boot starter emits JVM, web server, and database metrics as soon as it is on the classpath. You point the SDK at the in-cluster OTel collector through your `values.yaml` for the [Stakater Application Helm Chart](../../../managed-addons/helm-leader-chart/index.md); the platform receives the metrics over OTLP and stores them in Mimir.
 
 ## 1. Add the OpenTelemetry Spring Boot starter
 
@@ -17,7 +17,7 @@ Add the starter to your `pom.xml`:
 </dependency>
 ```
 
-JVM, HTTP server, and database metrics are emitted automatically once the starter is on the classpath.
+JVM, web server, and database metrics are emitted automatically once the starter is on the classpath.
 
 ## 2. Point the SDK at the in-cluster OTel collector
 
