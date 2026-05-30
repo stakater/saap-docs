@@ -1,39 +1,14 @@
 # Configure application alerting
 
-This guide explains how to configure metrics scraping, alert routing, and alert rules for your application using the Stakater Application Helm Chart.
+This guide shows you how to route alerts from your application to Slack and how to declare a custom alert rule.
 
-1. [Create a ServiceMonitor](#1-create-a-servicemonitor) — tell Prometheus which endpoint to scrape
-1. [Create an AlertmanagerConfig](#2-create-an-alertmanagerconfig) — route alerts to Slack, PagerDuty, or another target
-1. [Create a PrometheusRule](#3-optional-create-a-prometheusrule) (optional) — define custom alert thresholds
+## How it works
 
----
+The platform already ingests your metrics through OpenTelemetry, so you do not configure scraping to receive alerts. You declare where alerts should go through an `AlertmanagerConfig` in your `values.yaml` for the [Stakater Application Helm Chart](../helm-leader-chart/index.md); predefined PrometheusRules fire against your workloads automatically. Optionally, declare a custom `PrometheusRule` for conditions the predefined ones do not cover.
 
-## 1. Create a ServiceMonitor
+## 1. Route alerts to Slack
 
-A `ServiceMonitor` tells Prometheus which endpoint on your application to scrape for metrics. Enable it in your `values.yaml`:
-
-| Parameter | Description |
-|:---|:---|
-| `application.serviceMonitor.enabled` | Enable `ServiceMonitor` |
-| `application.serviceMonitor.endpoints` | Array of endpoints to be scraped by Prometheus |
-
-```yaml
-application:
-  serviceMonitor:
-    enabled: true
-    endpoints:
-      - interval: 5s
-        path: /actuator/prometheus
-        port: http
-```
-
----
-
-## 2. Create an AlertmanagerConfig
-
-An `AlertmanagerConfig` routes alerts to a notification target. This example routes to a Slack channel.
-
-**Step 1:** Create a secret containing the Slack webhook URL:
+Create a Secret containing the Slack webhook URL:
 
 ```yaml
 kind: Secret
@@ -46,7 +21,7 @@ data:
 type: Opaque
 ```
 
-**Step 2:** Configure the `AlertmanagerConfig` in your `values.yaml`. Replace `ALERTMANAGER_URL` with the Workload Alertmanager URL from Forecastle.
+Enable the `AlertmanagerConfig` in your `values.yaml`. The Workload Alertmanager URL used in `titleLink` is available from Forecastle.
 
 | Parameter | Description |
 |:---|:---|
@@ -91,13 +66,11 @@ application:
 {% endraw %}
 <!-- vale on -->
 
-Alertmanager automatically scopes alerts to the deploying namespace by adding a `namespace` match.
+Alertmanager scopes alerts to your namespace automatically by adding a `namespace` match. Once routing is in place, any predefined PrometheusRule that fires for your workloads — and any custom rule you declare below — lands in your Slack channel.
 
----
+## 2. Declare a custom alert rule
 
-## 3. [Optional] Create a PrometheusRule
-
-{{ product_name }} ships with [predefined PrometheusRules](./predefined-prometheusrules.md) that cover common scenarios. Define a custom rule only when the predefined ones do not cover your use case.
+Declare a custom rule only when you need a condition the [predefined rules](./predefined-prometheusrules.md) do not cover — for example, a business metric specific to your application.
 
 | Parameter | Description |
 |:---|:---|
@@ -120,3 +93,9 @@ application:
             labels:
               severity: critical
 ```
+
+The rule is evaluated by the platform's Mimir ruler. When it fires, the alert flows through the same Alertmanager routing you configured in step 1.
+
+## Next step
+
+Continue to [Predefined PrometheusRules](./predefined-prometheusrules.md) to see what alerts you already get out of the box.

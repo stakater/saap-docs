@@ -1,10 +1,14 @@
 # Predefined PrometheusRules
 
-There are few pre-defined PrometheusRules that come with the platform. You can use existing rules to forward alerts to your preferred medium of choice.
+This page lists the PrometheusRules that {{ product_name }} ships out of the box. You can route their alerts to your channels — there is no need to write the rules yourself.
 
-Following are the rules along their descriptions.
+## How it works
 
-## Kubernetes Apps
+The rules below are deployed and evaluated by the platform's Mimir ruler against every workload on the cluster. When one fires, the alert is routed through the same Alertmanager that handles your custom alerts — your `AlertmanagerConfig` (see [Configure application alerting](./workload-application-alerts.md)) picks them up automatically based on namespace.
+
+## What you get
+
+### Kubernetes apps
 
 | Name                              | Description |
 |-----------------------------------|-------------|
@@ -23,9 +27,13 @@ Following are the rules along their descriptions.
 | KubeHpaReplicasMismatch           | HPA (Horizontal Pod Autoscaler) `Namespace/HPA` has not matched the desired number of replicas for longer than 15 minutes. |
 | KubeHpaMaxedOut                   | HPA (Horizontal Pod Autoscaler) `Namespace/HPA` has been running at max replicas for longer than 15 minutes. |
 
-## Kubernetes Storage
+### Kubernetes storage
 
 | Name                              | Description |
 |-----------------------------------|-------------|
 | KubePersistentVolumeFillingUp     | The PersistentVolume claimed by `PersistentVolume` in Namespace `Namespace` is only `Percentage %` free. |
 | KubePersistentVolumeErrors        | The persistent volume `PersistentVolume` has status `Failed/Pending`. |
+
+## Next step
+
+Continue to [Log alerts](./log-alerts.md) to alert on log content as well as metrics.

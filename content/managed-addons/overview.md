@@ -33,13 +33,13 @@ All addons are installed, configured, upgraded, and operated by Stakater. For a 
 
 | Addon | What It Does |
 |-------|-------------|
-| [Grafana](./monitoring-stack/overview.md) | Unified dashboards and visualization for all observability signals — metrics, logs, and traces in one place. |
-| [Mimir](./monitoring-stack/overview.md) | Scalable, long-term metrics storage and querying. Receives metrics from across all workloads. |
-| [Loki](./logging-stack/overview.md) | Log aggregation and querying. Application logs written to stdout are captured and indexed automatically. |
-| [Tempo](./tracing/overview.md) | Distributed tracing. Correlate requests across services to diagnose latency and errors. |
-| [OpenTelemetry](./opentelemetry/overview.md) | Telemetry collection and forwarding. Instruments your applications for metrics, logs, and traces. |
-| [Alertmanager](./monitoring-stack/overview.md) | Routes and deduplicates alerts. Sends notifications to PagerDuty, Slack, email, and other targets. |
-| [IngressMonitorController](https://github.com/stakater/IngressMonitorController) | Automatically registers external uptime monitors for your application ingresses. Alerts when an endpoint goes down. |
+| [Grafana](./dashboards/index.md) | Unified dashboards and visualization for all observability signals — metrics, logs, and traces in one place. |
+| [Mimir](./metrics/index.md) | Scalable, long-term metrics storage and querying. Receives metrics emitted over OTLP from your workloads. |
+| [Loki](./logging/index.md) | Log aggregation and querying. Application logs emitted over OTLP are indexed automatically. |
+| [Tempo](./tracing/index.md) | Distributed tracing. Correlate requests across services to diagnose latency and errors. |
+| [OpenTelemetry](./opentelemetry/index.md) | Telemetry collection and forwarding. The single ingestion endpoint for metrics, logs, and traces. |
+| [Alertmanager](./alerts/index.md) | Routes and deduplicates alerts. Sends notifications to PagerDuty, Slack, email, and other targets. |
+| [IngressMonitorController](./uptime/index.md) | Automatically registers external uptime monitors for your application ingresses. Alerts when an endpoint goes down. |
 
 ### Cluster Operations
 
