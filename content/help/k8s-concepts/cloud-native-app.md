@@ -573,7 +573,7 @@ Considerations for helping to protect access to your app include the following:
 
 The security landscape constantly evolves within an enterprise, making it harder for you to code security constructs in your apps
 
-{{ product_name }} offers Keycloak as fully managed IAM solution to support SSO login for managed addons.
+{{ product_name }} offers Stakater Identity as a fully managed IAM solution to support SSO login for managed addons.
 
 ## 16. Dependencies initialization
 

@@ -42,4 +42,4 @@ If your application logs as JSON, the third form is the most precise. When the r
 
 ## Next step
 
-Continue to [Logs](../logging/index.md) to see how to query and explore your logs interactively.
+Continue to [Traces](../tracing/index.md) to follow requests across your services with distributed tracing.

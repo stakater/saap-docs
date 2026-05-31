@@ -1,6 +1,6 @@
 # Renovate
 
-Renovate scans your repositories for outdated Docker images and Helm chart versions, then opens pull requests with the updates applied. Your team reviews and merges like any other PR — no manual dependency tracking needed.
+[Renovate](https://github.com/renovatebot/renovate) scans your repositories for outdated Docker images and Helm chart versions, then opens pull requests with the updates applied. Your team reviews and merges like any other PR — no manual dependency tracking needed.
 
 Renovate runs on a configurable schedule and includes changelogs in each PR so you can assess the impact of an update before merging.
 

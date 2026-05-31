@@ -1,6 +1,6 @@
 # ArgoCD
 
-ArgoCD is the GitOps continuous delivery engine that drives all deployments on the platform. When you push a change to your apps GitOps repository, ArgoCD detects the drift between Git and the cluster and syncs automatically — no manual deployment commands needed.
+[ArgoCD](https://github.com/argoproj/argo-cd) is the GitOps continuous delivery engine that drives all deployments on the platform. When you push a change to your apps GitOps repository, ArgoCD detects the drift between Git and the cluster and syncs automatically — no manual deployment commands needed.
 
 Access ArgoCD through Forecastle, your cluster's application dashboard. Use it to monitor application health, inspect sync status, and review deployment history.
 

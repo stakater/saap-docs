@@ -1,37 +1,17 @@
-# Deploy
+# Develop
 
-This section covers deploying applications to {{ product_name }} — from building your first container image to running ArgoCD-managed releases across multiple environments.
+This section covers the inner development loop on {{ product_name }} — writing code locally, iterating against a real cluster, debugging, and following production-ready practices.
 
----
+## How it works
 
-## How deployment works
+You run your application locally with [Tilt](../managed-addons/tilt/index.md), which builds and redeploys your container on every code change directly into your sandbox namespace on the cluster. You debug against live cluster traffic with [mirrord](../managed-addons/mirrord/index.md) instead of recreating production conditions on your laptop. The full local-to-cluster loop is set up once and then stays out of your way.
 
-{{ product_name }} uses an outer loop model: you build an image, package it as a Helm chart, push both to Harbor, then commit deployment configuration to your apps GitOps repository. ArgoCD detects the commit and deploys automatically — no manual `kubectl apply` required.
+## What you do
 
-Read [Inner vs outer loop](explanation/inner-outer-loop.md) if you are new to this model, or [Plan your deployment](explanation/plan-your-deployment.md) to evaluate your application's requirements before you start.
+Start with the [Inner Loop](./tutorials/inner-loop/prepare-environment/prepare-env.md) tutorial series — twenty-plus steps that walk through preparing your environment, containerising your app, deploying to your sandbox, exposing it, monitoring it, and scaling it. The [Tilt zero-to-hero guide](./tutorials/inner-loop/tilt-zero-to-hero/step-by-step-guide.md) is the condensed end-to-end version.
 
----
+For deeper context before you start, read [Inner vs outer loop](./explanation/inner-outer-loop.md) and [Local development workflow](./explanation/local-development-workflow.md). When you are ready to ship outside the inner loop, continue to [Deploy](../deploy/index.md) for the outer-loop / GitOps delivery path.
 
-## Quick start
+## Next step
 
-Work through [Deploy a demo app](tutorials/deploy-demo-app.md) for a complete end-to-end walkthrough: build an image, push it to Harbor, package the chart, deploy via ArgoCD, and verify the result.
-
----
-
-## Common tasks
-
-| Scenario | Guide |
-|---|---|
-| Build a container image and push it to Harbor | [Build and push your image](how-to-guides/build-and-push-your-image/build-and-push-your-image.md) |
-| Package a Helm chart and push it to Harbor | [Package and push your chart](how-to-guides/package-and-push-your-chart/package-and-push-your-chart.md) |
-| Deploy an application using ArgoCD and Helm | [Deploy with ArgoCD and Helm](how-to-guides/deploy-app-with-argocd-and-helm/deploy-app-with-argocd-and-helm.md) |
-| Expose an application on a custom hostname over https | [Expose your application](how-to-guides/expose-applications-to-internet/expose-applications-to-internet.md) |
-| Rewrite URL paths at the ingress | [Path rewriting](how-to-guides/rewriting-path-annotation/path-rewriting.md) |
-| Promote an application to the next environment | [Promote your application](how-to-guides/promote-your-application/promote-your-application.md) |
-
----
-
-## Concepts
-
-- [Inner vs outer loop](explanation/inner-outer-loop.md) — local iteration vs GitOps-based deployment
-- [Plan your deployment](explanation/plan-your-deployment.md) — evaluate your application's requirements before you start
+Continue to [Prepare the local environment](./tutorials/inner-loop/prepare-environment/prepare-env.md) to set up Tilt and your sandbox.

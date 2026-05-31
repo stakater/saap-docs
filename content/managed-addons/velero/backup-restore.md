@@ -39,7 +39,7 @@ Stakater only takes backups of the managed applications:
 | Elasticsearch              |    Every 24 hrs   |   Last 3 Backup(s)   |
 | OpenBao                      |    Every 24 hrs   |   Last 3 Backup(s)   |
 | CodeReadyWorkspaces        |    Every 24 hrs   |   Last 3 Backup(s)   |
-| RHSSO (Keycloak)           |    Every 24 hrs   |   Last 3 Backup(s)   |
+| Stakater Identity          |    Every 24 hrs   |   Last 3 Backup(s)   |
 | ArgoCD                     |    Every 24 hrs   |   Last 3 Backup(s)   |
 
 If you want to change backup frequency/retention times for your specific needs, contact support.

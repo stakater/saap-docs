@@ -1,4 +1,4 @@
-# Security & Compliance
+# Govern
 
 Stakater uses a Risk and Compliance as Code (RCaC) approach to embed compliance practices directly into infrastructure and workflows, making compliance an automated, continuous process rather than a manual one.
 

@@ -4,7 +4,7 @@ This page explains how OpenTelemetry fits into {{ product_name }} and where to g
 
 ## How it works
 
-{{ product_name }} standardizes on OpenTelemetry as the single instrumentation path for application observability. Stakater operates the OpenTelemetry Collector, which accepts metrics, logs, and traces over OTLP at one in-cluster endpoint and routes them to Mimir, Loki, and Tempo automatically.
+{{ product_name }} standardizes on [OpenTelemetry](https://github.com/open-telemetry) as the single instrumentation path for application observability. Stakater operates the OpenTelemetry Collector, which accepts metrics, logs, and traces over OTLP at one in-cluster endpoint and routes them to Mimir, Loki, and Tempo automatically.
 
 ## What you do
 
