@@ -20,7 +20,7 @@ Stakater is fully responsible for the health, availability, and operation of bot
 - Installation, configuration, and upgrades of all platform components (ArgoCD, MTO, Harbor, OpenBao, Kyverno, LGTM stack, Istio, Cert-Manager, and all other included components)
 - Availability and health monitoring of platform components
 - Security patching for all platform components
-- Keycloak realm provisioning for each customer account
+- Stakater Identity realm provisioning for each customer account
 
 ## What You Manage
 
@@ -48,7 +48,7 @@ You are responsible for everything that runs on top of the platform — your app
 
 ### Identity and access
 
-- Connecting your identity provider to your Keycloak realm
+- Connecting your identity provider to your Stakater Identity realm
 - Managing users, groups, and roles within your realm
 - RBAC assignments within your tenants
 

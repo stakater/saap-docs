@@ -13,8 +13,8 @@ Signals (metrics, logs, traces) are emitted by your application via the OpenTele
 | Capability | What you do |
 |------------|-------------|
 | [Metrics](../metrics/index.md) | Emit metrics over OTLP from the OpenTelemetry SDK; query them in Grafana with PromQL. |
-| [Alerts](../alerts/index.md) | Declare `PrometheusRule`, `AlertingRule`, and `AlertmanagerConfig` through your `values.yaml` to fire and route alerts. |
 | [Logs](../logging/index.md) | Emit logs over OTLP from the OpenTelemetry SDK; search them in Grafana with LogQL. |
+| [Alerts](../alerts/index.md) | Declare `PrometheusRule`, `AlertingRule`, and `AlertmanagerConfig` through your `values.yaml` to fire and route alerts on metrics and logs. |
 | [Traces](../tracing/index.md) | Emit spans over OTLP from the OpenTelemetry SDK; correlate requests across services in Tempo. |
 | [Dashboards](../dashboards/index.md) | Declare `grafanaDashboard` contents in your `values.yaml` to ship Grafana dashboards via GitOps. |
 | [Uptime](../uptime/index.md) | Enable `endpointMonitor` in your `values.yaml` to register external uptime probes via UptimeRobot. |

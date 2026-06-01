@@ -62,4 +62,4 @@ The counter appears in Grafana as `nordmart_review_low_ratings_total` once the f
 
 ## Next step
 
-Continue to [Alerts](../../../managed-addons/alerts/index.md) to alert on the metrics you just exposed.
+Continue to [Logs](../../../managed-addons/logging/index.md) to forward your application logs to the platform.

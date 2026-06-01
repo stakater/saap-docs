@@ -1,6 +1,6 @@
 # Forecastle
 
-Forecastle is the application dashboard for your cluster — a single page that lists every running application with its URL, grouped by team or environment. It removes the need to bookmark individual application URLs.
+[Forecastle](https://github.com/stakater/Forecastle) is the application dashboard for your cluster — a single page that lists every running application with its URL, grouped by team or environment. It removes the need to bookmark individual application URLs.
 
 ![Forecastle](./images/forecastle.png)
 

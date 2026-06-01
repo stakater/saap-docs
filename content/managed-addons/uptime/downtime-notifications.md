@@ -44,4 +44,4 @@ Within a couple of minutes you should see a downtime alert in the Slack channel 
 
 ## Next step
 
-You have completed the Observe section. Continue to [Secure](../../secure/index.md) to see how the platform handles secrets, backups, and compliance.
+You have completed the Observe section. Continue to [Govern](../../govern/index.md) to see how the platform handles secrets, backups, and compliance.

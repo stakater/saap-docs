@@ -263,6 +263,6 @@ Check the `argocd-ssh-known-hosts-cm` ConfigMap in the ArgoCD namespace. The pub
 
 Your infra repository is now bootstrapped. ArgoCD is watching it and your first tenant is live on the cluster.
 
-For more on the `Tenant` and `Quota` resources, see [Multi Tenant Operator custom resources](https://docs.stakater.com/mto/main/customresources.html).
+For more on the `Tenant` and `Quota` resources, see [Multi-Tenant Operator custom resources](https://docs.stakater.com/mto/main/customresources.html).
 
 Continue to [Configure the apps GitOps repository](configure-apps-gitops-repo.md).

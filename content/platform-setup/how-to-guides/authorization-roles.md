@@ -70,7 +70,7 @@ Open a [support ticket](https://support.stakater.com) with the email address of 
 
 ## Tenant member
 
-Tenant member permissions are scoped to a single tenant's namespaces. The available roles within a tenant (viewer, editor, owner) are defined by Multi Tenant Operator.
+Tenant member permissions are scoped to a single tenant's namespaces. The available roles within a tenant (viewer, editor, owner) are defined by Multi-Tenant Operator.
 
 A Customer Admin grants tenant-level access by editing the `Tenant` CR. See [Tenant member roles](https://docs.stakater.com/mto/main/tenant-roles.html) for the full role breakdown.
 

@@ -1,6 +1,6 @@
 # Stakater Application Helm Chart
 
-The Stakater Application Helm Chart is the standard way to deploy any application on the platform. It packages all the Kubernetes resources a typical workload needs — Deployment, Service, Route, HPA, PDB, ServiceMonitor, ConfigMap, ExternalSecret — into a single chart configured entirely through `values.yaml`.
+The [Stakater Application Helm Chart](https://github.com/stakater/application) is the standard way to deploy any application on the platform. It packages all the Kubernetes resources a typical workload needs — Deployment, Service, Route, HPA, PDB, ServiceMonitor, ConfigMap, ExternalSecret — into a single chart configured entirely through `values.yaml`.
 
 This replaces writing raw Kubernetes manifests for each resource. Every application on the platform uses the same chart structure, making deployment configuration consistent and reviewable across teams.
 

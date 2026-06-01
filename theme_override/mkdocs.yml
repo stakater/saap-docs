@@ -43,6 +43,7 @@ nav:
           - platform-setup/tutorials/configure-infra-gitops-repo.md
           - platform-setup/tutorials/configure-apps-gitops-repo.md
       - Identity & Access:
+          - platform-setup/explanation/stakater-identity.md
           - Identity providers:
               - platform-setup/how-to-guides/keycloak-idp.md
               - platform-setup/how-to-guides/google-idp.md
@@ -63,7 +64,7 @@ nav:
           - platform-setup/how-to-guides/add-a-new-application.md
           - platform-setup/how-to-guides/add-a-new-environment-to-application.md
   - Deploy:
-      - develop/index.md
+      - deploy/index.md
       - Concepts:
           - develop/explanation/inner-outer-loop.md
           - develop/explanation/plan-your-deployment.md
@@ -79,6 +80,7 @@ nav:
           - operate/secure-routes.md
           - develop/how-to-guides/promote-your-application/promote-your-application.md
   - Develop:
+      - develop/index.md
       - develop/explanation/local-development-workflow.md
       - develop/explanation/developer-training.md
       - develop/explanation/production-best-practices.md
@@ -115,47 +117,63 @@ nav:
       - Metrics:
           - managed-addons/metrics/index.md
           - develop/how-to-guides/expose-spring-boot-metrics/expose-spring-boot-metrics.md
+      - Logs:
+          - managed-addons/logging/index.md
       - Alerts:
           - managed-addons/alerts/index.md
           - managed-addons/alerts/workload-application-alerts.md
           - managed-addons/alerts/predefined-prometheusrules.md
           - managed-addons/alerts/log-alerts.md
-      - Logs:
-          - managed-addons/logging/index.md
       - Traces:
           - managed-addons/tracing/index.md
-          - managed-addons/opentelemetry/index.md
       - Dashboards:
           - managed-addons/dashboards/index.md
       - Uptime:
           - managed-addons/uptime/index.md
           - managed-addons/uptime/add-monitors.md
           - managed-addons/uptime/downtime-notifications.md
-  - Secure:
-      - secure/index.md
-      - secure/backup.md
+  - Govern:
+      - govern/index.md
+      - govern/backup.md
       - Backup & Restore:
           - operate/velero-stateful-app-example.md
           - operate/velero-restore-with-gitops.md
           - operate/volume-expansion.md
       - Compliance Frameworks:
-          - secure/gdpr-eu.md
-          - secure/iso27k1.md
-          - secure/nist-sp-800-171.md
-          - secure/bsi-it-grundschutz.md
-          - secure/cis.md
-          - secure/soc2-type2.md
-          - secure/toms.md
-          - secure/subprocessors.md
-          - secure/hipaa.md
-          - secure/dora.md
+          - govern/gdpr-eu.md
+          - govern/iso27k1.md
+          - govern/nist-sp-800-171.md
+          - govern/bsi-it-grundschutz.md
+          - govern/cis.md
+          - govern/soc2-type2.md
+          - govern/toms.md
+          - govern/subprocessors.md
+          - govern/hipaa.md
+          - govern/dora.md
   - Managed Addons:
       - managed-addons/index.md
-      - Dev Ready:
+      - Deploy:
           - ArgoCD:
               - managed-addons/argocd/index.md
           - Tronador:
               - managed-addons/tronador/index.md
+          - Networking:
+              - Cert-Manager:
+                  - managed-addons/cert-manager/index.md
+              - ExternalDNS:
+                  - managed-addons/external-dns/index.md
+              - Service Mesh:
+                  - managed-addons/service-mesh/index.md
+          - Autoscaling:
+              - Vertical Pod Autoscaler:
+                  - managed-addons/vertical-pod-autoscaler/index.md
+              - Horizontal Pod Autoscaler:
+                  - managed-addons/horizontal-pod-autoscaler/index.md
+              - Custom Metrics Autoscaler:
+                  - managed-addons/custom-metrics-autoscaler/index.md
+          - Descheduler:
+              - managed-addons/descheduler/index.md
+      - Develop:
           - Renovate:
               - managed-addons/renovate/index.md
               - managed-addons/renovate/how-to-guides/automerge.md
@@ -173,8 +191,30 @@ nav:
               - managed-addons/reloader/tutorial/configure-resources.md
           - Stakater Application Helm Chart:
               - managed-addons/helm-leader-chart/index.md
-      - Ops Ready:
-          - Multi Tenant Operator:
+          - Databases:
+              - PostgreSQL:
+                  - managed-addons/postgres/index.md
+                  - managed-addons/postgres/tutorial/connect-to-postgres-cli/connect-to-postgres-cli.md
+              - Redis:
+                  - managed-addons/redis/index.md
+                  - managed-addons/redis/tutorial/connect-to-redis-cli/connect-to-redis-cli.md
+      - Observe:
+          - Grafana:
+              - managed-addons/grafana/index.md
+          - Mimir:
+              - managed-addons/mimir/index.md
+          - Loki:
+              - managed-addons/loki/index.md
+          - Tempo:
+              - managed-addons/tempo/index.md
+          - OpenTelemetry:
+              - managed-addons/opentelemetry/index.md
+          - Alertmanager:
+              - managed-addons/alertmanager/index.md
+          - IngressMonitorController:
+              - managed-addons/imc/index.md
+      - Govern:
+          - Multi-Tenant Operator:
               - managed-addons/mto/index.md
           - Velero:
               - managed-addons/velero/index.md
@@ -183,35 +223,12 @@ nav:
               - managed-addons/velero/limitations.md
               - managed-addons/velero/cleanup.md
               - managed-addons/velero/troubleshooting.md
-          - Descheduler:
-              - managed-addons/descheduler/index.md
-          - Autoscaling:
-              - Vertical Pod Autoscaler:
-                  - managed-addons/vertical-pod-autoscaler/index.md
-              - Horizontal Pod Autoscaler:
-                  - managed-addons/horizontal-pod-autoscaler/index.md
-              - Custom Metrics Autoscaler:
-                  - managed-addons/custom-metrics-autoscaler/index.md
-          - Networking:
-              - Cert-Manager:
-                  - managed-addons/cert-manager/index.md
-              - ExternalDNS:
-                  - managed-addons/external-dns/index.md
-              - Service Mesh:
-                  - managed-addons/service-mesh/index.md
-          - Databases:
-              - PostgreSQL:
-                  - managed-addons/postgres/index.md
-                  - managed-addons/postgres/tutorial/connect-to-postgres-cli/connect-to-postgres-cli.md
-              - Redis:
-                  - managed-addons/redis/index.md
-                  - managed-addons/redis/tutorial/connect-to-redis-cli/connect-to-redis-cli.md
-      - Compliance Ready:
+          - Kyverno:
+              - managed-addons/kyverno/index.md
           - OpenBao:
               - managed-addons/vault/index.md
           - External Secrets Operator:
               - managed-addons/external-secrets-operator/index.md
-      - Optional Add-ons:
           - RHACS:
               - managed-addons/rhacs/index.md
               - managed-addons/rhacs/accessing-rhacs.md

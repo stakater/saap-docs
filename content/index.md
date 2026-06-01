@@ -20,44 +20,55 @@ The result is a hidden platform team tax — one that grows with every new team 
 
 ## What You Get
 
-{{ product_name }} is organized around three pillars, each covering a domain your teams would otherwise need to build and maintain themselves.
+{{ product_name }} delivers on those three promises through four areas your teams work in — Deploy, Develop, Observe, and Govern — each fully managed so your team focuses on applications, not platform.
 
-### Dev Ready
+### Deploy
+
+GitOps continuous delivery, production networking, and runtime sizing — what gets your code into production and keeps it healthy there.
+
+- ArgoCD as the GitOps engine — every cluster change is a Git commit, applied automatically
+- Tronador for ephemeral preview environments per pull request
+- Cert-Manager for automated TLS certificate issuance and renewal
+- ExternalDNS for automatic DNS record management
+- Istio service mesh for mutual TLS and fine-grained traffic management
+- Horizontal, vertical, and custom-metrics autoscaling
+- Descheduler to rebalance workloads as conditions change
+
+### Develop
 
 Developers get instant, secure environments and everything they need to ship — without waiting on anyone.
 
 - Self-service tenant namespaces and environments provisioned automatically via GitOps
-- Pre-defined GitOps repository structure with ArgoCD managing all deployments declaratively
 - [Leader Helm chart](https://github.com/stakater-charts/application) — a standardized application chart for consistent deployments across all environments
-- Ephemeral preview environments per pull request via Tronador — created automatically, torn down on merge
 - Harbor registry for storing and distributing your container images and Helm charts
+- Tilt for fast local development and testing against the cluster
+- mirrord for debugging local code against live cluster traffic
+- Reloader to auto-roll pods when ConfigMaps or Secrets change
 - Renovate for automated dependency updates
 - Forecastle dashboard for discovering and navigating all running applications
-- Tilt for fast local development and testing against the cluster
+- Managed PostgreSQL and Redis for application data
 
-### Ops Ready
+### Observe
 
-Platform operations are handled by {{ product_name }} and Stakater SRE — not your team.
+Metrics, logs, traces, alerts, dashboards, and uptime monitoring — all on the OpenTelemetry-first LGTM stack.
+
+- Mimir for long-term metrics storage; Loki for log aggregation; Tempo for distributed tracing
+- Grafana as the single visualization layer for every signal
+- Alertmanager routes metric and log alerts to Slack, PagerDuty, email, or webhooks
+- OpenTelemetry collector as the single OTLP ingestion endpoint for all three signals
+- IngressMonitorController + UptimeRobot for external uptime probes against your public endpoints
+
+### Govern
+
+Multi-tenancy, secrets, policy, backup, and vulnerability scanning — the governance and compliance posture built in from day one, not added later.
 
 - Policy-driven multi-tenancy via Stakater MTO — namespaces, quotas, and RBAC across all teams managed automatically
-- LGTM observability stack — Grafana, Loki, Tempo, and Mimir for dashboards, logs, traces, and metrics
-- Application uptime monitoring via IngressMonitorController
-- Automated backup and restore for applications and persistent volumes via Velero
-- Istio service mesh for traffic management and inter-service security
-- Horizontal and vertical pod autoscaling
-- Cert-Manager for automated TLS certificate issuance and renewal
-- ExternalDNS for automatic DNS record management
-- Cluster lifecycle managed by Stakater SRE: upgrades, patching, and incident response
-
-### Compliance Ready
-
-Security and governance controls are built in from day one — not added later.
-
 - OpenBao for secrets management, synced to clusters via External Secrets Operator
 - Kyverno for policy enforcement across all tenants and workloads
+- Velero for automated backup and restore of applications and persistent volumes
 - Audit logging retained at the cluster level
 - Built-in controls aligned to ISO 27001, NIS2, and DORA
-- Keycloak-based authentication with a dedicated realm per account — connect any identity provider your organization already uses
+- Stakater Identity with a dedicated realm per account — connect any identity provider your organization already uses
 
 ## Built on Stakater Cloud
 
@@ -74,5 +85,5 @@ See [Responsibilities](about/responsibilities.md) for a clear breakdown of what 
 | Set up GitOps repositories and configure the platform | [Platform Setup](platform-setup/index.md) |
 | Deploy my first application | [Deploy Your First App](develop/tutorials/deploy-demo-app.md) |
 | Start the inner development loop | [Inner Loop](develop/tutorials/inner-loop/prepare-environment/prepare-env.md) |
-| Review compliance and regulatory coverage | [Security & Compliance](secure/overview.md) |
+| Review compliance and regulatory coverage | [Govern](govern/index.md) |
 | Browse available platform components | [Managed Addons](managed-addons/overview.md) |
